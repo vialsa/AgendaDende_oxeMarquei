@@ -35,7 +35,7 @@ public class TelaInicialAdm_consultasSelec extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         Buscar = new javax.swing.JButton();
         Pesquista_filtro = new javax.swing.JTextField();
-        Filtrar_paciente = new javax.swing.JComboBox<>();
+        Filtrar_consulta = new javax.swing.JComboBox<>();
         btn_NovoPaciente = new javax.swing.JButton();
         label1 = new java.awt.Label();
         btnEditar = new javax.swing.JButton();
@@ -79,15 +79,15 @@ public class TelaInicialAdm_consultasSelec extends javax.swing.JFrame {
 
         Buscar.setText("Buscar");
 
-        Filtrar_paciente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Codigo", "Nome", "Sigtap", " " }));
-        Filtrar_paciente.addActionListener(new java.awt.event.ActionListener() {
+        Filtrar_consulta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Codigo", "Data", "Nome", "Local", " " }));
+        Filtrar_consulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Filtrar_pacienteActionPerformed(evt);
+                Filtrar_consultaActionPerformed(evt);
             }
         });
 
         btn_NovoPaciente.setBackground(new java.awt.Color(0, 255, 153));
-        btn_NovoPaciente.setText("Novo Paciente");
+        btn_NovoPaciente.setText("Agendar Consulta");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -95,7 +95,7 @@ public class TelaInicialAdm_consultasSelec extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Filtrar_paciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Filtrar_consulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Pesquista_filtro, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -113,7 +113,7 @@ public class TelaInicialAdm_consultasSelec extends javax.swing.JFrame {
                 .addComponent(btn_NovoPaciente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Filtrar_paciente, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Filtrar_consulta, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Pesquista_filtro, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Buscar))
                 .addContainerGap(14, Short.MAX_VALUE))
@@ -263,9 +263,9 @@ public class TelaInicialAdm_consultasSelec extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Filtrar_pacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Filtrar_pacienteActionPerformed
+    private void Filtrar_consultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Filtrar_consultaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Filtrar_pacienteActionPerformed
+    }//GEN-LAST:event_Filtrar_consultaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -335,7 +335,7 @@ public class TelaInicialAdm_consultasSelec extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Buscar;
-    private javax.swing.JComboBox<String> Filtrar_paciente;
+    private javax.swing.JComboBox<String> Filtrar_consulta;
     private javax.swing.JTextField Pesquista_filtro;
     private javax.swing.JToggleButton btnCadastrar6;
     private javax.swing.JButton btnEditar;

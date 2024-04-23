@@ -157,7 +157,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="Filtrar_paciente" min="-2" max="-2" attributes="0"/>
+                          <Component id="Filtrar_consulta" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="Pesquista_filtro" pref="296" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -178,7 +178,7 @@
                           <Component id="btn_NovoPaciente" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="Filtrar_paciente" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                              <Component id="Filtrar_consulta" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                               <Component id="Pesquista_filtro" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                               <Component id="Buscar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -195,19 +195,20 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="Pesquista_filtro">
                 </Component>
-                <Component class="javax.swing.JComboBox" name="Filtrar_paciente">
+                <Component class="javax.swing.JComboBox" name="Filtrar_consulta">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
+                      <StringArray count="5">
                         <StringItem index="0" value="Codigo"/>
-                        <StringItem index="1" value="Nome"/>
-                        <StringItem index="2" value="Sigtap"/>
-                        <StringItem index="3" value=" "/>
+                        <StringItem index="1" value="Data"/>
+                        <StringItem index="2" value="Nome"/>
+                        <StringItem index="3" value="Local"/>
+                        <StringItem index="4" value=" "/>
                       </StringArray>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Filtrar_pacienteActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Filtrar_consultaActionPerformed"/>
                   </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -218,7 +219,7 @@
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="99" green="ff" red="0" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Novo Paciente"/>
+                    <Property name="text" type="java.lang.String" value="Agendar Consulta"/>
                   </Properties>
                 </Component>
               </SubComponents>
