@@ -142,6 +142,37 @@ public class PublicAgentDAOJDBC implements PublicAgentDAO {
     }
 
     @Override
+    public boolean containsUser(String user, String password) {
+        PreparedStatement pstm =  null;
+        ResultSet rs = null;
+
+        try {
+            conn = ConnectionFactory.getConnection();
+            pstm = conn.prepareStatement(
+                    "SELECT COUNT(*) FROM PUBLIC_AGENT WHERE userr = ? AND password = ?"
+            );
+            pstm.setString(1, user);
+            pstm.setString(2, password);
+            rs = pstm.executeQuery();
+            System.out.println("Tamo aqui");
+            
+            if(rs.next()){
+                int count = rs.getInt(1);
+                System.out.println(count);
+                return count > 0;
+            } 
+            
+        } catch (SQLException e){
+            e.printStackTrace();
+        } finally {
+            ConnectionFactory.closeConnection(conn);
+            ConnectionFactory.closeStatement(pstm);
+            ConnectionFactory.closeResultSet(rs);
+        }
+        return false;
+    }
+    
+    @Override
     public void disable(Integer idPublicAgent) {
         PreparedStatement pstm = null;
         ResultSet rs = null;
