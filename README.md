@@ -225,4 +225,4 @@ erDiagram
         int idQuery
         LocalDateTime dateAndTimeConsultation
     }
-```
+``````
