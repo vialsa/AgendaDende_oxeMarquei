@@ -9,6 +9,5 @@ public interface PublicAgentDAO {
     void update(String phoneNumber1, String address, String email, Integer idPublicAgent);
     PublicAgent findById(Integer idPublicAgent);
     List<PublicAgent> findAll();
-    boolean containsUser(String user, String password);
     void disable(Integer idPublicAgent);
 }

@@ -4,9 +4,6 @@
  */
 package View;
 
-import Controller.LoginController;
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author Vitor
@@ -68,6 +65,7 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(0, 51, 51));
         jLabel2.setText("Login ");
 
+        txtlogin.setText("\n");
         txtlogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtloginActionPerformed(evt);
@@ -84,11 +82,6 @@ public class Login extends javax.swing.JFrame {
         btnLogin.setForeground(new java.awt.Color(0, 51, 51));
         btnLogin.setText("Login");
         btnLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnLogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLoginActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -171,22 +164,6 @@ public class Login extends javax.swing.JFrame {
     private void txtloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtloginActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtloginActionPerformed
-
-    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        String usuario = txtlogin.getText();
-        String senha = new String(txtsenha.getPassword());
-        System.out.println(usuario);
-        System.out.println(senha);
-        
-        LoginController loginController = new LoginController();
-        if (loginController.verificarLogin(usuario, senha)) {
-            JOptionPane.showMessageDialog(null, "Usuario Existe");
-        } else {
-            JOptionPane.showMessageDialog(null, "Usuário não existe");
-        }
-        
-        
-    }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
      * @param args the command line arguments
