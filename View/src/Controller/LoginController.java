@@ -5,17 +5,24 @@
 package Controller;
 
 import Model.DAO.impl.PublicAgentDAOJDBC;
+import Model.Entities.PublicAgent;
 
 /**
  *
  * @author lucas
  */
 public class LoginController {
-    public boolean verificarLogin(String login, String senha) {
-        PublicAgentDAOJDBC publicAgentDao= new PublicAgentDAOJDBC();
-        boolean tem = publicAgentDao.containsUser(login, senha);
-        System.out.println(tem);
+    public PublicAgent realizaLogin(String login, String senha) {
         
-        return tem;
+        if(!login.equals("") && !senha.equals("")) {
+            
+            PublicAgentDAOJDBC publicAgentDao= new PublicAgentDAOJDBC();
+            PublicAgent agent = publicAgentDao.containsUser(login, senha);
+            
+            if(agent != null){
+                return agent;
+            }
+        }
+        return null;
     }
 }
