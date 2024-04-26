@@ -4,6 +4,10 @@
  */
 package View;
 
+import java.text.Format;
+import java.time.LocalDate;
+import java.util.Date;
+
 /**
  *
  * @author Vitor
@@ -168,6 +172,11 @@ public class TelaInicialNovoPaciente extends javax.swing.JFrame {
         btn_salvar.setBackground(new java.awt.Color(0, 204, 0));
         btn_salvar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_salvar.setText("Salvar");
+        btn_salvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_salvarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -205,7 +214,7 @@ public class TelaInicialNovoPaciente extends javax.swing.JFrame {
                             .addComponent(Tel2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -215,7 +224,7 @@ public class TelaInicialNovoPaciente extends javax.swing.JFrame {
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 43, Short.MAX_VALUE))
+                            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
@@ -314,6 +323,36 @@ public class TelaInicialNovoPaciente extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salvarActionPerformed
+        String nome = Nome.getText();
+        String CPF = Cpf.getText();
+        
+        String[] dataPartes = DataNasc.getText().split("/");
+        
+       
+        String dataNascimento = String.format("%s-%s-%s", dataPartes[2],dataPartes[1],dataPartes[0]);
+        String tel1 = Tel1.getText();
+        String tel2 = Tel2.getText();
+        String rua = EnderecoRuaPac.getText();
+        String num = EnderecoNumPac.getText();
+        String bairro = EnderecoBairroPac.getText();
+        String cep = EnderecoCepPac.getText();
+        String sigtap = Sigtap.getText();
+        String email = Email.getText();
+        if (!nome.equals("") || !dataNascimento.equals("") || !tel1.equals("") || 
+                !rua.equals("") || !num.equals("") || !bairro.equals("") || !cep.equals("") 
+                || !sigtap.equals("") || !email.equals("")) {
+            
+            String endereco = rua + num + bairro + cep;
+            LocalDate data = LocalDate.parse(dataNascimento);
+            if (!tel2.equals("")) {
+                
+            } else {
+                
+            }
+        }
+    }//GEN-LAST:event_btn_salvarActionPerformed
 
     /**
      * @param args the command line arguments
