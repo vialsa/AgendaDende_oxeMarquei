@@ -8,6 +8,8 @@ import java.text.Format;
 import java.time.LocalDate;
 import java.util.Date;
 
+import Controller.NovoPacienteController;
+
 /**
  *
  * @author Vitor
@@ -376,15 +378,14 @@ public class TelaInicialNovoPaciente extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-<<<<<<< HEAD
     private void btn_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salvarActionPerformed
+        
         String nome = Nome.getText();
         String CPF = Cpf.getText();
-        
+        String RG = Rg.getText();
         String[] dataPartes = DataNasc.getText().split("/");
-        
        
-        String dataNascimento = String.format("%s-%s-%s", dataPartes[2],dataPartes[1],dataPartes[0]);
+        String dataString = String.format("%s-%s-%s", dataPartes[2],dataPartes[1],dataPartes[0]);
         String tel1 = Tel1.getText();
         String tel2 = Tel2.getText();
         String rua = EnderecoRuaPac.getText();
@@ -393,20 +394,21 @@ public class TelaInicialNovoPaciente extends javax.swing.JFrame {
         String cep = EnderecoCepPac.getText();
         String sigtap = Sigtap.getText();
         String email = Email.getText();
-        if (!nome.equals("") || !dataNascimento.equals("") || !tel1.equals("") || 
+        if (!nome.equals("") || !dataString.equals("") || !tel1.equals("") || 
                 !rua.equals("") || !num.equals("") || !bairro.equals("") || !cep.equals("") 
                 || !sigtap.equals("") || !email.equals("")) {
             
             String endereco = rua + num + bairro + cep;
-            LocalDate data = LocalDate.parse(dataNascimento);
+            LocalDate dataNascimento = LocalDate.parse(dataString);
+            NovoPacienteController controllerNovoPaciente = new NovoPacienteController();
             if (!tel2.equals("")) {
-                
+                controllerNovoPaciente.cadastroPaciente(nome, CPF, RG, dataNascimento, tel1, tel2, endereco, sigtap, email);
             } else {
-                
+                controllerNovoPaciente.cadastroPaciente(nome, CPF, RG, dataNascimento, tel1, endereco, sigtap, email);
             }
         }
-    }//GEN-LAST:event_btn_salvarActionPerformed
-=======
+    }
+
     private void EmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_EmailActionPerformed
@@ -418,7 +420,7 @@ public class TelaInicialNovoPaciente extends javax.swing.JFrame {
     private void EnderecoRuaPacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnderecoRuaPacActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_EnderecoRuaPacActionPerformed
->>>>>>> upstream/Telas
+
 
     /**
      * @param args the command line arguments
