@@ -5,6 +5,8 @@
 package View;
 
 import Controller.LoginController;
+import Model.Entities.PublicAgent;
+import View.Admin.TelaInicialAdm;
 import javax.swing.JOptionPane;
 
 /**
@@ -179,13 +181,20 @@ public class Login extends javax.swing.JFrame {
         System.out.println(senha);
         
         LoginController loginController = new LoginController();
-        if (loginController.verificarLogin(usuario, senha)) {
-            JOptionPane.showMessageDialog(null, "Usuario Existe");
+        PublicAgent agentLogin = loginController.realizaLogin(usuario, senha);
+        if (agentLogin != null) {
+            if(agentLogin.getTypeUser().equals("admin")) {
+                TelaInicialAdm telaAdm = new TelaInicialAdm();
+                this.dispose();
+                telaAdm.setVisible(true);
+            } else {
+                TelaInicial telaNormal = new TelaInicial();
+                this.dispose();
+                telaNormal.setVisible(true);
+            }
         } else {
             JOptionPane.showMessageDialog(null, "Usuário não existe");
         }
-        
-        
     }//GEN-LAST:event_btnLoginActionPerformed
 
     /**

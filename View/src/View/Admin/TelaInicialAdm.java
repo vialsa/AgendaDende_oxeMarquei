@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package adm;
+package View.Admin;
 
 import View.*;
 
@@ -10,12 +10,12 @@ import View.*;
  *
  * @author Vitor
  */
-public class TelaInicialAdm_relatorioSelect extends javax.swing.JFrame {
+public class TelaInicialAdm extends javax.swing.JFrame {
 
     /**
      * Creates new form Login
      */
-    public TelaInicialAdm_relatorioSelect() {
+    public TelaInicialAdm() {
         initComponents();
     }
 
@@ -38,15 +38,7 @@ public class TelaInicialAdm_relatorioSelect extends javax.swing.JFrame {
         btnconsultamenu1 = new javax.swing.JToggleButton();
         btnRelatorio1 = new javax.swing.JToggleButton();
         btnGerenciarUser = new javax.swing.JToggleButton();
-        jPanel4 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jPanel5 = new javax.swing.JPanel();
-        Buscar = new javax.swing.JButton();
-        Pesquista_filtro = new javax.swing.JTextField();
-        Filtrar_paciente = new javax.swing.JComboBox<>();
-        btnrelatorioPdf = new javax.swing.JButton();
-        label1 = new java.awt.Label();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(736, 503));
@@ -131,108 +123,7 @@ public class TelaInicialAdm_relatorioSelect extends javax.swing.JFrame {
                 .addContainerGap(11, Short.MAX_VALUE))
         );
 
-        jPanel4.setBackground(new java.awt.Color(180, 194, 199));
-
-        jTable1.setBackground(new java.awt.Color(242, 242, 242));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
-        Buscar.setBackground(new java.awt.Color(0, 204, 0));
-        Buscar.setText("Buscar");
-        Buscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BuscarActionPerformed(evt);
-            }
-        });
-
-        Pesquista_filtro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Pesquista_filtroActionPerformed(evt);
-            }
-        });
-
-        Filtrar_paciente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Editar", "Editar", "Editar", "Editar", " " }));
-        Filtrar_paciente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Filtrar_pacienteActionPerformed(evt);
-            }
-        });
-
-        btnrelatorioPdf.setBackground(new java.awt.Color(0, 255, 153));
-        btnrelatorioPdf.setText("Gerar Relatorio PDF");
-        btnrelatorioPdf.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Filtrar_paciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Pesquista_filtro, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Buscar)
-                .addGap(0, 4, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnrelatorioPdf)
-                .addGap(152, 152, 152))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Filtrar_paciente, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Pesquista_filtro, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Buscar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
-                .addComponent(btnrelatorioPdf)
-                .addContainerGap())
-        );
-
-        label1.setAlignment(java.awt.Label.CENTER);
-        label1.setBackground(new java.awt.Color(0, 102, 102));
-        label1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        label1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        label1.setText("Relatorio");
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(label1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1)
-                            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap())
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addGap(15, 15, 15))
-        );
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/hospital b 1.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -240,13 +131,17 @@ public class TelaInicialAdm_relatorioSelect extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 465, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -263,18 +158,6 @@ public class TelaInicialAdm_relatorioSelect extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void Filtrar_pacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Filtrar_pacienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Filtrar_pacienteActionPerformed
-
-    private void Pesquista_filtroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Pesquista_filtroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Pesquista_filtroActionPerformed
-
-    private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BuscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -293,70 +176,14 @@ public class TelaInicialAdm_relatorioSelect extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaInicialAdm_relatorioSelect.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaInicialAdm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaInicialAdm_relatorioSelect.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaInicialAdm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaInicialAdm_relatorioSelect.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaInicialAdm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaInicialAdm_relatorioSelect.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaInicialAdm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -369,30 +196,22 @@ public class TelaInicialAdm_relatorioSelect extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaInicialAdm_relatorioSelect().setVisible(true);
+                new TelaInicialAdm().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Buscar;
-    private javax.swing.JComboBox<String> Filtrar_paciente;
-    private javax.swing.JTextField Pesquista_filtro;
     private javax.swing.JToggleButton btnCadastrar;
     private javax.swing.JToggleButton btnGerenciarUser;
     private javax.swing.JButton btnLogout;
     private javax.swing.JToggleButton btnRelatorio1;
     private javax.swing.JToggleButton btnconsultamenu1;
     private javax.swing.JToggleButton btnpacientemenu;
-    private javax.swing.JButton btnrelatorioPdf;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private java.awt.Label label1;
     // End of variables declaration//GEN-END:variables
 }

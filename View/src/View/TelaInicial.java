@@ -46,10 +46,20 @@ public class TelaInicial extends javax.swing.JFrame {
         btnconsultamenu.setBackground(new java.awt.Color(171, 186, 193));
         btnconsultamenu.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnconsultamenu.setText("Consultas");
+        btnconsultamenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnconsultamenuActionPerformed(evt);
+            }
+        });
 
         btnpacientemenu.setBackground(new java.awt.Color(171, 186, 193));
         btnpacientemenu.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnpacientemenu.setText("Paciente");
+        btnpacientemenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnpacientemenuActionPerformed(evt);
+            }
+        });
 
         jPanel3.setBackground(new java.awt.Color(171, 186, 193));
 
@@ -132,6 +142,18 @@ public class TelaInicial extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnpacientemenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnpacientemenuActionPerformed
+        TelaInicialPacienteSelect telaPacienteSelect = new TelaInicialPacienteSelect();
+        this.dispose();
+        telaPacienteSelect.setVisible(true);
+    }//GEN-LAST:event_btnpacientemenuActionPerformed
+
+    private void btnconsultamenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnconsultamenuActionPerformed
+        TelaInicialConsultasSelect telaConsultaSelect = new TelaInicialConsultasSelect();
+        this.dispose();
+        telaConsultaSelect.setVisible(true);
+    }//GEN-LAST:event_btnconsultamenuActionPerformed
 
     /**
      * @param args the command line arguments
