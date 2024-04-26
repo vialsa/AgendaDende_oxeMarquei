@@ -4,6 +4,12 @@
  */
 package View;
 
+import java.text.Format;
+import java.time.LocalDate;
+import java.util.Date;
+
+import Controller.NovoPacienteController;
+
 /**
  *
  * @author Vitor
@@ -188,6 +194,11 @@ public class TelaInicialNovoPaciente extends javax.swing.JFrame {
         btn_salvar.setBackground(new java.awt.Color(0, 204, 0));
         btn_salvar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_salvar.setText("Salvar");
+        btn_salvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_salvarActionPerformed(evt);
+            }
+        });
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel13.setText("RG");
@@ -207,7 +218,13 @@ public class TelaInicialNovoPaciente extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(Nome))
                             .addGroup(jPanel4Layout.createSequentialGroup()
+<<<<<<< HEAD
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+=======
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+>>>>>>> upstream/Telas
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(Cpf))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
@@ -246,7 +263,15 @@ public class TelaInicialNovoPaciente extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(EnderecoCepPac, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel4Layout.createSequentialGroup()
+<<<<<<< HEAD
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+=======
                         .addGap(23, 23, 23)
+>>>>>>> upstream/Telas
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -353,6 +378,37 @@ public class TelaInicialNovoPaciente extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btn_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salvarActionPerformed
+        
+        String nome = Nome.getText();
+        String CPF = Cpf.getText();
+        String RG = Rg.getText();
+        String[] dataPartes = DataNasc.getText().split("/");
+       
+        String dataString = String.format("%s-%s-%s", dataPartes[2],dataPartes[1],dataPartes[0]);
+        String tel1 = Tel1.getText();
+        String tel2 = Tel2.getText();
+        String rua = EnderecoRuaPac.getText();
+        String num = EnderecoNumPac.getText();
+        String bairro = EnderecoBairroPac.getText();
+        String cep = EnderecoCepPac.getText();
+        String sigtap = Sigtap.getText();
+        String email = Email.getText();
+        if (!nome.equals("") || !dataString.equals("") || !tel1.equals("") || 
+                !rua.equals("") || !num.equals("") || !bairro.equals("") || !cep.equals("") 
+                || !sigtap.equals("") || !email.equals("")) {
+            
+            String endereco = rua + num + bairro + cep;
+            LocalDate dataNascimento = LocalDate.parse(dataString);
+            NovoPacienteController controllerNovoPaciente = new NovoPacienteController();
+            if (!tel2.equals("")) {
+                controllerNovoPaciente.cadastroPaciente(nome, CPF, RG, dataNascimento, tel1, tel2, endereco, sigtap, email);
+            } else {
+                controllerNovoPaciente.cadastroPaciente(nome, CPF, RG, dataNascimento, tel1, endereco, sigtap, email);
+            }
+        }
+    }
+
     private void EmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_EmailActionPerformed
@@ -364,6 +420,7 @@ public class TelaInicialNovoPaciente extends javax.swing.JFrame {
     private void EnderecoRuaPacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnderecoRuaPacActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_EnderecoRuaPacActionPerformed
+
 
     /**
      * @param args the command line arguments
