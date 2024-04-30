@@ -12,7 +12,7 @@ A central de marcação da cidade X realiza a marcação de consultas de saúde 
 
 ### Problemas Identificados:
 
-1. Processos Manuais: A central de marcação de consultas depende inteiramente de registros em papel, o que torna a coleta, armazenamento e atualização de dados um processo lento e propenso a erros.
+1. Processos Manuais: A central de marcação de consultas depende inteiramente de registros em papel, o que torna a coleta o armazenamento e atualização de dados um processo lento e propenso a erros.
 
 2. Dificuldades de Organização: O uso de métodos manuais dificulta a organização eficiente das informações dos pacientes, resultando em atrasos no agendamento, sobreposição de consultas e dificuldades na localização de registros.
 
