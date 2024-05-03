@@ -80,9 +80,9 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jPanel3" alignment="0" max="32767" attributes="0"/>
-                  <Component id="btnpacientemenu" alignment="0" max="32767" attributes="0"/>
-                  <Component id="btnconsultamenu1" max="32767" attributes="0"/>
-                  <Component id="btnRelatorio1" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnPaciente" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnConsulta" max="32767" attributes="0"/>
+                  <Component id="btnRelatorio" alignment="0" max="32767" attributes="0"/>
                   <Component id="btnGerenciarUser" alignment="0" max="32767" attributes="0"/>
                   <Component id="btnCadastrar" alignment="0" max="32767" attributes="0"/>
               </Group>
@@ -92,11 +92,11 @@
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      <Component id="btnpacientemenu" min="-2" pref="75" max="-2" attributes="0"/>
+                      <Component id="btnPaciente" min="-2" pref="75" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnconsultamenu1" min="-2" pref="75" max="-2" attributes="0"/>
+                      <Component id="btnConsulta" min="-2" pref="75" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnRelatorio1" min="-2" pref="75" max="-2" attributes="0"/>
+                      <Component id="btnRelatorio" min="-2" pref="75" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnGerenciarUser" min="-2" pref="75" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -118,7 +118,7 @@
                 <Property name="text" type="java.lang.String" value="Cadastrar"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JToggleButton" name="btnpacientemenu">
+            <Component class="javax.swing.JToggleButton" name="btnPaciente">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="c1" green="ba" red="ab" type="rgb"/>
@@ -177,7 +177,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JToggleButton" name="btnconsultamenu1">
+            <Component class="javax.swing.JToggleButton" name="btnConsulta">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="c1" green="ba" red="ab" type="rgb"/>
@@ -188,7 +188,7 @@
                 <Property name="text" type="java.lang.String" value="Consultas"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JToggleButton" name="btnRelatorio1">
+            <Component class="javax.swing.JToggleButton" name="btnRelatorio">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="c1" green="ba" red="ab" type="rgb"/>

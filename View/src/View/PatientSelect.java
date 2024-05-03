@@ -8,12 +8,12 @@ package View;
  *
  * @author Vitor
  */
-public class TelaInicialConsultasSelect extends javax.swing.JFrame {
+public class PatientSelect extends javax.swing.JFrame {
 
     /**
      * Creates new form Login
      */
-    public TelaInicialConsultasSelect() {
+    public PatientSelect() {
         initComponents();
     }
 
@@ -35,24 +35,25 @@ public class TelaInicialConsultasSelect extends javax.swing.JFrame {
         btnLogout = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TablePatient = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
-        btnBuscar = new javax.swing.JButton();
-        Pesquista_filtro = new javax.swing.JTextField();
-        Filtrar_paciente = new javax.swing.JComboBox<>();
+        btnSearch = new javax.swing.JButton();
+        SearchTxt = new javax.swing.JTextField();
+        FilterPatient = new javax.swing.JComboBox<>();
+        btnNewPatient = new javax.swing.JButton();
         label1 = new java.awt.Label();
-        btnEditar = new javax.swing.JButton();
-        btnAgendar = new javax.swing.JButton();
-        btnNovaConsulta = new javax.swing.JButton();
+        btnEdit = new javax.swing.JButton();
+        btnSchedule = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(736, 503));
+        setMinimumSize(new java.awt.Dimension(764, 525));
 
         jPanel1.setBackground(new java.awt.Color(180, 194, 199));
         jPanel1.setMinimumSize(new java.awt.Dimension(736, 503));
         jPanel1.setPreferredSize(new java.awt.Dimension(764, 525));
 
         jPanel2.setBackground(new java.awt.Color(180, 200, 209));
+        jPanel2.setPreferredSize(new java.awt.Dimension(281, 524));
 
         btnconsultamenu.setBackground(new java.awt.Color(171, 186, 193));
         btnconsultamenu.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -89,7 +90,7 @@ public class TelaInicialConsultasSelect extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(27, 27, 27)
                 .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -106,14 +107,14 @@ public class TelaInicialConsultasSelect extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
                 .addComponent(btnpacientemenu, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnconsultamenu, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(144, 144, 144))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TablePatient.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -132,14 +133,22 @@ public class TelaInicialConsultasSelect extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(TablePatient);
 
-        btnBuscar.setText("Buscar");
+        btnSearch.setText("Buscar");
 
-        Filtrar_paciente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Codigo", "Nome", "Sigtap", " " }));
-        Filtrar_paciente.addActionListener(new java.awt.event.ActionListener() {
+        FilterPatient.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Codigo", "Nome", "Sigtap", " " }));
+        FilterPatient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Filtrar_pacienteActionPerformed(evt);
+                FilterPatientActionPerformed(evt);
+            }
+        });
+
+        btnNewPatient.setBackground(new java.awt.Color(0, 255, 153));
+        btnNewPatient.setText("Novo Paciente");
+        btnNewPatient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewPatientActionPerformed(evt);
             }
         });
 
@@ -147,81 +156,72 @@ public class TelaInicialConsultasSelect extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+            .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Filtrar_paciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Pesquista_filtro, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnBuscar)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(FilterPatient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(SearchTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnSearch))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(btnNewPatient)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(50, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(btnNewPatient)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Filtrar_paciente, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscar)
-                    .addComponent(Pesquista_filtro, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addComponent(FilterPatient, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SearchTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSearch))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         label1.setAlignment(java.awt.Label.CENTER);
         label1.setBackground(new java.awt.Color(0, 102, 102));
         label1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         label1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        label1.setText("Consultas");
+        label1.setText("Pacientes");
 
-        btnEditar.setBackground(new java.awt.Color(255, 255, 51));
-        btnEditar.setText("Editar");
+        btnEdit.setBackground(new java.awt.Color(255, 255, 51));
+        btnEdit.setText("Editar");
 
-        btnAgendar.setBackground(new java.awt.Color(0, 255, 153));
-        btnAgendar.setText("Agendar");
-
-        btnNovaConsulta.setBackground(new java.awt.Color(0, 255, 153));
-        btnNovaConsulta.setText("Nova Consulta");
-        btnNovaConsulta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNovaConsultaActionPerformed(evt);
-            }
-        });
+        btnSchedule.setBackground(new java.awt.Color(0, 255, 153));
+        btnSchedule.setText("Agendar Consulta");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(label1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnAgendar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnEditar))
-                    .addComponent(label1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnSchedule)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnEdit)
                 .addContainerGap())
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(169, 169, 169)
-                .addComponent(btnNovaConsulta)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnNovaConsulta)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEditar)
-                    .addComponent(btnAgendar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnEdit)
+                    .addComponent(btnSchedule))
+                .addGap(8, 8, 8))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -230,46 +230,46 @@ public class TelaInicialConsultasSelect extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(299, 299, 299))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 752, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Filtrar_pacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Filtrar_pacienteActionPerformed
+    private void FilterPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FilterPatientActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Filtrar_pacienteActionPerformed
+    }//GEN-LAST:event_FilterPatientActionPerformed
 
-    private void btnNovaConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovaConsultaActionPerformed
-        
-    }//GEN-LAST:event_btnNovaConsultaActionPerformed
+    private void btnNewPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewPatientActionPerformed
+        NewPatient telaNovoPaciente = new NewPatient();
+        this.dispose();
+        telaNovoPaciente.setVisible(true);
+    }//GEN-LAST:event_btnNewPatientActionPerformed
 
     private void btnconsultamenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnconsultamenuActionPerformed
-        TelaInicialConsultasSelect inicialConsulta = new TelaInicialConsultasSelect();
+        QueriesSelect inicialConsulta = new QueriesSelect();
         inicialConsulta.setVisible(true);
     }//GEN-LAST:event_btnconsultamenuActionPerformed
 
@@ -290,46 +290,14 @@ public class TelaInicialConsultasSelect extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaInicialConsultasSelect.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PatientSelect.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaInicialConsultasSelect.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PatientSelect.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaInicialConsultasSelect.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PatientSelect.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaInicialConsultasSelect.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PatientSelect.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -366,19 +334,20 @@ public class TelaInicialConsultasSelect extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaInicialConsultasSelect().setVisible(true);
+                new PatientSelect().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> Filtrar_paciente;
-    private javax.swing.JTextField Pesquista_filtro;
-    private javax.swing.JButton btnAgendar;
-    private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton btnEditar;
+    private javax.swing.JComboBox<String> FilterPatient;
+    private javax.swing.JTextField SearchTxt;
+    private javax.swing.JTable TablePatient;
+    private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnLogout;
-    private javax.swing.JButton btnNovaConsulta;
+    private javax.swing.JButton btnNewPatient;
+    private javax.swing.JButton btnSchedule;
+    private javax.swing.JButton btnSearch;
     private javax.swing.JToggleButton btnconsultamenu;
     private javax.swing.JToggleButton btnpacientemenu;
     private javax.swing.JLabel jLabel1;
@@ -388,7 +357,6 @@ public class TelaInicialConsultasSelect extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private java.awt.Label label1;
     // End of variables declaration//GEN-END:variables
 }

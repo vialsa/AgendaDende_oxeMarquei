@@ -76,61 +76,35 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="label1" alignment="1" pref="465" max="32767" attributes="0"/>
+                  <Component id="label1" alignment="1" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="btnSalvar" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel2" min="-2" pref="46" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                              <Component id="Nome" max="32767" attributes="0"/>
                           </Group>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="jLabel2" min="-2" pref="46" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                                  <Component id="Nome" min="-2" pref="380" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel3" min="-2" pref="46" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="Cpf" min="-2" pref="380" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel4" min="-2" pref="117" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="DataNac" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel8" min="-2" pref="37" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="EnderecoRuaUser" min="-2" pref="221" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                                      <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="EnderecoNumUser" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="Tel1" min="-2" pref="162" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                                      <Component id="jLabel6" min="-2" pref="37" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="Tel2" min="-2" pref="162" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel3" min="-2" pref="46" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                              <Component id="Cpf" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel4" min="-2" pref="117" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                              <Component id="DataNac" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel1" min="-2" pref="37" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="LoginUser" min="-2" pref="144" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                                      <Component id="LoginUser" pref="144" max="32767" attributes="0"/>
+                                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel14" min="-2" pref="43" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="SenhaUser" max="32767" attributes="0"/>
+                                      <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                                      <Component id="SenhaUser" pref="117" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel13" min="-2" pref="38" max="-2" attributes="0"/>
@@ -142,22 +116,42 @@
                                           <Component id="jLabel12" alignment="0" max="32767" attributes="0"/>
                                           <Component id="jLabel9" alignment="0" max="32767" attributes="0"/>
                                       </Group>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" attributes="0">
-                                              <Component id="EnderecoBairroUser" min="-2" pref="220" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="EnderecoBairroUser" max="32767" attributes="0"/>
+                                              <EmptySpace min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                                               <Component id="EnderecoCepUser" max="32767" attributes="0"/>
                                           </Group>
-                                          <Component id="Sigtap" min="-2" pref="386" max="-2" attributes="0"/>
+                                          <Component id="Sigtap" pref="386" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
+                                  <Component id="btnSalvar" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jLabel8" min="-2" pref="37" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                                      <Component id="EnderecoRuaUser" max="32767" attributes="0"/>
+                                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                                      <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                                      <Component id="EnderecoNumUser" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                                      <Component id="Tel1" max="32767" attributes="0"/>
+                                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                                      <Component id="jLabel6" min="-2" pref="37" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                                      <Component id="Tel2" max="32767" attributes="0"/>
+                                  </Group>
                               </Group>
+                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -392,11 +386,11 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jPanel16" alignment="0" max="32767" attributes="0"/>
-                  <Component id="btnpacientemenu6" alignment="0" max="32767" attributes="0"/>
-                  <Component id="btnconsultamenu1" alignment="0" max="32767" attributes="0"/>
-                  <Component id="btnRelatorio1" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnPaciente" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnConsulta" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnRelatorio" alignment="0" max="32767" attributes="0"/>
                   <Component id="btnGerenciarUser" alignment="0" max="32767" attributes="0"/>
-                  <Component id="btnCadastrar6" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnCadastrar" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -404,22 +398,22 @@
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="jPanel16" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      <Component id="btnpacientemenu6" min="-2" pref="75" max="-2" attributes="0"/>
+                      <Component id="btnPaciente" min="-2" pref="75" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnconsultamenu1" min="-2" pref="75" max="-2" attributes="0"/>
+                      <Component id="btnConsulta" min="-2" pref="75" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnRelatorio1" min="-2" pref="75" max="-2" attributes="0"/>
+                      <Component id="btnRelatorio" min="-2" pref="75" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnGerenciarUser" min="-2" pref="75" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnCadastrar6" min="-2" pref="75" max="-2" attributes="0"/>
+                      <Component id="btnCadastrar" min="-2" pref="75" max="-2" attributes="0"/>
                       <EmptySpace pref="10" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JToggleButton" name="btnCadastrar6">
+            <Component class="javax.swing.JToggleButton" name="btnCadastrar">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="c1" green="ba" red="ab" type="rgb"/>
@@ -430,7 +424,7 @@
                 <Property name="text" type="java.lang.String" value="Cadastrar"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JToggleButton" name="btnpacientemenu6">
+            <Component class="javax.swing.JToggleButton" name="btnPaciente">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="c1" green="ba" red="ab" type="rgb"/>
@@ -455,7 +449,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="131" max="32767" attributes="0"/>
-                          <Component id="btnLogout6" min="-2" pref="39" max="-2" attributes="0"/>
+                          <Component id="btnLogout" min="-2" pref="39" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -465,7 +459,7 @@
                       <Component id="jLabel7" alignment="1" min="-2" pref="103" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                          <Component id="btnLogout6" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="btnLogout" min="-2" pref="40" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -480,7 +474,7 @@
                     <Property name="text" type="java.lang.String" value="&#xa;"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="btnLogout6">
+                <Component class="javax.swing.JButton" name="btnLogout">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/img/Btn_logout.png"/>
@@ -489,7 +483,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JToggleButton" name="btnconsultamenu1">
+            <Component class="javax.swing.JToggleButton" name="btnConsulta">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="c1" green="ba" red="ab" type="rgb"/>
@@ -500,7 +494,7 @@
                 <Property name="text" type="java.lang.String" value="Consultas"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JToggleButton" name="btnRelatorio1">
+            <Component class="javax.swing.JToggleButton" name="btnRelatorio">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="c1" green="ba" red="ab" type="rgb"/>

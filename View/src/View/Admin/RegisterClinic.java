@@ -10,12 +10,12 @@ import View.*;
  *
  * @author Vitor
  */
-public class TelaInicialAdm_CadastrarClinica extends javax.swing.JFrame {
+public class RegisterClinic extends javax.swing.JFrame {
 
     /**
      * Creates new form Login
      */
-    public TelaInicialAdm_CadastrarClinica() {
+    public RegisterClinic() {
         initComponents();
     }
 
@@ -33,30 +33,30 @@ public class TelaInicialAdm_CadastrarClinica extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         btnCadastrar = new javax.swing.JToggleButton();
-        btnpacientemenu = new javax.swing.JToggleButton();
+        btnPaciente = new javax.swing.JToggleButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnLogout = new javax.swing.JButton();
-        btnconsultamenu1 = new javax.swing.JToggleButton();
-        btnRelatorio1 = new javax.swing.JToggleButton();
+        btnConsulta = new javax.swing.JToggleButton();
+        btnRelatorio = new javax.swing.JToggleButton();
         btnGerenciarUser = new javax.swing.JToggleButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
-        Buscar = new javax.swing.JButton();
-        Pesquista_filtro = new javax.swing.JTextField();
-        Filtrar_paciente = new javax.swing.JComboBox<>();
+        btnSearch = new javax.swing.JButton();
+        SearchTxt = new javax.swing.JTextField();
+        FilterClinic = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        ClinicList = new javax.swing.JList<>();
+        btnAddClinic = new javax.swing.JButton();
+        btnEdit = new javax.swing.JButton();
+        btnDelet = new javax.swing.JButton();
         label1 = new java.awt.Label();
         jPanel6 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jButton4 = new javax.swing.JButton();
+        TableDoctor = new javax.swing.JTable();
+        btnAddDoctor = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -83,9 +83,9 @@ public class TelaInicialAdm_CadastrarClinica extends javax.swing.JFrame {
         btnCadastrar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnCadastrar.setText("Cadastrar");
 
-        btnpacientemenu.setBackground(new java.awt.Color(171, 186, 193));
-        btnpacientemenu.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnpacientemenu.setText("Paciente");
+        btnPaciente.setBackground(new java.awt.Color(171, 186, 193));
+        btnPaciente.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnPaciente.setText("Paciente");
 
         jPanel3.setBackground(new java.awt.Color(171, 186, 193));
 
@@ -114,13 +114,13 @@ public class TelaInicialAdm_CadastrarClinica extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        btnconsultamenu1.setBackground(new java.awt.Color(171, 186, 193));
-        btnconsultamenu1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnconsultamenu1.setText("Consultas");
+        btnConsulta.setBackground(new java.awt.Color(171, 186, 193));
+        btnConsulta.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnConsulta.setText("Consultas");
 
-        btnRelatorio1.setBackground(new java.awt.Color(171, 186, 193));
-        btnRelatorio1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnRelatorio1.setText("Relatorio");
+        btnRelatorio.setBackground(new java.awt.Color(171, 186, 193));
+        btnRelatorio.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnRelatorio.setText("Relatorio");
 
         btnGerenciarUser.setBackground(new java.awt.Color(171, 186, 193));
         btnGerenciarUser.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -131,9 +131,9 @@ public class TelaInicialAdm_CadastrarClinica extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnpacientemenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnconsultamenu1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnRelatorio1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnConsulta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnRelatorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnGerenciarUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnCadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -142,11 +142,11 @@ public class TelaInicialAdm_CadastrarClinica extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
-                .addComponent(btnpacientemenu, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnconsultamenu1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnRelatorio1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnGerenciarUser, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -156,42 +156,42 @@ public class TelaInicialAdm_CadastrarClinica extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(180, 194, 199));
 
-        Buscar.setBackground(new java.awt.Color(0, 204, 0));
-        Buscar.setText("Buscar");
-        Buscar.addActionListener(new java.awt.event.ActionListener() {
+        btnSearch.setBackground(new java.awt.Color(0, 204, 0));
+        btnSearch.setText("Buscar");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BuscarActionPerformed(evt);
+                btnSearchActionPerformed(evt);
             }
         });
 
-        Pesquista_filtro.addActionListener(new java.awt.event.ActionListener() {
+        SearchTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Pesquista_filtroActionPerformed(evt);
+                SearchTxtActionPerformed(evt);
             }
         });
 
-        Filtrar_paciente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Editar", "Editar", "Editar", "Editar", " " }));
-        Filtrar_paciente.addActionListener(new java.awt.event.ActionListener() {
+        FilterClinic.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Editar", "Editar", "Editar", "Editar", " " }));
+        FilterClinic.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Filtrar_pacienteActionPerformed(evt);
+                FilterClinicActionPerformed(evt);
             }
         });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Lista de Clinicas");
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        ClinicList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(ClinicList);
 
-        jButton1.setText("Adicionar Clinica");
+        btnAddClinic.setText("Adicionar Clinica");
 
-        jButton2.setText("Editar");
+        btnEdit.setText("Editar");
 
-        jButton3.setText("Excliur");
+        btnDelet.setText("Excliur");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -201,27 +201,23 @@ public class TelaInicialAdm_CadastrarClinica extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                                .addComponent(Filtrar_paciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Pesquista_filtro, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(8, 8, 8)
-                                .addComponent(Buscar)
-                                .addContainerGap())
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(188, 188, 188))))
+                        .addComponent(jLabel2)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                                .addComponent(FilterClinic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(SearchTxt)
+                                .addGap(8, 8, 8)
+                                .addComponent(btnSearch))
                             .addComponent(jScrollPane1)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                                .addComponent(jButton3)
+                                .addComponent(btnDelet)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton2)
+                                .addComponent(btnEdit)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton1)))
+                                .addComponent(btnAddClinic)))
                         .addContainerGap())))
         );
         jPanel5Layout.setVerticalGroup(
@@ -231,17 +227,17 @@ public class TelaInicialAdm_CadastrarClinica extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Pesquista_filtro, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Filtrar_paciente, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Buscar))
+                    .addComponent(SearchTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(FilterClinic, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSearch))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
                 .addGap(8, 8, 8)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
-                .addContainerGap(16, Short.MAX_VALUE))
+                    .addComponent(btnDelet)
+                    .addComponent(btnEdit)
+                    .addComponent(btnAddClinic))
+                .addGap(16, 16, 16))
         );
 
         label1.setAlignment(java.awt.Label.CENTER);
@@ -253,8 +249,8 @@ public class TelaInicialAdm_CadastrarClinica extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setText("Lista de Medicos");
 
-        jTable2.setBackground(new java.awt.Color(204, 204, 204));
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        TableDoctor.setBackground(new java.awt.Color(204, 204, 204));
+        TableDoctor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -265,9 +261,9 @@ public class TelaInicialAdm_CadastrarClinica extends javax.swing.JFrame {
                 "Nome", "Clinica ", "Especialidade"
             }
         ));
-        jScrollPane3.setViewportView(jTable2);
+        jScrollPane3.setViewportView(TableDoctor);
 
-        jButton4.setText("Adicionar Medico");
+        btnAddDoctor.setText("Adicionar Medico");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -276,18 +272,17 @@ public class TelaInicialAdm_CadastrarClinica extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addGap(192, 192, 192)
-                                .addComponent(jLabel3))
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addComponent(jScrollPane3)
+                        .addGap(1, 1, 1))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton4)))
+                        .addComponent(btnAddDoctor)))
                 .addContainerGap())
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -295,9 +290,9 @@ public class TelaInicialAdm_CadastrarClinica extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton4)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnAddDoctor)
                 .addContainerGap())
         );
 
@@ -357,17 +352,17 @@ public class TelaInicialAdm_CadastrarClinica extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Filtrar_pacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Filtrar_pacienteActionPerformed
+    private void FilterClinicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FilterClinicActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Filtrar_pacienteActionPerformed
+    }//GEN-LAST:event_FilterClinicActionPerformed
 
-    private void Pesquista_filtroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Pesquista_filtroActionPerformed
+    private void SearchTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Pesquista_filtroActionPerformed
+    }//GEN-LAST:event_SearchTxtActionPerformed
 
-    private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BuscarActionPerformed
+    }//GEN-LAST:event_btnSearchActionPerformed
 
     /**
      * @param args the command line arguments
@@ -386,14 +381,142 @@ public class TelaInicialAdm_CadastrarClinica extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaInicialAdm_CadastrarClinica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegisterClinic.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaInicialAdm_CadastrarClinica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegisterClinic.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaInicialAdm_CadastrarClinica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegisterClinic.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaInicialAdm_CadastrarClinica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegisterClinic.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -526,29 +649,30 @@ public class TelaInicialAdm_CadastrarClinica extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaInicialAdm_CadastrarClinica().setVisible(true);
+                new RegisterClinic().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Buscar;
-    private javax.swing.JComboBox<String> Filtrar_paciente;
-    private javax.swing.JTextField Pesquista_filtro;
+    private javax.swing.JList<String> ClinicList;
+    private javax.swing.JComboBox<String> FilterClinic;
+    private javax.swing.JTextField SearchTxt;
+    private javax.swing.JTable TableDoctor;
+    private javax.swing.JButton btnAddClinic;
+    private javax.swing.JButton btnAddDoctor;
     private javax.swing.JToggleButton btnCadastrar;
+    private javax.swing.JToggleButton btnConsulta;
+    private javax.swing.JButton btnDelet;
+    private javax.swing.JButton btnEdit;
     private javax.swing.JToggleButton btnGerenciarUser;
     private javax.swing.JButton btnLogout;
-    private javax.swing.JToggleButton btnRelatorio1;
-    private javax.swing.JToggleButton btnconsultamenu1;
-    private javax.swing.JToggleButton btnpacientemenu;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JToggleButton btnPaciente;
+    private javax.swing.JToggleButton btnRelatorio;
+    private javax.swing.JButton btnSearch;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -559,7 +683,6 @@ public class TelaInicialAdm_CadastrarClinica extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private java.awt.Label label1;
     // End of variables declaration//GEN-END:variables
 }

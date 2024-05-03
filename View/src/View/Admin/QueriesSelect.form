@@ -81,9 +81,9 @@
                   <Component id="jScrollPane1" alignment="0" pref="465" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnSchedule" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="btnEditar" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnEdit" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -94,14 +94,14 @@
                       <Component id="label1" min="-2" pref="70" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" pref="0" max="32767" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" pref="325" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnEditar" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnEdit" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnSchedule" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -114,16 +114,28 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="jTable1">
+                <Component class="javax.swing.JTable" name="TableQuery">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="2" rowCount="4">
-                        <Column editable="true" title="Nome" type="java.lang.String"/>
+                      <Table columnCount="4" rowCount="4">
                         <Column editable="true" title="Codigo" type="java.lang.String"/>
+                        <Column editable="true" title="Nome" type="java.lang.String"/>
+                        <Column editable="true" title="Data" type="java.lang.String"/>
+                        <Column editable="true" title="Local" type="java.lang.String"/>
                       </Table>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                       <TableColumnModel selectionModel="0">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
                         <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                           <Title/>
                           <Editor/>
@@ -148,19 +160,22 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="Filtrar_paciente" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="Pesquista_filtro" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="FilterQueries" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="SearchTxt" pref="296" max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="btnSearch" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="btn_NovoPaciente" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="Buscar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="btn_NovoPaciente" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="173" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -169,38 +184,39 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btn_NovoPaciente" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="14" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="Buscar" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="Pesquista_filtro" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                              <Component id="Filtrar_paciente" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                          </Group>
                           <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="FilterQueries" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                              <Component id="SearchTxt" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                              <Component id="btnSearch" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="14" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JButton" name="Buscar">
+                <Component class="javax.swing.JButton" name="btnSearch">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Buscar"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="Pesquista_filtro">
+                <Component class="javax.swing.JTextField" name="SearchTxt">
                 </Component>
-                <Component class="javax.swing.JComboBox" name="Filtrar_paciente">
+                <Component class="javax.swing.JComboBox" name="FilterQueries">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
+                      <StringArray count="5">
                         <StringItem index="0" value="Codigo"/>
-                        <StringItem index="1" value="Nome"/>
-                        <StringItem index="2" value="Sigtap"/>
-                        <StringItem index="3" value=" "/>
+                        <StringItem index="1" value="Data"/>
+                        <StringItem index="2" value="Nome"/>
+                        <StringItem index="3" value="Local"/>
+                        <StringItem index="4" value=" "/>
                       </StringArray>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Filtrar_pacienteActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FilterQueriesActionPerformed"/>
                   </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -211,11 +227,8 @@
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="99" green="ff" red="0" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Novo Usuario"/>
+                    <Property name="text" type="java.lang.String" value="Agendar Consulta"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_NovoPacienteActionPerformed"/>
-                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -231,10 +244,10 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Dialog" size="14" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Gerenciar Usuario"/>
+                <Property name="text" type="java.lang.String" value="Consulta"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="btnEditar">
+            <Component class="javax.swing.JButton" name="btnEdit">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="33" green="ff" red="ff" type="rgb"/>
@@ -242,12 +255,12 @@
                 <Property name="text" type="java.lang.String" value="Editar"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton1">
+            <Component class="javax.swing.JButton" name="btnSchedule">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="ff" type="rgb"/>
+                  <Color blue="99" green="ff" red="0" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Excluir"/>
+                <Property name="text" type="java.lang.String" value="Agendar"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -263,11 +276,11 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jPanel16" alignment="0" max="32767" attributes="0"/>
-                  <Component id="btnpacientemenu6" alignment="0" max="32767" attributes="0"/>
-                  <Component id="btnconsultamenu1" alignment="0" max="32767" attributes="0"/>
-                  <Component id="btnRelatorio1" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnPaciente" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnConsulta" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnRelatorio" alignment="0" max="32767" attributes="0"/>
                   <Component id="btnGerenciarUser" alignment="0" max="32767" attributes="0"/>
-                  <Component id="btnCadastrar6" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnCadastrar" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -275,22 +288,22 @@
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="jPanel16" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      <Component id="btnpacientemenu6" min="-2" pref="75" max="-2" attributes="0"/>
+                      <Component id="btnPaciente" min="-2" pref="75" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnconsultamenu1" min="-2" pref="75" max="-2" attributes="0"/>
+                      <Component id="btnConsulta" min="-2" pref="75" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnRelatorio1" min="-2" pref="75" max="-2" attributes="0"/>
+                      <Component id="btnRelatorio" min="-2" pref="75" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnGerenciarUser" min="-2" pref="75" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnCadastrar6" min="-2" pref="75" max="-2" attributes="0"/>
+                      <Component id="btnCadastrar" min="-2" pref="75" max="-2" attributes="0"/>
                       <EmptySpace pref="10" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JToggleButton" name="btnCadastrar6">
+            <Component class="javax.swing.JToggleButton" name="btnCadastrar">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="c1" green="ba" red="ab" type="rgb"/>
@@ -301,7 +314,7 @@
                 <Property name="text" type="java.lang.String" value="Cadastrar"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JToggleButton" name="btnpacientemenu6">
+            <Component class="javax.swing.JToggleButton" name="btnPaciente">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="c1" green="ba" red="ab" type="rgb"/>
@@ -360,7 +373,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JToggleButton" name="btnconsultamenu1">
+            <Component class="javax.swing.JToggleButton" name="btnConsulta">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="c1" green="ba" red="ab" type="rgb"/>
@@ -371,7 +384,7 @@
                 <Property name="text" type="java.lang.String" value="Consultas"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JToggleButton" name="btnRelatorio1">
+            <Component class="javax.swing.JToggleButton" name="btnRelatorio">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="c1" green="ba" red="ab" type="rgb"/>

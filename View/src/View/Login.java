@@ -6,7 +6,7 @@ package View;
 
 import Controller.LoginController;
 import Model.Entities.PublicAgent;
-import View.Admin.TelaInicialAdm;
+import View.Admin.HomeScreen;
 import javax.swing.JOptionPane;
 
 /**
@@ -184,11 +184,11 @@ public class Login extends javax.swing.JFrame {
         PublicAgent agentLogin = loginController.realizaLogin(usuario, senha);
         if (agentLogin != null) {
             if(agentLogin.getTypeUser().equals("admin")) {
-                TelaInicialAdm telaAdm = new TelaInicialAdm();
+                HomeScreen telaAdm = new HomeScreen();
                 this.dispose();
                 telaAdm.setVisible(true);
             } else {
-                TelaInicial telaNormal = new TelaInicial();
+                HomeScreen telaNormal = new HomeScreen();
                 this.dispose();
                 telaNormal.setVisible(true);
             }
