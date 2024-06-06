@@ -6,6 +6,7 @@ import Model.Entities.PublicAgent;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import org.jasypt.util.password.BasicPasswordEncryptor;
 
 public class PublicAgentDAOJDBC implements PublicAgentDAO {
     private Connection conn;
@@ -19,7 +20,11 @@ public class PublicAgentDAOJDBC implements PublicAgentDAO {
         try {
             conn = ConnectionFactory.getConnection();
             pstm = conn.prepareStatement(sql);
-
+            
+            BasicPasswordEncryptor criptografador = new BasicPasswordEncryptor();
+            String senhaCriptografada = criptografador
+                    .encryptPassword(publicAgent.getPassword());
+            
             pstm.setString(1, publicAgent.getName());
             pstm.setString(2, publicAgent.getCPF());
             pstm.setString(3, publicAgent.getRG());
@@ -30,7 +35,7 @@ public class PublicAgentDAOJDBC implements PublicAgentDAO {
             pstm.setString(8, publicAgent.getAddress());
             pstm.setString(9, publicAgent.getEmail());
             pstm.setString(10, publicAgent.getUser());
-            pstm.setString(11, publicAgent.getPassword());
+            pstm.setString(11, senhaCriptografada);
             pstm.setString(12, publicAgent.getTypeUser());
 
             pstm.execute();

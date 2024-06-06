@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.util.Date;
 
 import Controller.NovoPacienteController;
+import java.time.format.DateTimeParseException;
 
 /**
  *
@@ -190,6 +191,11 @@ public class NewPatient extends javax.swing.JFrame {
         btn_cancelar.setBackground(new java.awt.Color(204, 0, 0));
         btn_cancelar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_cancelar.setText("Cancelar");
+        btn_cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cancelarActionPerformed(evt);
+            }
+        });
 
         btn_salvar.setBackground(new java.awt.Color(0, 204, 0));
         btn_salvar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -218,17 +224,7 @@ public class NewPatient extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(Nome))
                             .addGroup(jPanel4Layout.createSequentialGroup()
-<<<<<<< Updated upstream:View/src/View/NewPatient.java
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-=======
-
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-
->>>>>>> Stashed changes:View/src/View/TelaInicialNovoPaciente.java
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(Cpf))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
@@ -240,19 +236,7 @@ public class NewPatient extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(EnderecoNumPac, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-<<<<<<< Updated upstream:View/src/View/NewPatient.java
                         .addGap(23, 23, 23)
-=======
-
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-
-                        .addGap(23, 23, 23)
-
->>>>>>> Stashed changes:View/src/View/TelaInicialNovoPaciente.java
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -400,8 +384,19 @@ public class NewPatient extends javax.swing.JFrame {
         String CPF = Cpf.getText();
         String RG = Rg.getText();
         String[] dataPartes = DataNasc.getText().split("/");
-       
-        String dataString = String.format("%s-%s-%s", dataPartes[2],dataPartes[1],dataPartes[0]);
+        if (dataPartes.length != 3) {
+            throw new IllegalArgumentException("Data de nascimento inválida. Formato esperado: DD/MM/YYYY");
+        }
+        
+        String dia = dataPartes[0];
+        String mes = dataPartes[1];
+        String ano = dataPartes[2];
+
+        // Valide se cada parte da data é numérica
+        if (!dia.matches("\\d{2}") || !mes.matches("\\d{2}") || !ano.matches("\\d{4}")) {
+            throw new IllegalArgumentException("Data de nascimento inválida. Formato esperado: DD/MM/YYYY");
+        }
+        String dataString = String.format("%s-%s-%s", ano, mes, dia);
         String tel1 = Tel1.getText();
         String tel2 = Tel2.getText();
         String rua = EnderecoRuaPac.getText();
@@ -410,20 +405,38 @@ public class NewPatient extends javax.swing.JFrame {
         String cep = EnderecoCepPac.getText();
         String sigtap = Sigtap.getText();
         String email = Email.getText();
-        if (!nome.equals("") || !dataString.equals("") || !tel1.equals("") || 
-                !rua.equals("") || !num.equals("") || !bairro.equals("") || !cep.equals("") 
-                || !sigtap.equals("") || !email.equals("")) {
+        if (!nome.equals("") && !dataString.equals("") && !tel1.equals("") && 
+                !rua.equals("") && !num.equals("") && !bairro.equals("") && !cep.equals("") 
+                && !sigtap.equals("") && !email.equals("")) {
             
-            String endereco = rua + num + bairro + cep;
-            LocalDate dataNascimento = LocalDate.parse(dataString);
+            String endereco = String.format("%s, %s, %s, %s", rua, num, bairro, cep);
+            LocalDate dataNascimento;
+            
+            try {
+                dataNascimento = LocalDate.parse(dataString);
+            } catch (DateTimeParseException e) {
+                throw new IllegalArgumentException("Data de nascimento inválida. Formato esperado: DD/MM/YYYY");
+            }
+            
             NovoPacienteController controllerNovoPaciente = new NovoPacienteController();
             if (!tel2.equals("")) {
-                controllerNovoPaciente.cadastroPaciente(nome, CPF, RG, dataNascimento, tel1, tel2, endereco, sigtap, email);
+                controllerNovoPaciente.cadastroPaciente(nome, CPF, RG, dataNascimento, tel1, tel2, endereco, sigtap, email);   
             } else {
                 controllerNovoPaciente.cadastroPaciente(nome, CPF, RG, dataNascimento, tel1, endereco, sigtap, email);
             }
+            HomeScreen telaNormal = new HomeScreen();
+            this.dispose();
+            telaNormal.setVisible(true);
+        }else {
+            throw new IllegalArgumentException("Todos os campos obrigatórios devem ser preenchidos");
         }
     }//GEN-LAST:event_btn_salvarActionPerformed
+
+    private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed
+        PatientSelect telaPacienteSelect = new PatientSelect();
+        this.dispose();
+        telaPacienteSelect.setVisible(true);
+    }//GEN-LAST:event_btn_cancelarActionPerformed
     /**     * @param args the command line arguments
      */
     public static void main(String args[]) {
