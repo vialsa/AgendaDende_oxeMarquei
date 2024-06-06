@@ -219,8 +219,11 @@ public class NewPatient extends javax.swing.JFrame {
                                 .addComponent(Nome))
                             .addGroup(jPanel4Layout.createSequentialGroup()
 <<<<<<< Updated upstream:View/src/View/NewPatient.java
+<<<<<<< Updated upstream:View/src/View/NewPatient.java
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
 =======
+=======
+>>>>>>> Stashed changes:View/src/View/TelaInicialNovoPaciente.java
 
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -228,6 +231,9 @@ public class NewPatient extends javax.swing.JFrame {
 
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
 
+<<<<<<< Updated upstream:View/src/View/NewPatient.java
+>>>>>>> Stashed changes:View/src/View/TelaInicialNovoPaciente.java
+=======
 >>>>>>> Stashed changes:View/src/View/TelaInicialNovoPaciente.java
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(Cpf))
@@ -241,8 +247,11 @@ public class NewPatient extends javax.swing.JFrame {
                                 .addComponent(EnderecoNumPac, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel4Layout.createSequentialGroup()
 <<<<<<< Updated upstream:View/src/View/NewPatient.java
+<<<<<<< Updated upstream:View/src/View/NewPatient.java
                         .addGap(23, 23, 23)
 =======
+=======
+>>>>>>> Stashed changes:View/src/View/TelaInicialNovoPaciente.java
 
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -252,6 +261,9 @@ public class NewPatient extends javax.swing.JFrame {
 
                         .addGap(23, 23, 23)
 
+<<<<<<< Updated upstream:View/src/View/NewPatient.java
+>>>>>>> Stashed changes:View/src/View/TelaInicialNovoPaciente.java
+=======
 >>>>>>> Stashed changes:View/src/View/TelaInicialNovoPaciente.java
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
