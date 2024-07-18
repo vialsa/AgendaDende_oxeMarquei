@@ -80,6 +80,11 @@ public class NewPatient extends javax.swing.JFrame {
         btnConsultaMenu.setBackground(new java.awt.Color(171, 186, 193));
         btnConsultaMenu.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnConsultaMenu.setText("Consultas");
+        btnConsultaMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultaMenuActionPerformed(evt);
+            }
+        });
 
         btnPacienteMenu.setBackground(new java.awt.Color(171, 186, 193));
         btnPacienteMenu.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -91,6 +96,11 @@ public class NewPatient extends javax.swing.JFrame {
         jLabel1.setText("\n");
 
         btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Btn_logout.png"))); // NOI18N
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -437,6 +447,19 @@ public class NewPatient extends javax.swing.JFrame {
         this.dispose();
         telaPacienteSelect.setVisible(true);
     }//GEN-LAST:event_btn_cancelarActionPerformed
+
+    private void btnConsultaMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaMenuActionPerformed
+        QueriesSelect telaConsulta = new QueriesSelect();
+        this.dispose();
+        telaConsulta.setVisible(true);
+    }//GEN-LAST:event_btnConsultaMenuActionPerformed
+
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        // TODO add your handling code here:
+        NewQuery inicialNewQuery = new NewQuery();
+        this.dispose();
+        inicialNewQuery.setVisible(true);
+    }//GEN-LAST:event_btnLogoutActionPerformed
     /**     * @param args the command line arguments
      */
     public static void main(String args[]) {

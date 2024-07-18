@@ -34,7 +34,7 @@ public class AddDoctor extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         label1 = new java.awt.Label();
         jLabel1 = new javax.swing.JLabel();
-        NomeClinica = new javax.swing.JTextField();
+        NomeMedico = new javax.swing.JTextField();
         Tel1 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         Especialidade = new javax.swing.JTextField();
@@ -89,9 +89,9 @@ public class AddDoctor extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setText("Nome do Medico");
 
-        NomeClinica.addActionListener(new java.awt.event.ActionListener() {
+        NomeMedico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NomeClinicaActionPerformed(evt);
+                NomeMedicoActionPerformed(evt);
             }
         });
 
@@ -212,7 +212,7 @@ public class AddDoctor extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(CRM, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                        .addComponent(NomeClinica, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(NomeMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(DataNascimento)))
                 .addGap(14, 14, 14))
@@ -227,7 +227,7 @@ public class AddDoctor extends javax.swing.JFrame {
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(NomeClinica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NomeMedico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(DataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -294,9 +294,9 @@ public class AddDoctor extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void NomeClinicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NomeClinicaActionPerformed
+    private void NomeMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NomeMedicoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_NomeClinicaActionPerformed
+    }//GEN-LAST:event_NomeMedicoActionPerformed
 
     private void EmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmailActionPerformed
         // TODO add your handling code here:
@@ -1372,7 +1372,7 @@ public class AddDoctor extends javax.swing.JFrame {
     private javax.swing.JTextField Especialidade;
     private javax.swing.JTextField InfoAdcional;
     private javax.swing.JList<String> ListaClinicas;
-    private javax.swing.JTextField NomeClinica;
+    private javax.swing.JTextField NomeMedico;
     private javax.swing.JTextField RG;
     private javax.swing.JTextField Tel1;
     private javax.swing.JTextField Tel2;

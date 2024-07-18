@@ -10,7 +10,7 @@ public class ConnectionFactory {
         try {
             //Classe importada para usar o banco
             connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/agenda_dendev2"
-            , "postgres", "1705");
+            , "postgres", "ifbaiano");
             System.out.println("Conexao com o banco feita com sucesso");
         } catch (SQLException e) {
             throw new RuntimeException(e);

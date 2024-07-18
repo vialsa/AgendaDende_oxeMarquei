@@ -189,9 +189,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JPasswordField" name="txtsenha">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jPasswordField1"/>
-              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtsenhaActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnLogin">
               <Properties>

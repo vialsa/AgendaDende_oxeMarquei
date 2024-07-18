@@ -156,7 +156,7 @@
                               <Component id="CRM" min="-2" pref="220" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="NomeClinica" min="-2" pref="540" max="-2" attributes="0"/>
+                              <Component id="NomeMedico" min="-2" pref="540" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="DataNascimento" max="32767" attributes="0"/>
                           </Group>
@@ -176,7 +176,7 @@
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="NomeClinica" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="NomeMedico" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="DataNascimento" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
@@ -249,9 +249,9 @@
                 <Property name="text" type="java.lang.String" value="Nome do Medico"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="NomeClinica">
+            <Component class="javax.swing.JTextField" name="NomeMedico">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NomeClinicaActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NomeMedicoActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="Tel1">

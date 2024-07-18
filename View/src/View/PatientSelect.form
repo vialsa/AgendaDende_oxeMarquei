@@ -174,6 +174,9 @@
                       <Image iconType="3" name="/img/Btn_logout.png"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLogoutActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -366,6 +369,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Agendar Consulta"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnScheduleActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

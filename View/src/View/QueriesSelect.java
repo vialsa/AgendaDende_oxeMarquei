@@ -40,7 +40,6 @@ public class QueriesSelect extends javax.swing.JFrame {
         btnSearch = new javax.swing.JButton();
         SearchTxt = new javax.swing.JTextField();
         FilterQueries = new javax.swing.JComboBox<>();
-        btnNewConsultation = new javax.swing.JButton();
         label1 = new java.awt.Label();
         btnEdit = new javax.swing.JButton();
         btnSchedule = new javax.swing.JButton();
@@ -66,6 +65,11 @@ public class QueriesSelect extends javax.swing.JFrame {
         btnPacienteMenu.setBackground(new java.awt.Color(171, 186, 193));
         btnPacienteMenu.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnPacienteMenu.setText("Paciente");
+        btnPacienteMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPacienteMenuActionPerformed(evt);
+            }
+        });
 
         jPanel3.setBackground(new java.awt.Color(171, 186, 193));
 
@@ -73,6 +77,11 @@ public class QueriesSelect extends javax.swing.JFrame {
         jLabel1.setText("\n");
 
         btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Btn_logout.png"))); // NOI18N
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -151,38 +160,23 @@ public class QueriesSelect extends javax.swing.JFrame {
             }
         });
 
-        btnNewConsultation.setBackground(new java.awt.Color(0, 255, 153));
-        btnNewConsultation.setText("Nova Consulta");
-        btnNewConsultation.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNewConsultationActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(FilterQueries, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(SearchTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnSearch))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(btnNewConsultation)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addComponent(FilterQueries, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(SearchTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnSearch)
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnNewConsultation)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap(29, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(FilterQueries, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SearchTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -202,6 +196,11 @@ public class QueriesSelect extends javax.swing.JFrame {
 
         btnSchedule.setBackground(new java.awt.Color(0, 255, 153));
         btnSchedule.setText("Agendar");
+        btnSchedule.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnScheduleActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -225,7 +224,7 @@ public class QueriesSelect extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -273,18 +272,34 @@ public class QueriesSelect extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_FilterQueriesActionPerformed
 
-    private void btnNewConsultationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewConsultationActionPerformed
-        
-    }//GEN-LAST:event_btnNewConsultationActionPerformed
-
     private void btnConsultaMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaMenuActionPerformed
-        QueriesSelect inicialConsulta = new QueriesSelect();
-        inicialConsulta.setVisible(true);
+
     }//GEN-LAST:event_btnConsultaMenuActionPerformed
 
     private void SearchTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_SearchTxtActionPerformed
+
+    private void btnPacienteMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPacienteMenuActionPerformed
+        // TODO add your handling code here:
+        PatientSelect inicialPacient = new PatientSelect();
+        this.dispose();
+        inicialPacient.setVisible(true);
+    }//GEN-LAST:event_btnPacienteMenuActionPerformed
+
+    private void btnScheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnScheduleActionPerformed
+        // TODO add your handling code here:
+        NewQuery inicialNewQuery = new NewQuery();
+        this.dispose();
+        inicialNewQuery.setVisible(true);
+    }//GEN-LAST:event_btnScheduleActionPerformed
+
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        // TODO add your handling code here:
+        NewQuery inicialNewQuery = new NewQuery();
+        this.dispose();
+        inicialNewQuery.setVisible(true);
+    }//GEN-LAST:event_btnLogoutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -455,7 +470,6 @@ public class QueriesSelect extends javax.swing.JFrame {
     private javax.swing.JToggleButton btnConsultaMenu;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnLogout;
-    private javax.swing.JButton btnNewConsultation;
     private javax.swing.JToggleButton btnPacienteMenu;
     private javax.swing.JButton btnSchedule;
     private javax.swing.JButton btnSearch;

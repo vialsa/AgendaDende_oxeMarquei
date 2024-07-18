@@ -80,7 +80,11 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(0, 51, 51));
         jLabel3.setText("Senha");
 
-        txtsenha.setText("jPasswordField1");
+        txtsenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtsenhaActionPerformed(evt);
+            }
+        });
 
         btnLogin.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnLogin.setForeground(new java.awt.Color(0, 51, 51));
@@ -196,6 +200,10 @@ public class Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Usuário não existe");
         }
     }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void txtsenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtsenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtsenhaActionPerformed
 
     /**
      * @param args the command line arguments

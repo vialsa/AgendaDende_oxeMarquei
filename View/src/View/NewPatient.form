@@ -108,6 +108,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Consultas"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnConsultaMenuActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JToggleButton" name="btnPacienteMenu">
               <Properties>
@@ -165,6 +168,9 @@
                       <Image iconType="3" name="/img/Btn_logout.png"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLogoutActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
