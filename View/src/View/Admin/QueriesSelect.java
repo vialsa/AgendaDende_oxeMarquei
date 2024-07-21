@@ -167,10 +167,20 @@ public class QueriesSelect extends javax.swing.JFrame {
         btnCadastrar.setBackground(new java.awt.Color(171, 186, 193));
         btnCadastrar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnCadastrar.setText("Cadastrar");
+        btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrarActionPerformed(evt);
+            }
+        });
 
         btnPaciente.setBackground(new java.awt.Color(171, 186, 193));
         btnPaciente.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnPaciente.setText("Paciente");
+        btnPaciente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPacienteActionPerformed(evt);
+            }
+        });
 
         jPanel16.setBackground(new java.awt.Color(171, 186, 193));
 
@@ -206,10 +216,20 @@ public class QueriesSelect extends javax.swing.JFrame {
         btnRelatorio.setBackground(new java.awt.Color(171, 186, 193));
         btnRelatorio.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnRelatorio.setText("Relatorio");
+        btnRelatorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRelatorioActionPerformed(evt);
+            }
+        });
 
         btnGerenciarUser.setBackground(new java.awt.Color(171, 186, 193));
         btnGerenciarUser.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnGerenciarUser.setText("Gerenciar Usuario");
+        btnGerenciarUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGerenciarUserActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
         jPanel17.setLayout(jPanel17Layout);
@@ -275,6 +295,34 @@ public class QueriesSelect extends javax.swing.JFrame {
     private void FilterQueriesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FilterQueriesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_FilterQueriesActionPerformed
+
+    private void btnPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPacienteActionPerformed
+        // TODO add your handling code here:
+        PatientSelect telaPatientSelect = new PatientSelect();
+        this.dispose();
+        telaPatientSelect.setVisible(true);
+    }//GEN-LAST:event_btnPacienteActionPerformed
+
+    private void btnRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatorioActionPerformed
+        // TODO add your handling code here:
+        ReportSelect telaReportSelect = new ReportSelect();
+        this.dispose();
+        telaReportSelect.setVisible(true);
+    }//GEN-LAST:event_btnRelatorioActionPerformed
+
+    private void btnGerenciarUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerenciarUserActionPerformed
+        // TODO add your handling code here:
+        ManageUserSelect telaReportUserSelect = new ManageUserSelect();
+        this.dispose();
+        telaReportUserSelect.setVisible(true);
+    }//GEN-LAST:event_btnGerenciarUserActionPerformed
+
+    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+        // TODO add your handling code here:
+        RegisterClinic telaRegisterClinic = new RegisterClinic();
+        this.dispose();
+        telaRegisterClinic.setVisible(true);
+    }//GEN-LAST:event_btnCadastrarActionPerformed
 
     /**
      * @param args the command line arguments

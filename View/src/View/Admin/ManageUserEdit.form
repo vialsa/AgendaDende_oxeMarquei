@@ -423,6 +423,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Cadastrar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCadastrarActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JToggleButton" name="btnPaciente">
               <Properties>
@@ -434,6 +437,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Paciente"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPacienteActionPerformed"/>
+              </Events>
             </Component>
             <Container class="javax.swing.JPanel" name="jPanel16">
               <Properties>
@@ -493,6 +499,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Consultas"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnConsultaActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JToggleButton" name="btnRelatorio">
               <Properties>
@@ -504,6 +513,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Relatorio"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRelatorioActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JToggleButton" name="btnGerenciarUser">
               <Properties>
@@ -515,6 +527,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Gerenciar Usuario"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGerenciarUserActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

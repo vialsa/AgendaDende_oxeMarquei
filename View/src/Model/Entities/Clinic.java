@@ -86,13 +86,6 @@ public class Clinic {
 
     @Override
     public String toString() {
-        return "Clinic{" +
-                "idClinic=" + idClinic +
-                ", nameOfClinic='" + nameOfClinic + '\'' +
-                ", address='" + address + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", email='" + email + '\'' +
-                ", status='" + status + '\'' +
-                '}';
+        return  nameOfClinic + ", " + phoneNumber + ", " + address + ", " + status;
     }
 }

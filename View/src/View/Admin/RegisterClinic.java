@@ -4,7 +4,13 @@
  */
 package View.Admin;
 
+import Controller.ClinicController;
+import Model.Entities.Clinic;
 import View.*;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.DefaultListModel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,6 +23,12 @@ public class RegisterClinic extends javax.swing.JFrame {
      */
     public RegisterClinic() {
         initComponents();
+        addWindowListener( new java.awt.event.WindowAdapter(){
+            @Override
+            public void windowOpened(java.awt.event.WindowEvent e) {
+                carregar();
+            }  
+        });
     }
 
     /**
@@ -46,11 +58,11 @@ public class RegisterClinic extends javax.swing.JFrame {
         SearchTxt = new javax.swing.JTextField();
         FilterClinic = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        ClinicList = new javax.swing.JList<>();
         btnAddClinic = new javax.swing.JButton();
         btnEdit = new javax.swing.JButton();
         btnDelet = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        ClinicTable = new javax.swing.JTable();
         label1 = new java.awt.Label();
         jPanel6 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -86,6 +98,11 @@ public class RegisterClinic extends javax.swing.JFrame {
         btnPaciente.setBackground(new java.awt.Color(171, 186, 193));
         btnPaciente.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnPaciente.setText("Paciente");
+        btnPaciente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPacienteActionPerformed(evt);
+            }
+        });
 
         jPanel3.setBackground(new java.awt.Color(171, 186, 193));
 
@@ -117,14 +134,29 @@ public class RegisterClinic extends javax.swing.JFrame {
         btnConsulta.setBackground(new java.awt.Color(171, 186, 193));
         btnConsulta.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnConsulta.setText("Consultas");
+        btnConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultaActionPerformed(evt);
+            }
+        });
 
         btnRelatorio.setBackground(new java.awt.Color(171, 186, 193));
         btnRelatorio.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnRelatorio.setText("Relatorio");
+        btnRelatorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRelatorioActionPerformed(evt);
+            }
+        });
 
         btnGerenciarUser.setBackground(new java.awt.Color(171, 186, 193));
         btnGerenciarUser.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnGerenciarUser.setText("Gerenciar Usuario");
+        btnGerenciarUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGerenciarUserActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -170,7 +202,6 @@ public class RegisterClinic extends javax.swing.JFrame {
             }
         });
 
-        FilterClinic.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Editar", "Editar", "Editar", "Editar", " " }));
         FilterClinic.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 FilterClinicActionPerformed(evt);
@@ -180,18 +211,30 @@ public class RegisterClinic extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Lista de Clinicas");
 
-        ClinicList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(ClinicList);
-
         btnAddClinic.setText("Adicionar Clinica");
 
         btnEdit.setText("Editar");
 
         btnDelet.setText("Excliur");
+
+        ClinicTable.setBackground(new java.awt.Color(204, 204, 204));
+        ClinicTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Nome", "Telefone", "Endereço", "Status"
+            }
+        ));
+        ClinicTable.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                ClinicTableComponentAdded(evt);
+            }
+        });
+        jScrollPane4.setViewportView(ClinicTable);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -205,13 +248,13 @@ public class RegisterClinic extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane4)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                                 .addComponent(FilterClinic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(SearchTxt)
                                 .addGap(8, 8, 8)
                                 .addComponent(btnSearch))
-                            .addComponent(jScrollPane1)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                                 .addComponent(btnDelet)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -231,13 +274,13 @@ public class RegisterClinic extends javax.swing.JFrame {
                     .addComponent(FilterClinic, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSearch))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
-                .addGap(8, 8, 8)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDelet)
                     .addComponent(btnEdit)
                     .addComponent(btnAddClinic))
-                .addGap(16, 16, 16))
+                .addContainerGap())
         );
 
         label1.setAlignment(java.awt.Label.CENTER);
@@ -364,6 +407,58 @@ public class RegisterClinic extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSearchActionPerformed
 
+    private void ClinicTableComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_ClinicTableComponentAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ClinicTableComponentAdded
+
+    private void btnPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPacienteActionPerformed
+        // TODO add your handling code here:
+        PatientSelect telaPatientSelect = new PatientSelect();
+        this.dispose();
+        telaPatientSelect.setVisible(true);
+    }//GEN-LAST:event_btnPacienteActionPerformed
+
+    private void btnConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaActionPerformed
+        // TODO add your handling code here:
+        QueriesSelect telaConsultaSelect = new QueriesSelect();
+        this.dispose();
+        telaConsultaSelect.setVisible(true);
+    }//GEN-LAST:event_btnConsultaActionPerformed
+
+    private void btnRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatorioActionPerformed
+        // TODO add your handling code here:
+        ReportSelect telaReportSelect = new ReportSelect();
+        this.dispose();
+        telaReportSelect.setVisible(true);
+    }//GEN-LAST:event_btnRelatorioActionPerformed
+
+    private void btnGerenciarUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerenciarUserActionPerformed
+        // TODO add your handling code here:
+        ManageUserSelect telaReportUserSelect = new ManageUserSelect();
+        this.dispose();
+        telaReportUserSelect.setVisible(true);
+    }//GEN-LAST:event_btnGerenciarUserActionPerformed
+    
+    private void carregar() {
+        
+        DefaultTableModel modeloLista = new DefaultTableModel();    
+        
+        modeloLista.addColumn("Nome");        
+        modeloLista.addColumn("Telefone");
+        modeloLista.addColumn("Endereço");
+        modeloLista.addColumn("Status");
+
+        
+        ClinicController clinicas = new ClinicController();
+        List<Clinic> listaClinicas = clinicas.buscarClinicas();
+       
+        for (Clinic listaClinica : listaClinicas) {
+            modeloLista.addRow(new Object[]{listaClinica.getNameOfClinic(), listaClinica.getPhoneNumber(), 
+                listaClinica.getAddress(), listaClinica.getStatus()}
+            );
+        }
+        ClinicTable.setModel(modeloLista);
+    }
     /**
      * @param args the command line arguments
      */
@@ -655,7 +750,7 @@ public class RegisterClinic extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JList<String> ClinicList;
+    private javax.swing.JTable ClinicTable;
     private javax.swing.JComboBox<String> FilterClinic;
     private javax.swing.JTextField SearchTxt;
     private javax.swing.JTable TableDoctor;
@@ -679,9 +774,9 @@ public class RegisterClinic extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable1;
     private java.awt.Label label1;
     // End of variables declaration//GEN-END:variables
