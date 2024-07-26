@@ -4,7 +4,9 @@
  */
 package View.Admin;
 
+import Controller.SessionController;
 import View.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -14,6 +16,7 @@ public class HomeScreenAdmin extends javax.swing.JFrame {
 
     /**
      * Creates new form Login
+     * @param idPublicAgent
      */
     public HomeScreenAdmin() {
         initComponents();
@@ -187,6 +190,7 @@ public class HomeScreenAdmin extends javax.swing.JFrame {
     private void btnPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPacienteActionPerformed
         // TODO add your handling code here:
         PatientSelect telaPatientSelect = new PatientSelect();
+        
         this.dispose();
         telaPatientSelect.setVisible(true);
     }//GEN-LAST:event_btnPacienteActionPerformed

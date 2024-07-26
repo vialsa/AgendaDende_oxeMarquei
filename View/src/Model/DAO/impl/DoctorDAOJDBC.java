@@ -19,7 +19,7 @@ public class DoctorDAOJDBC implements DoctorDAO {
             conn = ConnectionFactory.getConnection();
             pstm = conn.prepareStatement(
                         "INSERT INTO DOCTOR(name, CPF, RG, phoneNumber1, phoneNumber2, dateOfBirth, " +
-                            "createdAt, address, email, CRM, speciality, status, idClinic) " +
+                            "createdAt, address, email, CRM, specialty, status, idClinic) " +
                             "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
             );
             pstm.setString(1, doctor.getName());
@@ -167,7 +167,7 @@ public class DoctorDAOJDBC implements DoctorDAO {
                         rs.getString("email"),
                         rs.getInt("idDoctor"),
                         rs.getString("CRM"),
-                        rs.getString("speciality"),
+                        rs.getString("specialty"),
                         rs.getString("status"),
                         clinic
                 );
@@ -194,7 +194,7 @@ public class DoctorDAOJDBC implements DoctorDAO {
             );
             rs = pstm.executeQuery();
             List<Doctor> listDoctors = new ArrayList<>();
-            if (rs.next()) {
+            while (rs.next()) {
                 Clinic clinic = new Clinic();
                 clinic.setIdClinic(rs.getInt("idClinic"));
 
@@ -210,13 +210,13 @@ public class DoctorDAOJDBC implements DoctorDAO {
                             rs.getString("email"),
                             rs.getInt("idDoctor"),
                             rs.getString("CRM"),
-                            rs.getString("speciality"),
+                            rs.getString("specialty"),
                             rs.getString("status"),
                             clinic
                     )
-                );
-                return listDoctors;
+                );   
             }
+            return listDoctors;
         }catch (SQLException e) {
             e.printStackTrace();
         }finally {
@@ -262,7 +262,7 @@ public class DoctorDAOJDBC implements DoctorDAO {
             
             rs = pstm.executeQuery();
             List<Doctor> listDoctors = new ArrayList<>();
-            if (rs.next()) {
+            while (rs.next()) {
                 Clinic clinic = new Clinic();
                 clinic.setIdClinic(rs.getInt("idClinic"));
 
@@ -278,13 +278,41 @@ public class DoctorDAOJDBC implements DoctorDAO {
                             rs.getString("email"),
                             rs.getInt("idDoctor"),
                             rs.getString("CRM"),
-                            rs.getString("speciality"),
+                            rs.getString("specialty"),
                             rs.getString("status"),
                             clinic
                     )
                 );
-                return listDoctors;
             }
+            return listDoctors;
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            ConnectionFactory.closeConnection(conn);
+            ConnectionFactory.closeStatement(pstm);
+            ConnectionFactory.closeResultSet(rs);
+        }
+        return null;
+    }
+
+    @Override
+    public List<String> findAllSpecialty() {
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        
+        try {
+            conn = ConnectionFactory.getConnection();
+            pstm = conn.prepareStatement(
+                    "SELECT specialty FROM DOCTOR"
+            );
+ 
+            
+            rs = pstm.executeQuery();
+            List<String> listSpecialtys = new ArrayList<>();
+            while (rs.next()) {
+                listSpecialtys.add(rs.getString("specialty"));
+            }
+            return listSpecialtys;
         }catch (SQLException e) {
             e.printStackTrace();
         }finally {

@@ -13,9 +13,9 @@ import java.util.List;
  */
 public class PublicAgentController {
         public List buscarUsuarios(){
-        PublicAgentDAOJDBC publicAgentDAOJDBC = new PublicAgentDAOJDBC();
-        List listaUsuario = publicAgentDAOJDBC.findAll();
-        return listaUsuario;
+            PublicAgentDAOJDBC publicAgentDAOJDBC = new PublicAgentDAOJDBC();
+            List listaUsuario = publicAgentDAOJDBC.findAll();
+            return listaUsuario;
     }
     
 }

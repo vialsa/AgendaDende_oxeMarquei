@@ -54,10 +54,7 @@ public class QueriesSelect extends javax.swing.JFrame {
         btnSearch = new javax.swing.JButton();
         SearchTxt = new javax.swing.JTextField();
         FilterQueries = new javax.swing.JComboBox<>();
-        btn_NovoPaciente = new javax.swing.JButton();
         label1 = new java.awt.Label();
-        btnEdit = new javax.swing.JButton();
-        btnSchedule = new javax.swing.JButton();
         jPanel17 = new javax.swing.JPanel();
         btnCadastrar = new javax.swing.JToggleButton();
         btnPaciente = new javax.swing.JToggleButton();
@@ -96,7 +93,14 @@ public class QueriesSelect extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(TableQuery);
 
+        btnSearch.setBackground(new java.awt.Color(0, 204, 0));
         btnSearch.setText("Buscar");
+
+        SearchTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchTxtActionPerformed(evt);
+            }
+        });
 
         FilterQueries.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Codigo", "Data", "Nome", "Local", " " }));
         FilterQueries.addActionListener(new java.awt.event.ActionListener() {
@@ -105,38 +109,28 @@ public class QueriesSelect extends javax.swing.JFrame {
             }
         });
 
-        btn_NovoPaciente.setBackground(new java.awt.Color(0, 255, 153));
-        btn_NovoPaciente.setText("Agendar Consulta");
-
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(FilterQueries, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(SearchTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSearch))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(btn_NovoPaciente)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addComponent(FilterQueries, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(SearchTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSearch)
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btn_NovoPaciente)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap(26, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(FilterQueries, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SearchTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(FilterQueries, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSearch))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addGap(23, 23, 23))
         );
 
         label1.setAlignment(java.awt.Label.CENTER);
@@ -145,12 +139,6 @@ public class QueriesSelect extends javax.swing.JFrame {
         label1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         label1.setText("Consulta");
 
-        btnEdit.setBackground(new java.awt.Color(255, 255, 51));
-        btnEdit.setText("Editar");
-
-        btnSchedule.setBackground(new java.awt.Color(0, 255, 153));
-        btnSchedule.setText("Agendar");
-
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -158,12 +146,6 @@ public class QueriesSelect extends javax.swing.JFrame {
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(label1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnSchedule)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnEdit)
-                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,11 +154,7 @@ public class QueriesSelect extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEdit)
-                    .addComponent(btnSchedule))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -341,6 +319,10 @@ public class QueriesSelect extends javax.swing.JFrame {
         this.dispose();
         telaRegisterClinic.setVisible(true);
     }//GEN-LAST:event_btnCadastrarActionPerformed
+
+    private void SearchTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SearchTxtActionPerformed
     private void carregar() {
         
         DefaultTableModel modeloLista = new DefaultTableModel();    
@@ -469,14 +451,11 @@ public class QueriesSelect extends javax.swing.JFrame {
     private javax.swing.JTable TableQuery;
     private javax.swing.JToggleButton btnCadastrar;
     private javax.swing.JToggleButton btnConsulta;
-    private javax.swing.JButton btnEdit;
     private javax.swing.JToggleButton btnGerenciarUser;
     private javax.swing.JButton btnLogout6;
     private javax.swing.JToggleButton btnPaciente;
     private javax.swing.JToggleButton btnRelatorio;
-    private javax.swing.JButton btnSchedule;
     private javax.swing.JButton btnSearch;
-    private javax.swing.JButton btn_NovoPaciente;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel16;

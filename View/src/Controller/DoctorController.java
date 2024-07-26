@@ -26,4 +26,11 @@ public class DoctorController {
         
         return medicos;
     }
+    
+    public List<String> buscarEspecialidades() {
+        DoctorDAOJDBC doctorDAOJDBC = new DoctorDAOJDBC();
+        List<String> especialidades = doctorDAOJDBC.findAllSpecialty();
+        
+        return especialidades;
+    }
 }

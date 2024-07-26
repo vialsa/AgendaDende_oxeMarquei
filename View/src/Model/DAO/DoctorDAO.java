@@ -14,5 +14,6 @@ public interface DoctorDAO {
     Doctor findByID(Integer idDoctor);
     List<Doctor> findBySpecialty(String specialty);
     List<Doctor> findAll();
+    List<String> findAllSpecialty();
     void disable(Doctor doctor);
 }

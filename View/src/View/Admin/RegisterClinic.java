@@ -5,7 +5,9 @@
 package View.Admin;
 
 import Controller.ClinicController;
+import Controller.DoctorController;
 import Model.Entities.Clinic;
+import Model.Entities.Doctor;
 import View.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,11 +25,12 @@ public class RegisterClinic extends javax.swing.JFrame {
      */
     public RegisterClinic() {
         initComponents();
-        addWindowListener( new java.awt.event.WindowAdapter(){
+        addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowOpened(java.awt.event.WindowEvent e) {
-                carregar();
-            }  
+                carregarClinicas();
+                carregarMedicos();
+            }
         });
     }
 
@@ -229,6 +232,7 @@ public class RegisterClinic extends javax.swing.JFrame {
                 "Nome", "Telefone", "Endereço", "Status"
             }
         ));
+        ClinicTable.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         ClinicTable.addContainerListener(new java.awt.event.ContainerAdapter() {
             public void componentAdded(java.awt.event.ContainerEvent evt) {
                 ClinicTableComponentAdded(evt);
@@ -450,27 +454,58 @@ public class RegisterClinic extends javax.swing.JFrame {
         this.dispose();
         telaAddDoctor.setVisible(true);
     }//GEN-LAST:event_btnAddDoctorActionPerformed
-    
-    private void carregar() {
-        
-        DefaultTableModel modeloLista = new DefaultTableModel();    
-        
-        modeloLista.addColumn("Nome");        
+
+    private void carregarClinicas() {
+
+        DefaultTableModel modeloLista = new DefaultTableModel();
+
+        modeloLista.addColumn("Nome");
         modeloLista.addColumn("Telefone");
         modeloLista.addColumn("Endereço");
         modeloLista.addColumn("Status");
 
-        
         ClinicController clinicas = new ClinicController();
         List<Clinic> listaClinicas = clinicas.buscarClinicas();
-       
+
         for (Clinic listaClinica : listaClinicas) {
-            modeloLista.addRow(new Object[]{listaClinica.getNameOfClinic(), listaClinica.getPhoneNumber(), 
+            modeloLista.addRow(new Object[]{listaClinica.getNameOfClinic(), listaClinica.getPhoneNumber(),
                 listaClinica.getAddress(), listaClinica.getStatus()}
             );
         }
         ClinicTable.setModel(modeloLista);
+
+ 
     }
+
+    public void carregarMedicos() {
+        DefaultTableModel modeloLista = new DefaultTableModel();
+        
+        modeloLista.addColumn("Nome");
+        modeloLista.addColumn("Clinica");
+        modeloLista.addColumn("Especialidade");
+
+        DoctorController doutores = new DoctorController();
+        List<Doctor> listaDoutores = doutores.buscarMedicos();
+        
+        System.out.println(listaDoutores);
+        ClinicController clinicas = new ClinicController();
+        List<Clinic> listaClinicas = clinicas.buscarClinicas();
+        
+        for (Doctor listaDoutor : listaDoutores) {
+            if (listaDoutor.getStatus().equalsIgnoreCase("Ativo")) {
+                for (Clinic clinic : listaClinicas) {
+                    if (clinic.getIdClinic() == listaDoutor.getClinic().getIdClinic()) {
+                        modeloLista.addRow(new Object[]{listaDoutor.getName(), clinic.getNameOfClinic(), listaDoutor.getSpeciality()});
+                    }
+                }
+            }
+
+        }
+        TableDoctor.setModel(modeloLista);
+    }
+    
+   
+
     /**
      * @param args the command line arguments
      */
