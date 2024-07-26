@@ -4,7 +4,10 @@
  */
 package View.Admin;
 
+import Controller.ClinicController;
+import Model.Entities.Clinic;
 import View.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -39,8 +42,6 @@ public class AddClinic extends javax.swing.JFrame {
         Tel1 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         EndereçoClinica = new javax.swing.JTextField();
-        HorarioAbertura = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
         Email = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         Tel2 = new javax.swing.JTextField();
@@ -50,8 +51,6 @@ public class AddClinic extends javax.swing.JFrame {
         btnSalvar = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         CNPJ = new javax.swing.JTextField();
-        HorarioEncerramento = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -97,9 +96,6 @@ public class AddClinic extends javax.swing.JFrame {
 
         EndereçoClinica.setText("\n");
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel4.setText("Horário de Abertura");
-
         Email.setText("\n");
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -116,12 +112,14 @@ public class AddClinic extends javax.swing.JFrame {
         btnSalvar.setBackground(new java.awt.Color(0, 204, 51));
         btnSalvar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnSalvar.setText("Salvar");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel12.setText("CNPJ");
-
-        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel13.setText("Horário de Fechamento");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -139,32 +137,22 @@ public class AddClinic extends javax.swing.JFrame {
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(HorarioAbertura))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(HorarioEncerramento)
-                                            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGap(30, 30, 30)
-                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel3)
-                                            .addComponent(Tel1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addComponent(EndereçoClinica)
-                                        .addGap(12, 12, 12)))
+                                        .addComponent(EndereçoClinica, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
+                                        .addGap(12, 12, 12))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addGap(314, 314, 314)
+                                        .addComponent(jLabel9)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(CNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                        .addGap(60, 60, 60)
-                                        .addComponent(jLabel9)
-                                        .addGap(120, 120, 120))
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addGap(50, 50, 50)
-                                        .addComponent(Tel2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(Email))
+                                    .addComponent(CNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(Email)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                                .addComponent(Tel1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Tel2, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(9, 9, 9)))
                         .addGap(14, 14, 14))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,17 +188,13 @@ public class AddClinic extends javax.swing.JFrame {
                     .addComponent(EndereçoClinica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel13))
+                    .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(HorarioAbertura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Tel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Tel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(HorarioEncerramento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Tel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -253,6 +237,28 @@ public class AddClinic extends javax.swing.JFrame {
     private void NomeClinicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NomeClinicaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_NomeClinicaActionPerformed
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        //Adicionar cnpn e informacoes adicionais no banco 
+        String nClinica = NomeClinica.getText();
+        String endereco = EndereçoClinica.getText();
+        String telefone = Tel1.getText();
+        String emailClinica = Email.getText();
+        
+        
+        if (!nClinica.equals("") && !endereco.equals("") && !telefone.equals("") && !emailClinica.equals("")) {
+            Clinic clinica = new Clinic(nClinica, endereco, telefone, emailClinica);
+            ClinicController clinicaController = new ClinicController();
+            clinicaController.adicionarClinica(clinica);
+            JOptionPane.showMessageDialog(null, "Clinica cadastrada com sucesso");
+            HomeScreenAdmin homeScreen = new HomeScreenAdmin();
+            this.dispose();
+            homeScreen.setVisible(true);
+           
+        } else {
+            JOptionPane.showMessageDialog(null, "Algum campo está vázio! Preencha todos os campos!");
+        }
+    }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -804,8 +810,6 @@ public class AddClinic extends javax.swing.JFrame {
     private javax.swing.JTextField CNPJ;
     private javax.swing.JTextField Email;
     private javax.swing.JTextField EndereçoClinica;
-    private javax.swing.JTextField HorarioAbertura;
-    private javax.swing.JTextField HorarioEncerramento;
     private javax.swing.JTextField InfoAdional;
     private javax.swing.JTextField NomeClinica;
     private javax.swing.JTextField Tel1;
@@ -815,10 +819,8 @@ public class AddClinic extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;

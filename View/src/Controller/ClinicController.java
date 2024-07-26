@@ -4,6 +4,7 @@
  */
 package Controller;
 
+import Model.DAO.ClinicDAO;
 import Model.DAO.impl.ClinicDAOJDBC;
 import Model.Entities.Clinic;
 import java.util.List;
@@ -20,5 +21,15 @@ public class ClinicController {
         
    
         return clinicas;
+    }
+    
+    public void adicionarClinica(Clinic clinica) {
+        try {
+            ClinicDAOJDBC clinicDAOJDBC = new ClinicDAOJDBC();
+            clinicDAOJDBC.insert(clinica);
+            
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

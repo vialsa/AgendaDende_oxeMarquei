@@ -47,12 +47,7 @@ public class Patient extends Person {
 
     @Override
     public String toString() {
-        return "------------------------------------\n" +
-                "Paciente: " + this.getIdPatient() + "\n" +
-                "Nome: " + this.getName() + "\n" +
-                "CPF:" + this.getCPF() + "\n" +
-                "SIGTAP: " + this.getSIGTAP() + "\n" +
-                "Número de Telefone: " + this.getPhoneNumber1() + "\n" +
-                "E-mail: " + this.getEmail() + "\n";
+        return "Patient{" + "idPatient=" + idPatient + ", SIGTAP=" + SIGTAP + '}';
     }
+    
 }

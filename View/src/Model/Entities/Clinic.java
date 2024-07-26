@@ -1,5 +1,7 @@
 package Model.Entities;
 
+import java.util.Objects;
+
 public class Clinic {
     int idClinic;
     String nameOfClinic;
@@ -19,7 +21,15 @@ public class Clinic {
         this.email = email;
         this.status = "ativo";
     }
-
+    
+    public Clinic(String nameOfClinic, String address, String phoneNumber, String email) {
+        this.nameOfClinic = nameOfClinic;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.status = "ativo";
+    }
+    
     public Clinic(int idClinic, String nameOfClinic, String address, String phoneNumber, String email,
                   String status) {
         this.idClinic = idClinic;
@@ -86,6 +96,46 @@ public class Clinic {
 
     @Override
     public String toString() {
-        return  nameOfClinic + ", " + phoneNumber + ", " + address + ", " + status;
+        return  idClinic + ", " + nameOfClinic + ", " + phoneNumber + ", " + address + ", " + status;
+    } 
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 31 * hash + Objects.hashCode(this.nameOfClinic);
+        hash = 31 * hash + Objects.hashCode(this.address);
+        hash = 31 * hash + Objects.hashCode(this.phoneNumber);
+        hash = 31 * hash + Objects.hashCode(this.email);
+        hash = 31 * hash + Objects.hashCode(this.status);
+        return hash;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Clinic other = (Clinic) obj;
+        if (!Objects.equals(this.nameOfClinic, other.nameOfClinic)) {
+            return false;
+        }
+        if (!Objects.equals(this.address, other.address)) {
+            return false;
+        }
+        if (!Objects.equals(this.phoneNumber, other.phoneNumber)) {
+            return false;
+        }
+        if (!Objects.equals(this.email, other.email)) {
+            return false;
+        }
+        return Objects.equals(this.status, other.status);
+    }
+    
+    
 }

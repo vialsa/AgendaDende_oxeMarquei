@@ -4,7 +4,19 @@
  */
 package View.Admin;
 
+import Controller.PatientController;
+import Controller.QueryController;
+import Model.DAO.SolicitationDAO;
+import Model.DAO.impl.ClinicDAOJDBC;
+import Model.DAO.impl.PatientDAOJDBC;
+import Model.DAO.impl.SolicitationDAOJDBC;
+import Model.Entities.Clinic;
+import Model.Entities.Patient;
+import Model.Entities.Query;
+import Model.Entities.Solicitation;
 import View.*;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,6 +29,12 @@ public class QueriesSelect extends javax.swing.JFrame {
      */
     public QueriesSelect() {
         initComponents();
+        addWindowListener( new java.awt.event.WindowAdapter(){
+            @Override
+                public void windowOpened(java.awt.event.WindowEvent e) {
+                carregar();
+            }  
+        });
     }
 
     /**
@@ -323,7 +341,30 @@ public class QueriesSelect extends javax.swing.JFrame {
         this.dispose();
         telaRegisterClinic.setVisible(true);
     }//GEN-LAST:event_btnCadastrarActionPerformed
-
+    private void carregar() {
+        
+        DefaultTableModel modeloLista = new DefaultTableModel();    
+        
+        modeloLista.addColumn("Codigo");        
+        modeloLista.addColumn("Nome");
+        modeloLista.addColumn("Data");
+        modeloLista.addColumn("Local");
+        
+        QueryController consultas = new QueryController();
+        List<Query> listaConsultas = consultas.buscarConsultas();
+        SolicitationDAOJDBC solicitationDAOJDBC  = new SolicitationDAOJDBC();
+        PatientDAOJDBC patientDAOJDBC = new PatientDAOJDBC();
+        ClinicDAOJDBC clinicDAOJDBC = new ClinicDAOJDBC();
+       
+        for (Query listaConsulta : listaConsultas) {
+            Solicitation solicitation = solicitationDAOJDBC.findById(listaConsulta.getSolicitation().getIdSolicitation());
+            Patient patient = patientDAOJDBC.findById(solicitation.getPatient().getIdPatient());
+            Clinic clinic = clinicDAOJDBC.findByID(listaConsulta.getClinic().getIdClinic());
+            modeloLista.addRow(new Object[]{listaConsulta.getIdQuery(), patient.getName(), listaConsulta.getDateAndTimeConsultation(), clinic.getAddress()}
+            );
+        }
+        TableQuery.setModel(modeloLista);
+    }
     /**
      * @param args the command line arguments
      */

@@ -12,6 +12,7 @@ public interface DoctorDAO {
     void update(String address, String email,Integer idDoctor);
     void update(String email, Integer idDoctor);
     Doctor findByID(Integer idDoctor);
+    List<Doctor> findBySpecialty(String specialty);
     List<Doctor> findAll();
     void disable(Doctor doctor);
 }

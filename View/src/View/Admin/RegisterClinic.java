@@ -307,6 +307,11 @@ public class RegisterClinic extends javax.swing.JFrame {
         jScrollPane3.setViewportView(TableDoctor);
 
         btnAddDoctor.setText("Adicionar Medico");
+        btnAddDoctor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddDoctorActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -438,6 +443,13 @@ public class RegisterClinic extends javax.swing.JFrame {
         this.dispose();
         telaReportUserSelect.setVisible(true);
     }//GEN-LAST:event_btnGerenciarUserActionPerformed
+
+    private void btnAddDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDoctorActionPerformed
+        // TODO add your handling code here:
+        AddDoctor telaAddDoctor = new AddDoctor();
+        this.dispose();
+        telaAddDoctor.setVisible(true);
+    }//GEN-LAST:event_btnAddDoctorActionPerformed
     
     private void carregar() {
         

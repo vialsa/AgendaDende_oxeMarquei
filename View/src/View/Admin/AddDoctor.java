@@ -4,7 +4,12 @@
  */
 package View.Admin;
 
+import Controller.ClinicController;
+import Model.Entities.Clinic;
 import View.*;
+import java.util.List;
+import javax.swing.DefaultListModel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,6 +22,12 @@ public class AddDoctor extends javax.swing.JFrame {
      */
     public AddDoctor() {
         initComponents();
+        addWindowListener( new java.awt.event.WindowAdapter(){
+            @Override
+            public void windowOpened(java.awt.event.WindowEvent e) {
+                carregar();
+            }  
+        });
     }
 
     /**
@@ -58,6 +69,7 @@ public class AddDoctor extends javax.swing.JFrame {
         RG = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         DataNascimento = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -137,15 +149,15 @@ public class AddDoctor extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Selecionar Clinica");
 
-        ListaClinicas.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane1.setViewportView(ListaClinicas);
 
         btnConfirmarClinica.setBackground(new java.awt.Color(0, 153, 102));
         btnConfirmarClinica.setText("Confirmar");
+        btnConfirmarClinica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfirmarClinicaActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel6.setText("CPF");
@@ -155,6 +167,14 @@ public class AddDoctor extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel4.setText("Data de Nascimento");
+
+        jButton1.setBackground(new java.awt.Color(255, 51, 51));
+        jButton1.setText("Cancelar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -197,7 +217,8 @@ public class AddDoctor extends javax.swing.JFrame {
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(64, 64, 64))))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnSalvar))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -263,9 +284,11 @@ public class AddDoctor extends javax.swing.JFrame {
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(InfoAdcional, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSalvar)
-                .addGap(14, 14, 14))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnSalvar)
+                    .addComponent(jButton1))
+                .addGap(8, 8, 8))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -294,18 +317,57 @@ public class AddDoctor extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void NomeMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NomeMedicoActionPerformed
+    private void btnConfirmarClinicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarClinicaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_NomeMedicoActionPerformed
-
-    private void EmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_EmailActionPerformed
+        String clinicaSelecionar = ListaClinicas.getSelectedValue();
+        ClinicController clinicController = new ClinicController();
+        List<Clinic> list = clinicController.buscarClinicas();
+        for (Clinic clinic : list) {
+            String[] aaa = clinic.toString().split(",");
+            String miaumiau = aaa[1] + ", " + aaa[2] + ", " + aaa[3] + ", " + aaa[4]  + ", " + aaa[5];
+            if(miaumiau.equals(clinicaSelecionar)){
+                String[] arrayIds = clinic.toString().split(",");
+                String id = arrayIds[0];
+                System.out.println(id);
+            }
+        }
+    }//GEN-LAST:event_btnConfirmarClinicaActionPerformed
 
     private void InfoAdcionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InfoAdcionalActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_InfoAdcionalActionPerformed
 
+    private void EmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EmailActionPerformed
+
+    private void NomeMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NomeMedicoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NomeMedicoActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        HomeScreenAdmin homeScreenAdmin = new HomeScreenAdmin();
+        this.dispose();
+        homeScreenAdmin.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+    
+    public void carregar() {
+        
+        DefaultListModel modeloLista = new DefaultListModel();
+        
+        ClinicController clinicController = new ClinicController();
+        List<Clinic> listaClinicas = clinicController.buscarClinicas(); 
+        
+        for (Clinic clinica : listaClinicas) {
+            if(clinica.getStatus().equalsIgnoreCase("ativo")){
+                String[] arrayIds = clinica.toString().split(",");
+                String id = arrayIds[1] + ", " + arrayIds[2] + ", " + arrayIds[3] + ", " + arrayIds[4] + ", " + arrayIds[5];
+                modeloLista.addElement(id);
+            }
+        }
+        ListaClinicas.setModel(modeloLista);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -1378,6 +1440,7 @@ public class AddDoctor extends javax.swing.JFrame {
     private javax.swing.JTextField Tel2;
     private javax.swing.JButton btnConfirmarClinica;
     private javax.swing.JButton btnSalvar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

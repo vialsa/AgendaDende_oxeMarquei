@@ -247,4 +247,51 @@ public class DoctorDAOJDBC implements DoctorDAO {
             ConnectionFactory.closeConnection(conn);
         }
     }
+
+    @Override
+    public List<Doctor> findBySpecialty(String specialty) {
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+
+        try {
+            conn = ConnectionFactory.getConnection();
+            pstm = conn.prepareStatement(
+                    "SELECT * FROM DOCTOR WHERE specialty = ?"
+            );
+            pstm.setString(1, specialty);
+            
+            rs = pstm.executeQuery();
+            List<Doctor> listDoctors = new ArrayList<>();
+            if (rs.next()) {
+                Clinic clinic = new Clinic();
+                clinic.setIdClinic(rs.getInt("idClinic"));
+
+                listDoctors.add(
+                    new Doctor(
+                            rs.getString("name"),
+                            rs.getString("CPF"),
+                            rs.getString("RG"),
+                            rs.getString("phoneNumber1"),
+                            rs.getString("phoneNumber2"),
+                            rs.getDate("dateOfBirth").toLocalDate(),
+                            rs.getString("address"),
+                            rs.getString("email"),
+                            rs.getInt("idDoctor"),
+                            rs.getString("CRM"),
+                            rs.getString("speciality"),
+                            rs.getString("status"),
+                            clinic
+                    )
+                );
+                return listDoctors;
+            }
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            ConnectionFactory.closeConnection(conn);
+            ConnectionFactory.closeStatement(pstm);
+            ConnectionFactory.closeResultSet(rs);
+        }
+        return null;
+    }
 }

@@ -4,7 +4,19 @@
  */
 package View.Admin;
 
+import Controller.PublicAgentController;
+import Controller.QueryController;
+import Model.DAO.impl.ClinicDAOJDBC;
+import Model.DAO.impl.PatientDAOJDBC;
+import Model.DAO.impl.SolicitationDAOJDBC;
+import Model.Entities.Clinic;
+import Model.Entities.Patient;
+import Model.Entities.PublicAgent;
+import Model.Entities.Query;
+import Model.Entities.Solicitation;
 import View.*;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,6 +29,12 @@ public class ManageUserSelect extends javax.swing.JFrame {
      */
     public ManageUserSelect() {
         initComponents();
+        addWindowListener( new java.awt.event.WindowAdapter(){
+            @Override
+            public void windowOpened(java.awt.event.WindowEvent e) {
+            carregar();
+            }  
+        });
     }
 
     /**
@@ -332,7 +350,24 @@ public class ManageUserSelect extends javax.swing.JFrame {
         this.dispose();
         telaRegisterClinic.setVisible(true);
     }//GEN-LAST:event_btnCadastrarActionPerformed
+    private void carregar() {
+        
+        DefaultTableModel modeloLista = new DefaultTableModel();    
+        
+        modeloLista.addColumn("Nome");        
+        modeloLista.addColumn("Codigo");
 
+        
+        PublicAgentController usuarios = new PublicAgentController();
+        List<PublicAgent> listaUsuarios = usuarios.buscarUsuarios();
+       
+        for (PublicAgent listaUsuario : listaUsuarios) {
+            modeloLista.addRow(new Object[]{listaUsuario.getName(), listaUsuario.getIdPublicAgent()}
+            );
+        }
+        TableUser.setModel(modeloLista);
+    }
+    /**
     /**
      * @param args the command line arguments
      */

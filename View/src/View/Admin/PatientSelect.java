@@ -4,7 +4,13 @@
  */
 package View.Admin;
 
+import Controller.ClinicController;
+import Controller.PatientController;
+import Model.Entities.Clinic;
+import Model.Entities.Patient;
 import View.*;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,6 +23,12 @@ public class PatientSelect extends javax.swing.JFrame {
      */
     public PatientSelect() {
         initComponents();
+        addWindowListener( new java.awt.event.WindowAdapter(){
+            @Override
+                public void windowOpened(java.awt.event.WindowEvent e) {
+                carregar();
+            }  
+        });
     }
 
     /**
@@ -236,6 +248,11 @@ public class PatientSelect extends javax.swing.JFrame {
 
         btnEdit.setBackground(new java.awt.Color(255, 255, 51));
         btnEdit.setText("Editar");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
 
         btnSchedule.setBackground(new java.awt.Color(0, 255, 153));
         btnSchedule.setText("Agendar Consulta");
@@ -316,6 +333,7 @@ public class PatientSelect extends javax.swing.JFrame {
 
     private void btnScheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnScheduleActionPerformed
         // TODO add your handling code here:
+        String sigTapPatient = (String) TablePatient.getValueAt(TablePatient.getSelectedRow(), 2);
         NewQuery inicialNewQuery = new NewQuery();
         this.dispose();
         inicialNewQuery.setVisible(true);
@@ -353,6 +371,31 @@ public class PatientSelect extends javax.swing.JFrame {
         telaRegisterClinic.setVisible(true);
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        // TODO add your handling code here:
+        String sigTapPatient = (String) TablePatient.getValueAt(TablePatient.getSelectedRow(), 2);
+        EditPatient inicialEditPatient = new EditPatient();
+        this.dispose();
+        inicialEditPatient.setVisible(true);
+    }//GEN-LAST:event_btnEditActionPerformed
+        private void carregar() {
+        
+        DefaultTableModel modeloLista = new DefaultTableModel();    
+        
+        modeloLista.addColumn("Codigo");        
+        modeloLista.addColumn("Nome");
+        modeloLista.addColumn("Sigtap");
+
+        
+        PatientController pacientes = new PatientController();
+        List<Patient> listaPacientes = pacientes.buscarPacientes();
+       
+        for (Patient listaPaciente : listaPacientes) {
+            modeloLista.addRow(new Object[]{listaPaciente.getIdPatient(), listaPaciente.getName(), listaPaciente.getSIGTAP()}
+            );
+        }
+        TablePatient.setModel(modeloLista);
+    }
     /**
      * @param args the command line arguments
      */
