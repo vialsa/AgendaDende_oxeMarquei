@@ -4,7 +4,7 @@
  */
 package View.Admin;
 
-import Controller.SessionController;
+import Controle.SessionController;
 import View.*;
 import javax.swing.JOptionPane;
 

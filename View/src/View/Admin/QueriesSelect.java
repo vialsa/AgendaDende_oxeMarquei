@@ -4,19 +4,19 @@
  */
 package View.Admin;
 
-import Controller.PatientController;
-import Controller.QueryController;
-import Model.DAO.SolicitationDAO;
-import Model.DAO.impl.ClinicDAOJDBC;
-import Model.DAO.impl.PatientDAOJDBC;
-import Model.DAO.impl.SolicitationDAOJDBC;
-import Model.Entities.Clinic;
-import Model.Entities.Patient;
-import Model.Entities.Query;
-import Model.Entities.Solicitation;
+import Controle.PacienteControle;
+import Controle.QueryController;
+import Modelo.DAO.impl.ClinicaDAOJDBC;
+import Modelo.DAO.impl.PacienteDAOJDBC;
+import Modelo.DAO.impl.SolicitacaoDAOJDBC;
+import Modelo.Entidades.Clinica;
+import Modelo.Entidades.Paciente;
+import Modelo.Entidades.Consulta;
+import Modelo.Entidades.Solicitacao;
 import View.*;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
+import Modelo.DAO.SolicitacaoDAO;
 
 /**
  *
@@ -333,15 +333,15 @@ public class QueriesSelect extends javax.swing.JFrame {
         modeloLista.addColumn("Local");
         
         QueryController consultas = new QueryController();
-        List<Query> listaConsultas = consultas.buscarConsultas();
-        SolicitationDAOJDBC solicitationDAOJDBC  = new SolicitationDAOJDBC();
-        PatientDAOJDBC patientDAOJDBC = new PatientDAOJDBC();
-        ClinicDAOJDBC clinicDAOJDBC = new ClinicDAOJDBC();
+        List<Consulta> listaConsultas = consultas.buscarConsultas();
+        SolicitacaoDAOJDBC solicitationDAOJDBC  = new SolicitacaoDAOJDBC();
+        PacienteDAOJDBC patientDAOJDBC = new PacienteDAOJDBC();
+        ClinicaDAOJDBC clinicDAOJDBC = new ClinicaDAOJDBC();
        
-        for (Query listaConsulta : listaConsultas) {
-            Solicitation solicitation = solicitationDAOJDBC.findById(listaConsulta.getSolicitation().getIdSolicitation());
-            Patient patient = patientDAOJDBC.findById(solicitation.getPatient().getIdPatient());
-            Clinic clinic = clinicDAOJDBC.findByID(listaConsulta.getClinic().getIdClinic());
+        for (Consulta listaConsulta : listaConsultas) {
+            Solicitacao solicitation = solicitationDAOJDBC.findById(listaConsulta.getSolicitation().getIdSolicitation());
+            Paciente patient = patientDAOJDBC.findById(solicitation.getPatient().getIdPatient());
+            Clinica clinic = clinicDAOJDBC.findByID(listaConsulta.getClinic().getIdClinic());
             modeloLista.addRow(new Object[]{listaConsulta.getIdQuery(), patient.getName(), listaConsulta.getDateAndTimeConsultation(), clinic.getAddress()}
             );
         }

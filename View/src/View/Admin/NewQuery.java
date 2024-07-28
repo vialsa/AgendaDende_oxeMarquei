@@ -4,7 +4,7 @@
  */
 package View.Admin;
 
-import Controller.DoctorController;
+import Controle.MedicoControle;
 import java.util.List;
 import javax.swing.DefaultListModel;
 
@@ -357,7 +357,7 @@ public class NewQuery extends javax.swing.JFrame {
     private void filtroEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filtroEspecialidadeActionPerformed
         // tira esse meodo da aqui
         DefaultListModel modeloLista = new DefaultListModel();
-        DoctorController doctorController = new DoctorController();
+        MedicoControle doctorController = new MedicoControle();
         List<String> listDoctore = doctorController.buscarEspecialidades();
         
         for (String string : listDoctore) {

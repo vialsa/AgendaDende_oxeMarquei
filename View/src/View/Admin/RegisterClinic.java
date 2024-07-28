@@ -4,10 +4,10 @@
  */
 package View.Admin;
 
-import Controller.ClinicController;
-import Controller.DoctorController;
-import Model.Entities.Clinic;
-import Model.Entities.Doctor;
+import Controle.ClinicaControle;
+import Controle.MedicoControle;
+import Modelo.Entidades.Clinica;
+import Modelo.Entidades.Medico;
 import View.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -464,10 +464,10 @@ public class RegisterClinic extends javax.swing.JFrame {
         modeloLista.addColumn("Endereço");
         modeloLista.addColumn("Status");
 
-        ClinicController clinicas = new ClinicController();
-        List<Clinic> listaClinicas = clinicas.buscarClinicas();
+        ClinicaControle clinicas = new ClinicaControle();
+        List<Clinica> listaClinicas = clinicas.buscarClinicas();
 
-        for (Clinic listaClinica : listaClinicas) {
+        for (Clinica listaClinica : listaClinicas) {
             modeloLista.addRow(new Object[]{listaClinica.getNameOfClinic(), listaClinica.getPhoneNumber(),
                 listaClinica.getAddress(), listaClinica.getStatus()}
             );
@@ -484,16 +484,16 @@ public class RegisterClinic extends javax.swing.JFrame {
         modeloLista.addColumn("Clinica");
         modeloLista.addColumn("Especialidade");
 
-        DoctorController doutores = new DoctorController();
-        List<Doctor> listaDoutores = doutores.buscarMedicos();
+        MedicoControle doutores = new MedicoControle();
+        List<Medico> listaDoutores = doutores.buscarMedicos();
         
         System.out.println(listaDoutores);
-        ClinicController clinicas = new ClinicController();
-        List<Clinic> listaClinicas = clinicas.buscarClinicas();
+        ClinicaControle clinicas = new ClinicaControle();
+        List<Clinica> listaClinicas = clinicas.buscarClinicas();
         
-        for (Doctor listaDoutor : listaDoutores) {
+        for (Medico listaDoutor : listaDoutores) {
             if (listaDoutor.getStatus().equalsIgnoreCase("Ativo")) {
-                for (Clinic clinic : listaClinicas) {
+                for (Clinica clinic : listaClinicas) {
                     if (clinic.getIdClinic() == listaDoutor.getClinic().getIdClinic()) {
                         modeloLista.addRow(new Object[]{listaDoutor.getName(), clinic.getNameOfClinic(), listaDoutor.getSpeciality()});
                     }

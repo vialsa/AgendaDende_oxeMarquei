@@ -4,11 +4,16 @@
  */
 package View.Admin;
 
-import Controller.ClinicController;
-import Model.Entities.Clinic;
+import Controle.ClinicaControle;
+import Controle.MedicoControle;
+import Modelo.Entidades.Clinica;
+import Modelo.Entidades.Medico;
 import View.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -16,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Vitor
  */
 public class AddDoctor extends javax.swing.JFrame {
-
+    private String clinicaSelecionada;
     /**
      * Creates new form Login
      */
@@ -140,6 +145,11 @@ public class AddDoctor extends javax.swing.JFrame {
 
         btnSalvar.setBackground(new java.awt.Color(0, 204, 51));
         btnSalvar.setText("Salvar");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel12.setText("CRM");
@@ -249,7 +259,6 @@ public class AddDoctor extends javax.swing.JFrame {
                                 .addComponent(jLabel9)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 303, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(64, 64, 64))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
@@ -357,15 +366,15 @@ public class AddDoctor extends javax.swing.JFrame {
     private void btnConfirmarClinicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarClinicaActionPerformed
         // TODO add your handling code here:
         String clinicaSelecionar = ListaClinicas.getSelectedValue();
-        ClinicController clinicController = new ClinicController();
-        List<Clinic> list = clinicController.buscarClinicas();
-        for (Clinic clinic : list) {
+        ClinicaControle clinicController = new ClinicaControle();
+        List<Clinica> list = clinicController.buscarClinicas();
+        for (Clinica clinic : list) {
             String[] aaa = clinic.toString().split(",");
             String miaumiau = aaa[1] + ", " + aaa[2] + ", " + aaa[3] + ", " + aaa[4]  + ", " + aaa[5];
             if(miaumiau.equals(clinicaSelecionar)){
                 String[] arrayIds = clinic.toString().split(",");
-                String id = arrayIds[0];
-                System.out.println(id);
+                clinicaSelecionada = arrayIds[0];
+                System.out.println(clinicaSelecionada);
             }
         }
     }//GEN-LAST:event_btnConfirmarClinicaActionPerformed
@@ -387,14 +396,77 @@ public class AddDoctor extends javax.swing.JFrame {
         this.dispose();
         registerClinic.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        //salvar medico
+        String nome = nomeMedico.getText();
+        String CPF = cpf.getText();
+        String RG = rg.getText();
+        String[] dataPartes = dataNasc.getText().split("/");
+        String especialidadeMedico = especialidade.getText();
+        String crmMedico = CRM.getText();
+        String emailMedico = email.getText();
+        if (dataPartes.length != 3) {
+            throw new IllegalArgumentException("Data de nascimento inválida. Formato esperado: DD/MM/YYYY");
+        }
+        
+        String dia = dataPartes[0];
+        String mes = dataPartes[1];
+        String ano = dataPartes[2];
+
+        // Valide se cada parte da data é numérica
+        if (!dia.matches("\\d{2}") || !mes.matches("\\d{2}") || !ano.matches("\\d{4}")) {
+            throw new IllegalArgumentException("Data de nascimento inválida. Formato esperado: DD/MM/YYYY");
+        }
+        String dataString = String.format("%s-%s-%s", ano, mes, dia);
+        String tel11 = tel1.getText();
+        String tel22 = tel2.getText();
+        
+        if (!nome.equals("") && !CPF.equals("") && !RG.equals("") && !especialidadeMedico.equals("") 
+            && !crmMedico.equals("") && !emailMedico.equals("")) 
+        {
+            LocalDate dataNascimento;
+            try {
+                dataNascimento = LocalDate.parse(dataString);
+                System.out.println(dataNascimento);
+            } catch (DateTimeParseException e) {
+                throw new IllegalArgumentException("Data de nascimento inválida. Formato esperado: DD/MM/YYYY");
+            }
+            
+            ClinicaControle clinicaControle = new ClinicaControle();
+            Clinica clinica = clinicaControle.buscarClinica(Integer.parseInt(clinicaSelecionada));
+            
+            MedicoControle medicoControle = new MedicoControle();
+            Medico medico;
+            if (!tel2.equals("")) {
+                  medico = new Medico(nome, CPF, RG, tel11, tel22, dataNascimento, emailMedico, 
+                          crmMedico, especialidadeMedico, "ativo", clinica);
+            } else {
+                medico = new Medico(nome, CPF, RG, tel11, dataNascimento, emailMedico, crmMedico, 
+                        especialidadeMedico, "ativo", clinica);
+            }
+            boolean resultado = medicoControle.cadastroMedico(medico);
+            if(resultado) {
+                JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso");
+                HomeScreenAdmin homeScreenAdmin= new HomeScreenAdmin();
+                this.dispose();
+                homeScreenAdmin.setVisible(true);
+            }else {
+                JOptionPane.showMessageDialog(null, "Cadastro não realizado! Reveja os dados");
+            }
+
+        }
+        
+    }//GEN-LAST:event_btnSalvarActionPerformed
     public void carregar() {
         
-        DefaultListModel modeloLista = new DefaultListModel();
+        @SuppressWarnings("unchecked")
+        DefaultListModel<String> modeloLista = new DefaultListModel();
         
-        ClinicController clinicController = new ClinicController();
-        List<Clinic> listaClinicas = clinicController.buscarClinicas(); 
+        ClinicaControle clinicController = new ClinicaControle();
+        List<Clinica> listaClinicas = clinicController.buscarClinicas(); 
         
-        for (Clinic clinica : listaClinicas) {
+        for (Clinica clinica : listaClinicas) {
             if(clinica.getStatus().equalsIgnoreCase("ativo")){
                 String[] arrayIds = clinica.toString().split(",");
                 String id = arrayIds[1] + ", " + arrayIds[2] + ", " + arrayIds[3] + ", " + arrayIds[4] + ", " + arrayIds[5];
@@ -403,6 +475,7 @@ public class AddDoctor extends javax.swing.JFrame {
         }
         ListaClinicas.setModel(modeloLista);
     }
+    
     /**
      * @param args the command line arguments
      */

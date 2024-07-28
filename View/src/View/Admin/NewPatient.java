@@ -4,7 +4,12 @@
  */
 package View.Admin;
 
+import Controle.PacienteControle;
+import Modelo.Entidades.Paciente;
 import View.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -230,6 +235,11 @@ public class NewPatient extends javax.swing.JFrame {
         btn_salvar.setBackground(new java.awt.Color(0, 204, 0));
         btn_salvar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_salvar.setText("Salvar");
+        btn_salvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_salvarActionPerformed(evt);
+            }
+        });
 
         RG.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         RG.setText("RG");
@@ -480,6 +490,66 @@ public class NewPatient extends javax.swing.JFrame {
     private void EnderecoNumPacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnderecoNumPacActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_EnderecoNumPacActionPerformed
+
+    private void btn_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salvarActionPerformed
+        String nome = Nome.getText();
+        String CPF = cpfCampoTextoFormatado.getText();
+        String RG = rgCampoTextoFormatado.getText();
+        String[] dataPartes = dataNascCampoTextoFormatado.getText().split("/");
+        if (dataPartes.length != 3) {
+            throw new IllegalArgumentException("Data de nascimento inválida. Formato esperado: DD/MM/YYYY");
+        }
+        
+        String dia = dataPartes[0];
+        String mes = dataPartes[1];
+        String ano = dataPartes[2];
+
+        // Valide se cada parte da data é numérica
+        if (!dia.matches("\\d{2}") || !mes.matches("\\d{2}") || !ano.matches("\\d{4}")) {
+            throw new IllegalArgumentException("Data de nascimento inválida. Formato esperado: DD/MM/YYYY");
+        }
+        String dataString = String.format("%s-%s-%s", ano, mes, dia);
+        String tel1 = tel1CampoTextoFormatado.getText();
+        String tel2 = tel2CampoTextoFormatado.getText();
+        String rua = EnderecoRuaPac.getText();
+        String num = EnderecoNumPac.getText();
+        String bairro = EnderecoBairroPac.getText();
+        String cep = cepCampoTextoFormatado1.getText();
+        String sigtap = sigtapCampoTextoFormatado.getText();
+        String email = Email.getText();
+        if (!nome.equals("") && !dataString.equals("") && !tel1.equals("") && 
+                !rua.equals("") && !num.equals("") && !bairro.equals("") && !cep.equals("") 
+                && !sigtap.equals("") && !email.equals("")) {
+            
+            String endereco = String.format("%s, %s, %s, %s", rua, num, bairro, cep);
+            LocalDate dataNascimento;
+            
+            try {
+                dataNascimento = LocalDate.parse(dataString);
+            } catch (DateTimeParseException e) {
+                throw new IllegalArgumentException("Data de nascimento inválida. Formato esperado: DD/MM/YYYY");
+            }
+            
+            PacienteControle pacienteControle = new PacienteControle();
+            Paciente paciente;
+            if (!tel2.equals("")) {
+                paciente = new Paciente(nome, CPF, RG, tel1, tel2, dataNascimento, endereco, email, sigtap);   
+            } else {
+                paciente = new Paciente(nome, CPF, RG, tel1, dataNascimento, endereco, email, sigtap);   
+            }
+            if (pacienteControle.cadastroPaciente(paciente)) {
+                JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
+                HomeScreenAdmin homeScreenAdmin = new HomeScreenAdmin();
+                this.dispose();
+                homeScreenAdmin.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "Não foi possível realizar o cadastro");
+            }
+            
+        }else {
+            JOptionPane.showMessageDialog(null, "Todos os campos obrigatórios devem ser preenchidos");
+        }
+    }//GEN-LAST:event_btn_salvarActionPerformed
 
     /**
      * @param args the command line arguments

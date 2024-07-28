@@ -8,7 +8,7 @@ import java.text.Format;
 import java.time.LocalDate;
 import java.util.Date;
 
-import Controller.PatientController;
+import Controle.PacienteControle;
 import java.time.format.DateTimeParseException;
 
 /**
@@ -486,7 +486,7 @@ public class NewPatient extends javax.swing.JFrame {
                 throw new IllegalArgumentException("Data de nascimento inválida. Formato esperado: DD/MM/YYYY");
             }
             
-            PatientController controllerNovoPaciente = new PatientController();
+            PacienteControle controllerNovoPaciente = new PacienteControle();
             if (!tel2.equals("")) {
                 controllerNovoPaciente.cadastroPaciente(nome, CPF, RG, dataNascimento, tel1, tel2, endereco, sigtap, email);   
             } else {

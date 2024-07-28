@@ -4,10 +4,10 @@
  */
 package View.Admin;
 
-import Controller.ClinicController;
-import Controller.PatientController;
-import Model.Entities.Clinic;
-import Model.Entities.Patient;
+import Controle.ClinicaControle;
+import Controle.PacienteControle;
+import Modelo.Entidades.Clinica;
+import Modelo.Entidades.Paciente;
 import View.*;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -387,10 +387,10 @@ public class PatientSelect extends javax.swing.JFrame {
         modeloLista.addColumn("Sigtap");
 
         
-        PatientController pacientes = new PatientController();
-        List<Patient> listaPacientes = pacientes.buscarPacientes();
+        PacienteControle pacientes = new PacienteControle();
+        List<Paciente> listaPacientes = pacientes.buscarPacientes();
        
-        for (Patient listaPaciente : listaPacientes) {
+        for (Paciente listaPaciente : listaPacientes) {
             modeloLista.addRow(new Object[]{listaPaciente.getIdPatient(), listaPaciente.getName(), listaPaciente.getSIGTAP()}
             );
         }

@@ -4,8 +4,8 @@
  */
 package View.Admin;
 
-import Controller.ClinicController;
-import Model.Entities.Clinic;
+import Controle.ClinicaControle;
+import Modelo.Entidades.Clinica;
 import View.*;
 import javax.swing.JOptionPane;
 
@@ -262,16 +262,25 @@ public class AddClinic extends javax.swing.JFrame {
         String endereco = EndereçoClinica.getText();
         String telefone = tel1.getText();
         String emailClinica = Email.getText();
+        String cnpjClinica = cnpj.getText();
+        String informacoesClinica = InfoAdional.getText();
         
         
         if (!nClinica.equals("") && !endereco.equals("") && !telefone.equals("") && !emailClinica.equals("")) {
-            Clinic clinica = new Clinic(nClinica, endereco, telefone, emailClinica);
-            ClinicController clinicaController = new ClinicController();
-            clinicaController.adicionarClinica(clinica);
-            JOptionPane.showMessageDialog(null, "Clinica cadastrada com sucesso");
-            HomeScreenAdmin homeScreen = new HomeScreenAdmin();
-            this.dispose();
-            homeScreen.setVisible(true);
+            Clinica clinica = new Clinica(nClinica, endereco, telefone, emailClinica, cnpjClinica, 
+                    informacoesClinica
+            );
+            System.out.println(clinica.getStatus());
+            ClinicaControle clinicaController = new ClinicaControle();
+            if(clinicaController.adicionarClinica(clinica)){
+                JOptionPane.showMessageDialog(null, "Clinica cadastrada com sucesso");
+                HomeScreenAdmin homeScreen = new HomeScreenAdmin();
+                this.dispose();
+                homeScreen.setVisible(true);
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Não foi possível realizar o cadastro!");
+            }
            
         } else {
             JOptionPane.showMessageDialog(null, "Algum campo está vázio! Preencha todos os campos!");

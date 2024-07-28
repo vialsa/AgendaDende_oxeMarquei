@@ -1,0 +1,82 @@
+INSERTS PACIENTE:
+
+INSERT INTO PATIENT (name, CPF, RG, phoneNumber1, phoneNumber2, dateOfBirth, createdAt, address, email, SIGTAP) VALUES 
+('João da Silva', '123.456.789-01', 'MG-12.345.678', '31-98765-4321', '31-12345-6789', '1980-01-01', NOW(), 'Rua das Flores, 123, Belo Horizonte, MG', 'joao.silva@example.com', 'SIG123456'),
+('Maria Oliveira', '987.654.321-09', 'SP-98.765.432', '11-98765-4321', '11-12345-6789', '1985-02-15', NOW(), 'Av. Paulista, 1000, São Paulo, SP', 'maria.oliveira@example.com', 'SIG987654'),
+('Carlos Souza', '456.789.123-45', 'RJ-45.678.912', '21-98765-4321', NULL, '1975-03-30', NOW(), 'Rua da Praia, 45, Rio de Janeiro, RJ', 'carlos.souza@example.com', 'SIG456789'),
+('Ana Santos', '321.654.987-32', 'BA-32.165.498', '71-98765-4321', '71-12345-6789', '1990-04-25', NOW(), 'Rua Bahia, 200, Salvador, BA', 'ana.santos@example.com', 'SIG321654'),
+('Pedro Lima', '159.753.486-59', 'RS-15.975.348', '51-98765-4321', NULL, '1978-05-10', NOW(), 'Av. Farrapos, 555, Porto Alegre, RS', 'pedro.lima@example.com', 'SIG159753'),
+('Lucia Almeida', '951.357.258-95', 'PR-95.135.725', '41-98765-4321', '41-12345-6789', '1982-06-20', NOW(), 'Rua Paraná, 300, Curitiba, PR', 'lucia.almeida@example.com', 'SIG951357'),
+('Bruno Pereira', '753.159.951-75', 'SC-75.315.995', '48-98765-4321', NULL, '1988-07-15', NOW(), 'Rua Florianópolis, 400, Florianópolis, SC', 'bruno.pereira@example.com', 'SIG753159'),
+('Juliana Martins', '159.357.456-15', 'MG-15.935.745', '31-98765-4321', '31-12345-6789', '1992-08-05', NOW(), 'Av. Amazonas, 600, Belo Horizonte, MG', 'juliana.martins@example.com', 'SIG159357'),
+('Ricardo Ferreira', '357.159.753-35', 'SP-35.715.975', '11-98765-4321', NULL, '1979-09-25', NOW(), 'Rua São Paulo, 700, São Paulo, SP', 'ricardo.ferreira@example.com', 'SIG357159'),
+('Fernanda Costa', '951.456.123-95', 'RJ-95.145.612', '21-98765-4321', '21-12345-6789', '1983-10-10', NOW(), 'Rua das Laranjeiras, 800, Rio de Janeiro, RJ', 'fernanda.costa@example.com', 'SIG951456'),
+('Rodrigo Araujo', '123.789.456-12', 'BA-12.378.945', '71-98765-4321', NULL, '1987-11-20', NOW(), 'Av. Oceânica, 900, Salvador, BA', 'rodrigo.araujo@example.com', 'SIG123789'),
+('Patricia Lima', '456.123.789-45', 'RS-45.612.378', '51-98765-4321', '51-12345-6789', '1976-12-30', NOW(), 'Rua das Hortências, 1000, Porto Alegre, RS', 'patricia.lima@example.com', 'SIG456123'),
+('Gustavo Mendes', '789.456.123-78', 'PR-78.945.612', '41-98765-4321', NULL, '1981-01-25', NOW(), 'Rua das Palmeiras, 1100, Curitiba, PR', 'gustavo.mendes@example.com', 'SIG789456'),
+('Mariana Rocha', '147.258.369-14', 'SC-14.725.836', '48-98765-4321', '48-12345-6789', '1993-02-15', NOW(), 'Rua da Praia, 1200, Florianópolis, SC', 'mariana.rocha@example.com', 'SIG147258'),
+('Fernando Borges', '963.852.741-96', 'MG-96.385.274', '31-98765-4321', NULL, '1986-03-05', NOW(), 'Av. Contorno, 1300, Belo Horizonte, MG', 'fernando.borges@example.com', 'SIG963852');
+
+INSERTS SOLICITACOES:
+
+INSERT INTO SOLICITATION (CRM, request, nameofRequestDoctor, idPatient) VALUES
+('CRM123456', 'Solicitação de Exame de Sangue', 'Dr. João Mendes', 1),
+('CRM654321', 'Solicitação de Ressonância Magnética', 'Dra. Maria Clara', 2),
+('CRM789012', 'Solicitação de Ultrassom', 'Dr. Carlos Pereira', 3),
+('CRM210987', 'Solicitação de Raio-X', 'Dra. Ana Martins', 4),
+('CRM345678', 'Solicitação de Eletrocardiograma', 'Dr. Pedro Silva', 5),
+('CRM876543', 'Solicitação de Tomografia Computadorizada', 'Dra. Lucia Lima', 6),
+('CRM901234', 'Solicitação de Endoscopia', 'Dr. Bruno Souza', 7),
+('CRM432109', 'Solicitação de Colonoscopia', 'Dra. Juliana Rocha', 8),
+('CRM567890', 'Solicitação de Mamografia', 'Dr. Ricardo Ferreira', 9),
+('CRM098765', 'Solicitação de Densitometria Óssea', 'Dra. Fernanda Costa', 10);
+
+INSERTS PUBLIC AGENT:
+
+INSERT INTO PUBLIC_AGENT (name, CPF, RG, phoneNumber1, phoneNumber2, dateOfBirth, createdAt, address, email, userr, password, typeUser, status) VALUES
+('José de Souza', '123.456.789-10', '123456789', '31-98765-4321', '31-12345-6789', '1980-01-01', NOW(), 'Rua das Flores, 123, Belo Horizonte, MG', 'jose.souza@example.com', 'jose.souza', '1111', 'normal', 'ativo'),
+('Ana Paula Santos', '987.654.321-00', '987654321', '11-98765-4321', '11-12345-6789', '1985-02-15', NOW(), 'Av. Paulista, 1000, São Paulo, SP', 'ana.paula@example.com', 'ana.paula', '1111', 'admin', 'ativo');
+
+INSERTS CLINIC:
+
+INSERT INTO CLINIC (nameOfClinic, address, phoneNumber, email, status, CNPJ, additionalInformation) VALUES
+('Clínica São Pedro', 'Rua das Flores, 150, Belo Horizonte, MG', '31-98765-4321', 'sao.pedro@example.com', 'ativo', '12.345.678/0001-12', 'Clínica geral com atendimento especializado em cardiologia.'),
+('Clínica Vida Nova', 'Av. Paulista, 2000, São Paulo, SP', '11-98765-4321', 'vida.nova@example.com', 'ativo', '23.456.789/0001-23', 'Serviços de emergência e ortopedia.'),
+('Clínica Saúde e Bem-Estar', 'Rua do Porto, 250, Porto Alegre, RS', '51-98765-4321', 'saude.bemestar@example.com', 'ativo', '34.567.890/0001-34', 'Atendimento 24 horas e consultório de fisioterapia.'),
+('Clínica Médica Central', 'Av. Brasil, 500, Rio de Janeiro, RJ', '21-98765-4321', 'medica.central@example.com', 'ativo', '45.678.901/0001-45', 'Especialidades em dermatologia e endocrinologia.'),
+('Clínica Saúde Plus', 'Rua das Acácias, 100, Curitiba, PR', '41-98765-4321', 'saude.plus@example.com', 'ativo', '56.789.012/0001-56', 'Atendimento em geriatria e pediatria.'),
+('Clínica Bem-Estar', 'Av. Independência, 300, Salvador, BA', '71-98765-4321', 'bem.estar@example.com', 'ativo', '67.890.123/0001-67', 'Especialidades em oftalmologia e otorrinolaringologia.'),
+('Clínica Saúde Integral', 'Rua das Laranjeiras, 400, Fortaleza, CE', '85-98765-4321', 'saude.integral@example.com', 'ativo', '78.901.234/0001-78', 'Serviços de nutrição e psicologia.'),
+('Clínica Horizonte', 'Av. das Américas, 600, Brasília, DF', '61-98765-4321', 'horizonte@example.com', 'ativo', '89.012.345/0001-89', 'Clínica especializada em endocrinologia e ginecologia.'),
+('Clínica Saúde e Família', 'Rua do Catete, 700, Recife, PE', '81-98765-4321', 'saude.familia@example.com', 'ativo', '90.123.456/0001-90', 'Serviços gerais e atendimento pediátrico.'),
+('Clínica Novo Horizonte', 'Av. Central, 800, Goiânia, GO', '62-98765-4321', 'novo.horizonte@example.com', 'ativo', '01.234.567/0001-01', 'Clínica de cardiologia e ortopedia.');
+
+INSERTS DOCTORS:
+
+INSERT INTO DOCTOR (name, CPF, RG, phoneNumber1, phoneNumber2, dateOfBirth, createdAt, email, CRM, specialty, status, idClinic) VALUES
+('Dr. Rafael Lima', '123.456.789-01', '123456789', '31-91234-5678', '31-98765-4321', '1978-01-15', NOW(), 'rafael.lima@example.com', 'CRM12345', 'Cardiologia', 'ativo', 1),
+('Dra. Beatriz Costa', '234.567.890-12', '234567890', '11-91234-5678', '11-98765-4321', '1982-02-20', NOW(), 'beatriz.costa@example.com', 'CRM23456', 'Ortopedia', 'ativo', 2),
+('Dr. Carlos Silva', '345.678.901-23', '345678901', '21-91234-5678', NULL, '1975-03-10', NOW(), 'carlos.silva@example.com', 'CRM34567', 'Clínica Geral', 'ativo', 3),
+('Dra. Mariana Oliveira', '456.789.012-34', '456789012', '31-91234-5678', '31-98765-4321', '1988-04-05', NOW(),	'mariana.oliveira@example.com', 'CRM45678', 'Dermatologia', 'ativo', 4),
+('Dr. Fernando Souza', '567.890.123-45', '567890123', '41-91234-5678', '41-98765-4321', '1981-05-15', NOW(),'fernando.souza@example.com', 'CRM56789', 'Pediatria', 'ativo', 5),
+('Dra. Juliana Santos', '678.901.234-56', '678901234', '71-91234-5678', '71-98765-4321', '1985-06-25', NOW(), 'juliana.santos@example.com', 'CRM67890', 'Oftalmologia', 'ativo', 6),
+('Dr. Lucas Almeida', '789.012.345-67', '789012345', '85-91234-5678', '85-98765-4321', '1990-07-30', NOW(), 'lucas.almeida@example.com', 'CRM78901', 'Nutrição', 'ativo', 7),
+('Dra. Ana Paula Rocha', '890.123.456-78', '890123456', '61-91234-5678', '61-98765-4321', '1983-08-20', NOW(), 'ana.rocha@example.com', 'CRM89012', 'Ginecologia', 'ativo', 8),
+('Dr. João Martins', '901.234.567-89', '901234567', '81-91234-5678', NULL, '1976-09-10', NOW(), 'joao.martins@example.com', 'CRM90123', 'Clínica Geral', 'ativo', 9),
+('Dra. Fernanda Costa', '012.345.678-90', '012345678', '62-91234-5678', '62-98765-4321', '1987-10-15', NOW(), 'fernanda.costa@example.com', 'CRM01234', 'Cardiologia', 'ativo', 10);
+
+INSERTS QUERYS:
+
+INSERT INTO QUERY (dateAndTimeConsultation, idPublicAgent, idSolicitation, idDoctor, idClinic) VALUES
+('2024-07-28 09:00:00', 1, 1, 1, 1),
+('2024-07-28 10:00:00', 2, 2, 2, 2),
+('2024-07-28 11:00:00', 1, 3, 3, 3),
+('2024-07-28 14:00:00', 2, 4, 4, 4),
+('2024-07-28 15:00:00', 1, 5, 5, 5),
+('2024-07-28 16:00:00', 2, 6, 6, 6),
+('2024-07-28 17:00:00', 1, 7, 7, 7),
+('2024-07-28 18:00:00', 2, 8, 8, 8),
+('2024-07-28 19:00:00', 1, 9, 9, 9),
+('2024-07-28 20:00:00', 2, 10, 10, 10);
+
+

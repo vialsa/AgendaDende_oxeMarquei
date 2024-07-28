@@ -4,16 +4,16 @@
  */
 package View.Admin;
 
-import Controller.PublicAgentController;
-import Controller.QueryController;
-import Model.DAO.impl.ClinicDAOJDBC;
-import Model.DAO.impl.PatientDAOJDBC;
-import Model.DAO.impl.SolicitationDAOJDBC;
-import Model.Entities.Clinic;
-import Model.Entities.Patient;
-import Model.Entities.PublicAgent;
-import Model.Entities.Query;
-import Model.Entities.Solicitation;
+import Controle.PublicAgentController;
+import Controle.QueryController;
+import Modelo.DAO.impl.ClinicaDAOJDBC;
+import Modelo.DAO.impl.PacienteDAOJDBC;
+import Modelo.DAO.impl.SolicitacaoDAOJDBC;
+import Modelo.Entidades.Clinica;
+import Modelo.Entidades.Paciente;
+import Modelo.Entidades.AgentePublico;
+import Modelo.Entidades.Consulta;
+import Modelo.Entidades.Solicitacao;
 import View.*;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -359,10 +359,12 @@ public class ManageUserSelect extends javax.swing.JFrame {
 
         
         PublicAgentController usuarios = new PublicAgentController();
-        List<PublicAgent> listaUsuarios = usuarios.buscarUsuarios();
+        @SuppressWarnings("unchecked")
+        List<AgentePublico> listaUsuarios = usuarios.buscarUsuarios();
        
-        for (PublicAgent listaUsuario : listaUsuarios) {
-            modeloLista.addRow(new Object[]{listaUsuario.getName(), listaUsuario.getIdPublicAgent()}
+        for (AgentePublico listaUsuario : listaUsuarios) {
+            modeloLista.addRow(
+                new Object[]{listaUsuario.getName(), listaUsuario.getIdPublicAgent()}
             );
         }
         TableUser.setModel(modeloLista);

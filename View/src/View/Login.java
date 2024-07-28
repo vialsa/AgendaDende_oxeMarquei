@@ -4,9 +4,9 @@
  */
 package View;
 
-import Controller.LoginController;
-import Controller.SessionController;
-import Model.Entities.PublicAgent;
+import Controle.LoginController;
+import Controle.SessionController;
+import Modelo.Entidades.AgentePublico;
 import View.Admin.HomeScreenAdmin;
 import javax.swing.JOptionPane;
 
@@ -186,7 +186,7 @@ public class Login extends javax.swing.JFrame {
         System.out.println(senha);
         
         LoginController loginController = new LoginController();
-        PublicAgent agentLogin = loginController.realizaLogin(usuario, senha);
+        AgentePublico agentLogin = loginController.realizaLogin(usuario, senha);
         
         if (agentLogin != null) {
             SessionController.setIdPublicAgent(agentLogin.getIdPublicAgent());
