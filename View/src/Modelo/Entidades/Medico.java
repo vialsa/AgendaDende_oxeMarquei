@@ -103,12 +103,6 @@ public class Medico extends Pessoa{
 
     @Override
     public String toString() {
-        return "Doctor{" +
-                "idDoctor=" + idDoctor +
-                ", CRM='" + CRM + '\'' +
-                ", speciality='" + speciality + '\'' +
-                ", status='" + status + '\'' +
-                ", clinic=" + clinic +
-                '}';
+        return  idDoctor + ", " + CRM + ", " + speciality + ", " + status + ", " + clinic;
     }
 }

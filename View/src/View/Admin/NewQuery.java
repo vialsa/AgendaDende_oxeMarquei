@@ -5,7 +5,9 @@
 package View.Admin;
 
 import Controle.MedicoControle;
+import Modelo.Entidades.Medico;
 import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 
 /**
@@ -14,6 +16,7 @@ import javax.swing.DefaultListModel;
  */
 public class NewQuery extends javax.swing.JFrame {
     private int idPaciente;
+    private int idMedico;
     /**
      * Creates new form Login
      * @param idPacienteProps
@@ -22,7 +25,12 @@ public class NewQuery extends javax.swing.JFrame {
         initComponents();
         System.out.println(idPacienteProps);
         this.idPaciente = idPacienteProps;
-        
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowOpened(java.awt.event.WindowEvent e) {
+                carregarEspecialidade();
+            }
+        }); 
     } 
 
     private NewQuery() {
@@ -49,7 +57,7 @@ public class NewQuery extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         MedicoList = new javax.swing.JList<>();
-        btnSelect = new javax.swing.JButton();
+        btnSelecionarMedico = new javax.swing.JButton();
         label1 = new java.awt.Label();
         jPanel6 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -109,17 +117,12 @@ public class NewQuery extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Especialiades ");
 
-        MedicoList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane1.setViewportView(MedicoList);
 
-        btnSelect.setText("Selecionar");
-        btnSelect.addActionListener(new java.awt.event.ActionListener() {
+        btnSelecionarMedico.setText("Selecionar");
+        btnSelecionarMedico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSelectActionPerformed(evt);
+                btnSelecionarMedicoActionPerformed(evt);
             }
         });
 
@@ -144,7 +147,7 @@ public class NewQuery extends javax.swing.JFrame {
                         .addContainerGap())))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap(286, Short.MAX_VALUE)
-                .addComponent(btnSelect)
+                .addComponent(btnSelecionarMedico)
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -159,7 +162,7 @@ public class NewQuery extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSelect)
+                .addComponent(btnSelecionarMedico)
                 .addContainerGap())
         );
 
@@ -363,25 +366,29 @@ public class NewQuery extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void filtroEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filtroEspecialidadeActionPerformed
-        // tira esse meodo da aqui
-        DefaultListModel modeloLista = new DefaultListModel();
-        MedicoControle doctorController = new MedicoControle();
-        List<String> listDoctore = doctorController.buscarEspecialidades();
-        
-        for (String string : listDoctore) {
-            
-        }
-        
-        
+
     }//GEN-LAST:event_filtroEspecialidadeActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
+        
+        Object especialidade = filtroEspecialidade.getSelectedItem();
+        carregarMedico((String) especialidade);
+        
     }//GEN-LAST:event_btnSearchActionPerformed
 
-    private void btnSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSelectActionPerformed
+    private void btnSelecionarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarMedicoActionPerformed
+        // TODO add your handling code here: 
+        String medicoSelecionar = MedicoList.getSelectedValue();
+        MedicoControle medicoControle = new MedicoControle();
+        List<Medico> list = medicoControle.buscarMedicos();
+        for (Medico medico : list) {
+            if(medico.getName().equals(medicoSelecionar)){
+                this.idMedico =  medico.getIdDoctor();
+                System.out.println(this.idMedico);
+            }
+        }
+    }//GEN-LAST:event_btnSelecionarMedicoActionPerformed
 
     private void btnDataSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDataSearchActionPerformed
         // TODO add your handling code here:
@@ -412,7 +419,40 @@ public class NewQuery extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+        //Carrega as especialidades no comboBox
+        private void carregarEspecialidade() {
 
+        DefaultComboBoxModel<String> modeloComboBox = new DefaultComboBoxModel<>();
+        
+        MedicoControle doctorController = new MedicoControle();
+        List<String> listaDoutores = doctorController.buscarEspecialidades();
+        
+        
+        for (String listaDoctore : listaDoutores) {
+              
+            modeloComboBox.addElement(listaDoctore);
+            
+        }
+        filtroEspecialidade.setModel(modeloComboBox);
+    }
+        
+        //Carrega os medicos na lista
+        private void carregarMedico(String especialidade) {
+            
+        DefaultListModel<String> modeloLista = new DefaultListModel<>();
+        
+        MedicoControle medicoControle = new MedicoControle();
+        List<Medico> listaMedicos = medicoControle.buscarMedidosPorEspecialidade(especialidade);
+        
+        for (Medico medico : listaMedicos) {
+            if(medico.getStatus().equalsIgnoreCase("ativo")){
+                modeloLista.addElement(medico.getName());
+            }
+        }
+        MedicoList.setModel(modeloLista);
+        
+    }
+        
     /**
      * @param args the command line arguments
      */
@@ -966,7 +1006,7 @@ public class NewQuery extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField SeachDataTxt;
     private javax.swing.JButton btnDataSearch;
     private javax.swing.JButton btnSearch;
-    private javax.swing.JButton btnSelect;
+    private javax.swing.JButton btnSelecionarMedico;
     private javax.swing.JButton btnSelect1;
     private javax.swing.JComboBox<String> filtroEspecialidade;
     private javax.swing.JButton jButton1;
