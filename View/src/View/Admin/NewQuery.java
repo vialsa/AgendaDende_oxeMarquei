@@ -5,6 +5,7 @@
 package View.Admin;
 
 import Controle.MedicoControle;
+import Modelo.Entidades.Medico;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
@@ -26,7 +27,7 @@ public class NewQuery extends javax.swing.JFrame {
         addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowOpened(java.awt.event.WindowEvent e) {
-                carregar();
+                carregarEspecialidade();
             }
         }); 
     } 
@@ -115,11 +116,6 @@ public class NewQuery extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Especialiades ");
 
-        MedicoList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane1.setViewportView(MedicoList);
 
         btnSelect.setText("Selecionar");
@@ -374,6 +370,11 @@ public class NewQuery extends javax.swing.JFrame {
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
+        
+        Object especialidade = filtroEspecialidade.getSelectedItem();
+        System.out.println(especialidade);
+        carregarMedico((String) especialidade);
+        
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void btnSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectActionPerformed
@@ -409,16 +410,40 @@ public class NewQuery extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+        //Carrega as especialidades no comboBox
+        private void carregarEspecialidade() {
 
-        private void carregar() {
-
-        DefaultComboBoxModel modeloComboBox = new DefaultComboBoxModel();
-        MedicoControle doctorController = new MedicoControle();
-        List<String> listDoctore = doctorController.buscarEspecialidades();
-        modeloComboBox.addAll(listDoctore);
+        DefaultComboBoxModel<String> modeloComboBox = new DefaultComboBoxModel<>();
         
+        MedicoControle doctorController = new MedicoControle();
+        List<String> listaDoutores = doctorController.buscarEspecialidades();
+        
+        
+        for (String listaDoctore : listaDoutores) {
+              
+            modeloComboBox.addElement(listaDoctore);
+            
+        }
         filtroEspecialidade.setModel(modeloComboBox);
     }
+        
+        //Carrega os medicos na lista
+        private void carregarMedico(String especialidade) {
+            
+        DefaultListModel<String> modeloLista = new DefaultListModel<>();
+        
+        MedicoControle medicoControle = new MedicoControle();
+        List<Medico> listaMedicos = medicoControle.buscarMedidosPorEspecialidade(especialidade);
+        
+        for (Medico medico : listaMedicos) {
+            if(medico.getStatus().equalsIgnoreCase("ativo")){
+                modeloLista.addElement(medico.getName());
+            }
+        }
+        MedicoList.setModel(modeloLista);
+        
+    }
+        
     /**
      * @param args the command line arguments
      */
