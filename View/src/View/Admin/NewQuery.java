@@ -16,6 +16,7 @@ import javax.swing.DefaultListModel;
  */
 public class NewQuery extends javax.swing.JFrame {
     private int idPaciente;
+    private int idMedico;
     /**
      * Creates new form Login
      * @param idPacienteProps
@@ -56,7 +57,7 @@ public class NewQuery extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         MedicoList = new javax.swing.JList<>();
-        btnSelect = new javax.swing.JButton();
+        btnSelecionarMedico = new javax.swing.JButton();
         label1 = new java.awt.Label();
         jPanel6 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -118,10 +119,10 @@ public class NewQuery extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(MedicoList);
 
-        btnSelect.setText("Selecionar");
-        btnSelect.addActionListener(new java.awt.event.ActionListener() {
+        btnSelecionarMedico.setText("Selecionar");
+        btnSelecionarMedico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSelectActionPerformed(evt);
+                btnSelecionarMedicoActionPerformed(evt);
             }
         });
 
@@ -146,7 +147,7 @@ public class NewQuery extends javax.swing.JFrame {
                         .addContainerGap())))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap(286, Short.MAX_VALUE)
-                .addComponent(btnSelect)
+                .addComponent(btnSelecionarMedico)
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -161,7 +162,7 @@ public class NewQuery extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSelect)
+                .addComponent(btnSelecionarMedico)
                 .addContainerGap())
         );
 
@@ -372,14 +373,22 @@ public class NewQuery extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         Object especialidade = filtroEspecialidade.getSelectedItem();
-        System.out.println(especialidade);
         carregarMedico((String) especialidade);
         
     }//GEN-LAST:event_btnSearchActionPerformed
 
-    private void btnSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSelectActionPerformed
+    private void btnSelecionarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarMedicoActionPerformed
+        // TODO add your handling code here: 
+        String medicoSelecionar = MedicoList.getSelectedValue();
+        MedicoControle medicoControle = new MedicoControle();
+        List<Medico> list = medicoControle.buscarMedicos();
+        for (Medico medico : list) {
+            if(medico.getName().equals(medicoSelecionar)){
+                this.idMedico =  medico.getIdDoctor();
+                System.out.println(this.idMedico);
+            }
+        }
+    }//GEN-LAST:event_btnSelecionarMedicoActionPerformed
 
     private void btnDataSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDataSearchActionPerformed
         // TODO add your handling code here:
@@ -997,7 +1006,7 @@ public class NewQuery extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField SeachDataTxt;
     private javax.swing.JButton btnDataSearch;
     private javax.swing.JButton btnSearch;
-    private javax.swing.JButton btnSelect;
+    private javax.swing.JButton btnSelecionarMedico;
     private javax.swing.JButton btnSelect1;
     private javax.swing.JComboBox<String> filtroEspecialidade;
     private javax.swing.JButton jButton1;
