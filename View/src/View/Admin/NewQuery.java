@@ -6,6 +6,7 @@ package View.Admin;
 
 import Controle.MedicoControle;
 import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 
 /**
@@ -22,7 +23,12 @@ public class NewQuery extends javax.swing.JFrame {
         initComponents();
         System.out.println(idPacienteProps);
         this.idPaciente = idPacienteProps;
-        
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowOpened(java.awt.event.WindowEvent e) {
+                carregar();
+            }
+        }); 
     } 
 
     private NewQuery() {
@@ -363,16 +369,7 @@ public class NewQuery extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void filtroEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filtroEspecialidadeActionPerformed
-        // tira esse meodo da aqui
-        DefaultListModel modeloLista = new DefaultListModel();
-        MedicoControle doctorController = new MedicoControle();
-        List<String> listDoctore = doctorController.buscarEspecialidades();
-        
-        for (String string : listDoctore) {
-            
-        }
-        
-        
+
     }//GEN-LAST:event_filtroEspecialidadeActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
@@ -413,6 +410,15 @@ public class NewQuery extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
+        private void carregar() {
+
+        DefaultComboBoxModel modeloComboBox = new DefaultComboBoxModel();
+        MedicoControle doctorController = new MedicoControle();
+        List<String> listDoctore = doctorController.buscarEspecialidades();
+        modeloComboBox.addAll(listDoctore);
+        
+        filtroEspecialidade.setModel(modeloComboBox);
+    }
     /**
      * @param args the command line arguments
      */
