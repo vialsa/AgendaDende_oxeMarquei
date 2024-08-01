@@ -4,10 +4,12 @@
  */
 package Controle;
 
+import Modelo.DAO.impl.ClinicaDAOJDBC;
 import java.sql.Date;
 import java.time.LocalDate;
 
 import Modelo.DAO.impl.PacienteDAOJDBC;
+import Modelo.Entidades.Clinica;
 import Modelo.Entidades.Paciente;
 import java.util.List;
 
@@ -32,5 +34,17 @@ public class PacienteControle {
         PacienteDAOJDBC pacienteDAO = new PacienteDAOJDBC();
         List listPatient = pacienteDAO.findAll();
         return listPatient;
+    }
+    
+    public Paciente buscarPaciente(int idPaciente){
+        try {
+            PacienteDAOJDBC pacienteDAOJDBC = new PacienteDAOJDBC();
+            Paciente paciente = pacienteDAOJDBC.findById(idPaciente);
+
+            return paciente;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
     }
 }

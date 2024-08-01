@@ -1,16 +1,19 @@
 package Controle;
 
 import Modelo.DAO.impl.SolicitacaoDAOJDBC;
+import Modelo.Entidades.Consulta;
 import Modelo.Entidades.Solicitacao;
 
 public class SolicitationController {
-    public boolean cadastrarSolicitacao(Solicitacao solicitation) {
+    public Solicitacao cadastrarSolicitacao(Solicitacao solicitation) {
         try {
             SolicitacaoDAOJDBC solicitationDAOJDBC = new SolicitacaoDAOJDBC();
-            solicitationDAOJDBC.insert(solicitation);
-            return true;
+            Solicitacao solicitacaoInserida = solicitationDAOJDBC.insert(solicitation);
+            return solicitacaoInserida;
+ 
         } catch (Exception e) {
-            return false;
+            e.printStackTrace();
+            return null;
         }
     }
 }

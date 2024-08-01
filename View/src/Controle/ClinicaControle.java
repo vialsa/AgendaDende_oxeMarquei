@@ -23,10 +23,15 @@ public class ClinicaControle {
     }
     
     public Clinica buscarClinica(int idClinica){
-        ClinicaDAOJDBC clinicaDAOJDBC = new ClinicaDAOJDBC();
-        Clinica clinica = clinicaDAOJDBC.findByID(idClinica);
-        
-        return clinica;
+        try {
+            ClinicaDAOJDBC clinicaDAOJDBC = new ClinicaDAOJDBC();
+            Clinica clinica = clinicaDAOJDBC.findByID(idClinica);
+
+            return clinica;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
     }
         
     public boolean adicionarClinica(Clinica clinica) {
@@ -39,4 +44,5 @@ public class ClinicaControle {
             return false;
         }
     }
+    
 }

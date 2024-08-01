@@ -11,34 +11,48 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import Modelo.DAO.SolicitacaoDAO;
+import java.sql.Statement;
+        
 public class SolicitacaoDAOJDBC implements SolicitacaoDAO {
     private Connection conn;
-
+    
     @Override
-    public void insert(Solicitacao solicitation) {
+    public Solicitacao insert(Solicitacao solicitation) {
+        String sql = "INSERT INTO SOLICITATION(CRM, request, nameOfRequestDoctor, idPatient) VALUES (?, ?, ?, ?)";
         PreparedStatement pstm = null;
+        Connection conn = null;
 
         try {
             conn = FabricaDeConexao.getConnection();
-            pstm = conn.prepareStatement(
-                    "INSERT INTO SOLICITATION(CRM, request, nameOfRequestDoctor, idPatient) VALUES (?, ?, ?, ?)"
-            );
+            pstm = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
             pstm.setString(1, solicitation.getCRM());
             pstm.setString(2, solicitation.getRequest());
             pstm.setString(3, solicitation.getNameOfRequestDoctor());
             pstm.setInt(4, solicitation.getPatient().getIdPatient());
 
-            pstm.execute();
+            int affectedRows = pstm.executeUpdate();
+            if (affectedRows == 0) {
+                throw new SQLException("Falha ao inserir a solicitação, nenhuma linha afetada.");
+            }
 
-        }catch (SQLException e) {
+            try (ResultSet generatedKeys = pstm.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    solicitation.setIdSolicitation(generatedKeys.getInt(1)); // supondo que a classe Solicitacao tenha um método setId
+                } else {
+                    throw new SQLException("Falha ao inserir a solicitação, nenhum ID obtido.");
+                }
+            }
+            return solicitation;
+        } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
-            FabricaDeConexao.closeConnection(conn);
+        } finally {
             FabricaDeConexao.closeStatement(pstm);
+            FabricaDeConexao.closeConnection(conn);
         }
+        return null;
     }
-
+    
     @Override
     public Solicitacao findById(Integer idSolicitation) {
         PreparedStatement pstm = null;

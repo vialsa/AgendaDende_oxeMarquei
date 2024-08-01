@@ -42,4 +42,16 @@ public class MedicoControle {
         
         return especialidades;
     }
+    
+    public Medico buscarMedico(int idMedico) {
+        try {
+            MedicoDAOJDBC medicoDAOJDBC = new MedicoDAOJDBC();
+            Medico medico = medicoDAOJDBC.findByID(idMedico);
+
+            return medico;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
 }

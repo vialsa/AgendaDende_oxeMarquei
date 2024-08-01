@@ -5,10 +5,37 @@
 package View.Admin;
 
 import Controle.MedicoControle;
+import Controle.PacienteControle;
+import Controle.PublicAgentController;
+import Controle.QueryController;
+import Controle.SessionController;
+import Controle.SolicitationController;
+import Modelo.DAO.impl.AgentePublicoDAOJDBC;
+import Modelo.DAO.impl.ClinicaDAOJDBC;
+import Modelo.DAO.impl.ConsultaDAOJDBC;
+import Modelo.DAO.impl.MedicoDAOJDBC;
+import Modelo.DAO.impl.PacienteDAOJDBC;
+import Modelo.DAO.impl.SolicitacaoDAOJDBC;
+import Modelo.Entidades.AgentePublico;
+import Modelo.Entidades.Clinica;
+import Modelo.Entidades.Consulta;
 import Modelo.Entidades.Medico;
+import Modelo.Entidades.Paciente;
+import Modelo.Entidades.Solicitacao;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -17,6 +44,7 @@ import javax.swing.DefaultListModel;
 public class NewQuery extends javax.swing.JFrame {
     private int idPaciente;
     private int idMedico;
+    private String horaDaConsulta;
     /**
      * Creates new form Login
      * @param idPacienteProps
@@ -29,6 +57,7 @@ public class NewQuery extends javax.swing.JFrame {
             @Override
             public void windowOpened(java.awt.event.WindowEvent e) {
                 carregarEspecialidade();
+                carregarHoras();
             }
         }); 
     } 
@@ -62,11 +91,11 @@ public class NewQuery extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        HoraList = new javax.swing.JList<>();
+        ListaHoras = new javax.swing.JList<>();
         btnDataSearch = new javax.swing.JButton();
-        btnSelect1 = new javax.swing.JButton();
+        btnSelecionarHora = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        SeachDataTxt = new javax.swing.JFormattedTextField();
+        dataConsulta = new javax.swing.JFormattedTextField();
         jLabel12 = new javax.swing.JLabel();
         requerimento = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
@@ -74,7 +103,7 @@ public class NewQuery extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         CRM = new javax.swing.JFormattedTextField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        BotaoMarcarConsulta = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -175,17 +204,17 @@ public class NewQuery extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setText("Data");
 
-        HoraList.setModel(new javax.swing.AbstractListModel<String>() {
+        ListaHoras.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        HoraList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+        ListaHoras.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                HoraListValueChanged(evt);
+                ListaHorasValueChanged(evt);
             }
         });
-        jScrollPane3.setViewportView(HoraList);
+        jScrollPane3.setViewportView(ListaHoras);
 
         btnDataSearch.setBackground(new java.awt.Color(0, 204, 0));
         btnDataSearch.setText("Buscar");
@@ -195,10 +224,10 @@ public class NewQuery extends javax.swing.JFrame {
             }
         });
 
-        btnSelect1.setText("Selecionar");
-        btnSelect1.addActionListener(new java.awt.event.ActionListener() {
+        btnSelecionarHora.setText("Selecionar");
+        btnSelecionarHora.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSelect1ActionPerformed(evt);
+                btnSelecionarHoraActionPerformed(evt);
             }
         });
 
@@ -206,7 +235,7 @@ public class NewQuery extends javax.swing.JFrame {
         jLabel4.setText("Hora");
 
         try {
-            SeachDataTxt.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+            dataConsulta.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -221,14 +250,14 @@ public class NewQuery extends javax.swing.JFrame {
                     .addComponent(jScrollPane3)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnSelect1))
+                        .addComponent(btnSelecionarHora))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
                             .addComponent(jLabel3))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(SeachDataTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(dataConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                         .addComponent(btnDataSearch)))
                 .addContainerGap())
@@ -241,13 +270,13 @@ public class NewQuery extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDataSearch)
-                    .addComponent(SeachDataTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(dataConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(8, 8, 8)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSelect1)
+                .addComponent(btnSelecionarHora)
                 .addContainerGap())
         );
 
@@ -274,11 +303,11 @@ public class NewQuery extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(0, 204, 0));
-        jButton2.setText("Confirmar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        BotaoMarcarConsulta.setBackground(new java.awt.Color(0, 204, 0));
+        BotaoMarcarConsulta.setText("Confirmar");
+        BotaoMarcarConsulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                BotaoMarcarConsultaActionPerformed(evt);
             }
         });
 
@@ -306,7 +335,7 @@ public class NewQuery extends javax.swing.JFrame {
                             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jButton2)))))
+                                .addComponent(BotaoMarcarConsulta)))))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -335,7 +364,7 @@ public class NewQuery extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(BotaoMarcarConsulta))
                 .addGap(16, 16, 16))
         );
 
@@ -392,7 +421,7 @@ public class NewQuery extends javax.swing.JFrame {
 
     private void btnDataSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDataSearchActionPerformed
         // TODO add your handling code here:
-        Object data = SeachDataTxt.getValue();
+        Object data = dataConsulta.getValue();
         String data1 = (String)data;
         String[] datafor = data1.split("/");
         String data3 = datafor[2] + "-" + datafor[1] + "-" + datafor[0];
@@ -401,14 +430,15 @@ public class NewQuery extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnDataSearchActionPerformed
 
-    private void btnSelect1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelect1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSelect1ActionPerformed
+    private void btnSelecionarHoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarHoraActionPerformed
+        horaDaConsulta = ListaHoras.getSelectedValue();
+        System.out.println(horaDaConsulta);
+    }//GEN-LAST:event_btnSelecionarHoraActionPerformed
 
-    private void HoraListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_HoraListValueChanged
+    private void ListaHorasValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_ListaHorasValueChanged
         // TODO add your handling code here:
         // Populate JList with MySQL (java netbeans) https://www.youtube.com/watch?v=jQNH7-1YPCs
-    }//GEN-LAST:event_HoraListValueChanged
+    }//GEN-LAST:event_ListaHorasValueChanged
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         PatientSelect patientSelect = new PatientSelect();
@@ -416,11 +446,74 @@ public class NewQuery extends javax.swing.JFrame {
         patientSelect.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void BotaoMarcarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoMarcarConsultaActionPerformed
+        String crmMedico = CRM.getText();
+        String medicoRequerente = nomeMedicoRequerente.getText();
+        String requerimentoMedico = requerimento.getText();
+        String dataConsultaPaciete = dataConsulta.getText();
+        
+        
+        if (!crmMedico.equals("") && !medicoRequerente.equals("") && !requerimentoMedico.equals("")) {
+            //Criar solicitação1
+            if (!requerimentoMedico.equals("") && !dataConsultaPaciete.equals("")) {
+                if (idPaciente != 0 && idMedico != 0) {
+                    String dataHoraConcatenada = dataConsultaPaciete + " " + horaDaConsulta;
+                    
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+
+
+                    // Fazer o parsing da string concatenada para um objeto Date
+                    LocalDateTime dataHoraEmTimeStamp;
+                    dataHoraEmTimeStamp = LocalDateTime.parse(dataHoraConcatenada, formatter);
+                    PacienteControle pacienteControle = new PacienteControle();
+                    Paciente paciente = pacienteControle.buscarPaciente(idPaciente);
+                    
+                    
+                    SolicitationController solicitacaoControle = new SolicitationController();
+                    Solicitacao novaSolicitacao = new Solicitacao(crmMedico, requerimentoMedico, medicoRequerente, paciente);
+                    
+                    Solicitacao solicitacaoInserida = solicitacaoControle.cadastrarSolicitacao(novaSolicitacao);
+                            
+                    MedicoDAOJDBC medicoDAOJDBC = new MedicoDAOJDBC();
+                    MedicoControle medicoControle = new MedicoControle();
+                    Medico medico = medicoControle.buscarMedico(idMedico);
+                    
+                    ClinicaDAOJDBC clinicaDAOJDBC = new ClinicaDAOJDBC();
+                    Clinica clinicaMedico = clinicaDAOJDBC.findByID(medico.getClinic().getIdClinic());
+                    
+                    AgentePublicoDAOJDBC agentePublicoDAOJDBC = new AgentePublicoDAOJDBC();
+                    
+                    PublicAgentController agentePublicoControle = new PublicAgentController();
+                    AgentePublico agentePublico = agentePublicoControle.buscarAgente(SessionController.idPublicAgent);
+                    
+                    
+                    Consulta novaConsulta = new Consulta(solicitacaoInserida, agentePublico, clinicaMedico, medico, dataHoraEmTimeStamp);
+                    QueryController consultaControle = new QueryController();
+                    
+                    boolean marcou = consultaControle.marcarConsulta(novaConsulta);
+                    if (marcou) {
+                        JOptionPane.showMessageDialog(null, "Consulta Marcada com Sucesso");
+                        PatientSelect patientSelect = new PatientSelect();
+                        this.dispose();
+                        patientSelect.setVisible(true);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Não foi possível realizar marcaçao");
+                    }
+                    
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Códigos faltantes");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Dados vazios");
+            }
+            
+        } else {
+            JOptionPane.showMessageDialog(null, "Dados em relação a ficha estão vazios");
+        }
+    }//GEN-LAST:event_BotaoMarcarConsultaActionPerformed
         //Carrega as especialidades no comboBox
-        private void carregarEspecialidade() {
+    private void carregarEspecialidade() {
 
         DefaultComboBoxModel<String> modeloComboBox = new DefaultComboBoxModel<>();
         
@@ -437,7 +530,7 @@ public class NewQuery extends javax.swing.JFrame {
     }
         
         //Carrega os medicos na lista
-        private void carregarMedico(String especialidade) {
+    private void carregarMedico(String especialidade) {
             
         DefaultListModel<String> modeloLista = new DefaultListModel<>();
         
@@ -451,6 +544,21 @@ public class NewQuery extends javax.swing.JFrame {
         }
         MedicoList.setModel(modeloLista);
         
+    }
+    
+    private void carregarHoras() {
+        DefaultListModel<String> modeloLista = new DefaultListModel<>();
+        
+        String[] horas = {
+            "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00",
+            "11:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", 
+            "17:00", "17:30", "18:00"
+        };
+        
+        for (String hora : horas) {
+            modeloLista.addElement(hora);
+        }
+        ListaHoras.setModel(modeloLista);
     }
         
     /**
@@ -1000,17 +1108,17 @@ public class NewQuery extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotaoMarcarConsulta;
     private javax.swing.JFormattedTextField CRM;
-    private javax.swing.JList<String> HoraList;
+    private javax.swing.JList<String> ListaHoras;
     private javax.swing.JList<String> MedicoList;
-    private javax.swing.JFormattedTextField SeachDataTxt;
     private javax.swing.JButton btnDataSearch;
     private javax.swing.JButton btnSearch;
+    private javax.swing.JButton btnSelecionarHora;
     private javax.swing.JButton btnSelecionarMedico;
-    private javax.swing.JButton btnSelect1;
+    private javax.swing.JFormattedTextField dataConsulta;
     private javax.swing.JComboBox<String> filtroEspecialidade;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;

@@ -95,4 +95,8 @@ public class Consulta {
                 "Médico da Consulta: " + this.getDoctor().getName() + "\n" +
                 "Especialidade: " + this.solicitation.getRequest();
     }
+
+    public void setId(int aInt) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

@@ -5,6 +5,7 @@
 package Controle;
 
 import Modelo.DAO.impl.ConsultaDAOJDBC;
+import Modelo.Entidades.Consulta;
 import java.util.List;
 
 /**
@@ -12,10 +13,21 @@ import java.util.List;
  * @author LAB118-PC01
  */
 public class QueryController {
-    public List buscarConsultas(){
-        ConsultaDAOJDBC queryDAOJDBC = new ConsultaDAOJDBC();
-        List listaConsulta = queryDAOJDBC.findAll();
+    public List<Consulta> buscarConsultas(){
+        ConsultaDAOJDBC consultaDAOJDBC = new ConsultaDAOJDBC();
+        List<Consulta> listaConsulta = consultaDAOJDBC.findAll();
         return listaConsulta;
+    }
+    
+    public boolean marcarConsulta(Consulta consulta) {
+        try {
+            ConsultaDAOJDBC consultaDAOJDBC = new ConsultaDAOJDBC();
+            consultaDAOJDBC.insert(consulta);
+            return true;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
     }
     
 }
