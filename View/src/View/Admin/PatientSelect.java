@@ -9,7 +9,11 @@ import Controle.PacienteControle;
 import Modelo.Entidades.Clinica;
 import Modelo.Entidades.Paciente;
 import View.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.List;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -17,7 +21,8 @@ import javax.swing.table.DefaultTableModel;
  * @author Vitor
  */
 public class PatientSelect extends javax.swing.JFrame {
-
+    private DefaultTableModel modeloLista = new DefaultTableModel();
+    private int idPacienteSelecionado;
     /**
      * Creates new form Login
      */
@@ -29,6 +34,18 @@ public class PatientSelect extends javax.swing.JFrame {
                 carregar();
             }  
         });
+       
+
+        TablePatient.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                int row = TablePatient.getSelectedRow();
+                int idPaciente = (int) TablePatient.getValueAt(row, 0); // A coluna 0 é onde está o idPaciente
+                idPacienteSelecionado = idPaciente;
+            }
+        });
+
+        pack();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -334,7 +351,7 @@ public class PatientSelect extends javax.swing.JFrame {
     private void btnScheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnScheduleActionPerformed
         // TODO add your handling code here:
         String sigTapPatient = (String) TablePatient.getValueAt(TablePatient.getSelectedRow(), 2);
-        NewQuery inicialNewQuery = new NewQuery();
+        NewQuery inicialNewQuery = new NewQuery(idPacienteSelecionado);
         this.dispose();
         inicialNewQuery.setVisible(true);
     }//GEN-LAST:event_btnScheduleActionPerformed
@@ -378,24 +395,27 @@ public class PatientSelect extends javax.swing.JFrame {
         this.dispose();
         inicialEditPatient.setVisible(true);
     }//GEN-LAST:event_btnEditActionPerformed
-        private void carregar() {
-        
+    
+    private void carregar() {
+
         DefaultTableModel modeloLista = new DefaultTableModel();    
-        
+
         modeloLista.addColumn("Codigo");        
         modeloLista.addColumn("Nome");
         modeloLista.addColumn("Sigtap");
 
-        
         PacienteControle pacientes = new PacienteControle();
+        @SuppressWarnings("unchecked")
         List<Paciente> listaPacientes = pacientes.buscarPacientes();
-       
+
         for (Paciente listaPaciente : listaPacientes) {
             modeloLista.addRow(new Object[]{listaPaciente.getIdPatient(), listaPaciente.getName(), listaPaciente.getSIGTAP()}
             );
         }
         TablePatient.setModel(modeloLista);
     }
+    
+
     /**
      * @param args the command line arguments
      */

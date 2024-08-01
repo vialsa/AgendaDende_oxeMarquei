@@ -9,7 +9,10 @@ import java.time.LocalDate;
 import java.util.Date;
 
 import Controle.PacienteControle;
+import Modelo.Entidades.Paciente;
+import View.Admin.HomeScreenAdmin;
 import java.time.format.DateTimeParseException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -486,15 +489,21 @@ public class NewPatient extends javax.swing.JFrame {
                 throw new IllegalArgumentException("Data de nascimento inválida. Formato esperado: DD/MM/YYYY");
             }
             
-            PacienteControle controllerNovoPaciente = new PacienteControle();
+            PacienteControle pacienteControle = new PacienteControle();
+            Paciente paciente;
             if (!tel2.equals("")) {
-                controllerNovoPaciente.cadastroPaciente(nome, CPF, RG, dataNascimento, tel1, tel2, endereco, sigtap, email);   
+                paciente = new Paciente(nome, CPF, RG, tel1, tel2, dataNascimento, endereco, email, sigtap);   
             } else {
-                controllerNovoPaciente.cadastroPaciente(nome, CPF, RG, dataNascimento, tel1, endereco, sigtap, email);
+                paciente = new Paciente(nome, CPF, RG, tel1, dataNascimento, endereco, email, sigtap);   
             }
-            HomeScreen telaNormal = new HomeScreen();
-            this.dispose();
-            telaNormal.setVisible(true);
+            if (pacienteControle.cadastroPaciente(paciente)) {
+                JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
+                HomeScreenAdmin homeScreenAdmin = new HomeScreenAdmin();
+                this.dispose();
+                homeScreenAdmin.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "Não foi possível realizar o cadastro");
+            }
         }else {
             throw new IllegalArgumentException("Todos os campos obrigatórios devem ser preenchidos");
         }

@@ -13,13 +13,21 @@ import javax.swing.DefaultListModel;
  * @author Vitor
  */
 public class NewQuery extends javax.swing.JFrame {
-
+    private int idPaciente;
     /**
      * Creates new form Login
+     * @param idPacienteProps
      */
-    public NewQuery() {
+    public NewQuery(int idPacienteProps) {
         initComponents();
+        System.out.println(idPacienteProps);
+        this.idPaciente = idPacienteProps;
+        
     } 
+
+    private NewQuery() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -396,9 +404,9 @@ public class NewQuery extends javax.swing.JFrame {
     }//GEN-LAST:event_HoraListValueChanged
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        QueriesSelect queriesSelect = new QueriesSelect();
+        PatientSelect patientSelect = new PatientSelect();
         this.dispose();
-        queriesSelect.setVisible(true);
+        patientSelect.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
