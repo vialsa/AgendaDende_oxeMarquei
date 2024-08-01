@@ -5,7 +5,7 @@ Este projeto foi desenvolvido como avaliação da disciplina de *Linguagem de Pr
 
 ## Minimundo e Fluxo de uso
 
-### Motivação
+###  Motivação
 
 A central de marcação da cidade X realiza a marcação de consultas de saúde da população com bastante afinco, entretanto todos os seus processos ainda são manuais, dificultando a organização das informações dos pacientes atendidos pela central. Todos os registros são em papeis, todavia, a secretária da saúde da cidade X deseja automatizar todo esse sistema, seja no cadastro dos cidadãos, atualização dos dados dos pacientes, marcação/agendamento de consultas e até a comunicação com os cidadãos atendidos.
 
