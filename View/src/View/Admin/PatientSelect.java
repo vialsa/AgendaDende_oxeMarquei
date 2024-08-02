@@ -111,6 +111,11 @@ public class PatientSelect extends javax.swing.JFrame {
         jLabel7.setText("\n");
 
         btnLogout6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Btn_logout.png"))); // NOI18N
+        btnLogout6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogout6ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
@@ -387,6 +392,13 @@ public class PatientSelect extends javax.swing.JFrame {
         this.dispose();
         inicialEditPatient.setVisible(true);
     }//GEN-LAST:event_btnEditActionPerformed
+
+    private void btnLogout6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogout6ActionPerformed
+        // TODO add your handling code here:
+        Login telaLogin = new Login();
+        this.dispose();
+        telaLogin.setVisible(true);
+    }//GEN-LAST:event_btnLogout6ActionPerformed
     
     private void carregar() {
 

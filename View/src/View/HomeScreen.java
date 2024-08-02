@@ -163,6 +163,9 @@ public class HomeScreen extends javax.swing.JFrame {
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         // TODO add your handling code here:
+        Login telaLogin = new Login();
+        this.dispose();
+        telaLogin.setVisible(true);
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     /**

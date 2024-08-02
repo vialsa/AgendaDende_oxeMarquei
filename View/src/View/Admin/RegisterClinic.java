@@ -61,8 +61,8 @@ public class RegisterClinic extends javax.swing.JFrame {
         SearchTxt = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         btnAddClinic = new javax.swing.JButton();
-        btnEdit = new javax.swing.JButton();
-        btnDelet = new javax.swing.JButton();
+        btnEditarClinica = new javax.swing.JButton();
+        btnDeletarClinica = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         ClinicTable = new javax.swing.JTable();
         label1 = new java.awt.Label();
@@ -71,6 +71,8 @@ public class RegisterClinic extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         TableDoctor = new javax.swing.JTable();
         btnAddDoctor = new javax.swing.JButton();
+        btnDeletarMedico = new javax.swing.JButton();
+        btnEditarMedico = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -112,6 +114,11 @@ public class RegisterClinic extends javax.swing.JFrame {
         jLabel1.setText("\n");
 
         btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Btn_logout.png"))); // NOI18N
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -214,9 +221,9 @@ public class RegisterClinic extends javax.swing.JFrame {
             }
         });
 
-        btnEdit.setText("Editar");
+        btnEditarClinica.setText("Editar");
 
-        btnDelet.setText("Excluir");
+        btnDeletarClinica.setText("Excluir");
 
         ClinicTable.setBackground(new java.awt.Color(204, 204, 204));
         ClinicTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -256,10 +263,10 @@ public class RegisterClinic extends javax.swing.JFrame {
                                 .addGap(8, 8, 8)
                                 .addComponent(btnSearch))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                                .addComponent(btnDelet)
+                                .addComponent(btnDeletarClinica)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnEdit)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnEditarClinica)
+                                .addGap(18, 18, 18)
                                 .addComponent(btnAddClinic)))
                         .addContainerGap())))
         );
@@ -276,8 +283,8 @@ public class RegisterClinic extends javax.swing.JFrame {
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnDelet)
-                    .addComponent(btnEdit)
+                    .addComponent(btnDeletarClinica)
+                    .addComponent(btnEditarClinica)
                     .addComponent(btnAddClinic))
                 .addContainerGap())
         );
@@ -312,24 +319,30 @@ public class RegisterClinic extends javax.swing.JFrame {
             }
         });
 
+        btnDeletarMedico.setText("Excluir");
+
+        btnEditarMedico.setText("Editar");
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(jScrollPane3)
                         .addGap(1, 1, 1))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnAddDoctor)))
+                        .addComponent(btnDeletarMedico)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnEditarMedico)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnAddDoctor))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -339,7 +352,10 @@ public class RegisterClinic extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAddDoctor)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAddDoctor)
+                    .addComponent(btnDeletarMedico)
+                    .addComponent(btnEditarMedico))
                 .addContainerGap())
         );
 
@@ -452,6 +468,13 @@ public class RegisterClinic extends javax.swing.JFrame {
         this.dispose();
         telaAddClinic.setVisible(true);
     }//GEN-LAST:event_btnAddClinicActionPerformed
+
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        // TODO add your handling code here:
+        Login telaLogin = new Login();
+        this.dispose();
+        telaLogin.setVisible(true);
+    }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void carregarClinicas() {
 
@@ -802,8 +825,10 @@ public class RegisterClinic extends javax.swing.JFrame {
     private javax.swing.JButton btnAddDoctor;
     private javax.swing.JToggleButton btnCadastrar;
     private javax.swing.JToggleButton btnConsulta;
-    private javax.swing.JButton btnDelet;
-    private javax.swing.JButton btnEdit;
+    private javax.swing.JButton btnDeletarClinica;
+    private javax.swing.JButton btnDeletarMedico;
+    private javax.swing.JButton btnEditarClinica;
+    private javax.swing.JButton btnEditarMedico;
     private javax.swing.JToggleButton btnGerenciarUser;
     private javax.swing.JButton btnLogout;
     private javax.swing.JToggleButton btnPaciente;
