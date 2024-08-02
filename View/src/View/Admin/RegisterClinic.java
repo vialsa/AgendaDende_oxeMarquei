@@ -218,7 +218,7 @@ public class RegisterClinic extends javax.swing.JFrame {
 
         btnEdit.setText("Editar");
 
-        btnDelet.setText("Excliur");
+        btnDelet.setText("Excluir");
 
         ClinicTable.setBackground(new java.awt.Color(204, 204, 204));
         ClinicTable.setModel(new javax.swing.table.DefaultTableModel(
