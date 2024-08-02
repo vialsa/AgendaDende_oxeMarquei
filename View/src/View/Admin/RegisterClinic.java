@@ -59,7 +59,6 @@ public class RegisterClinic extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         btnSearch = new javax.swing.JButton();
         SearchTxt = new javax.swing.JTextField();
-        FilterClinic = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         btnAddClinic = new javax.swing.JButton();
         btnEdit = new javax.swing.JButton();
@@ -205,16 +204,15 @@ public class RegisterClinic extends javax.swing.JFrame {
             }
         });
 
-        FilterClinic.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FilterClinicActionPerformed(evt);
-            }
-        });
-
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Lista de Clinicas");
 
         btnAddClinic.setText("Adicionar Clinica");
+        btnAddClinic.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddClinicActionPerformed(evt);
+            }
+        });
 
         btnEdit.setText("Editar");
 
@@ -254,8 +252,6 @@ public class RegisterClinic extends javax.swing.JFrame {
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane4)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                                .addComponent(FilterClinic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(SearchTxt)
                                 .addGap(8, 8, 8)
                                 .addComponent(btnSearch))
@@ -275,7 +271,6 @@ public class RegisterClinic extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SearchTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(FilterClinic, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSearch))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -404,10 +399,6 @@ public class RegisterClinic extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void FilterClinicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FilterClinicActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_FilterClinicActionPerformed
-
     private void SearchTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_SearchTxtActionPerformed
@@ -454,6 +445,13 @@ public class RegisterClinic extends javax.swing.JFrame {
         this.dispose();
         telaAddDoctor.setVisible(true);
     }//GEN-LAST:event_btnAddDoctorActionPerformed
+
+    private void btnAddClinicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddClinicActionPerformed
+        // TODO add your handling code here:
+        AddClinic telaAddClinic = new AddClinic();
+        this.dispose();
+        telaAddClinic.setVisible(true);
+    }//GEN-LAST:event_btnAddClinicActionPerformed
 
     private void carregarClinicas() {
 
@@ -798,7 +796,6 @@ public class RegisterClinic extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable ClinicTable;
-    private javax.swing.JComboBox<String> FilterClinic;
     private javax.swing.JTextField SearchTxt;
     private javax.swing.JTable TableDoctor;
     private javax.swing.JButton btnAddClinic;

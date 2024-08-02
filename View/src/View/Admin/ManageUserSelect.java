@@ -53,8 +53,7 @@ public class ManageUserSelect extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         btnSearch = new javax.swing.JButton();
         SearchTxt = new javax.swing.JTextField();
-        FilterUser = new javax.swing.JComboBox<>();
-        btn_NovoPaciente = new javax.swing.JButton();
+        btn_NovoUsuario = new javax.swing.JButton();
         label1 = new java.awt.Label();
         btnEdit = new javax.swing.JButton();
         btnDelet = new javax.swing.JButton();
@@ -89,27 +88,27 @@ public class ManageUserSelect extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         jScrollPane1.setViewportView(TableUser);
 
         btnSearch.setText("Buscar");
 
-        FilterUser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Codigo", "Nome", "Sigtap", " " }));
-        FilterUser.addActionListener(new java.awt.event.ActionListener() {
+        btn_NovoUsuario.setBackground(new java.awt.Color(0, 255, 153));
+        btn_NovoUsuario.setText("Novo Usuario");
+        btn_NovoUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FilterUserActionPerformed(evt);
-            }
-        });
-
-        btn_NovoPaciente.setBackground(new java.awt.Color(0, 255, 153));
-        btn_NovoPaciente.setText("Novo Usuario");
-        btn_NovoPaciente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_NovoPacienteActionPerformed(evt);
+                btn_NovoUsuarioActionPerformed(evt);
             }
         });
 
@@ -121,13 +120,11 @@ public class ManageUserSelect extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(FilterUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(SearchTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+                        .addComponent(SearchTxt)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnSearch))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(btn_NovoPaciente)
+                        .addComponent(btn_NovoUsuario)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -135,12 +132,11 @@ public class ManageUserSelect extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap(14, Short.MAX_VALUE)
-                .addComponent(btn_NovoPaciente)
+                .addComponent(btn_NovoUsuario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSearch)
-                    .addComponent(SearchTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(FilterUser, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(SearchTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -315,13 +311,12 @@ public class ManageUserSelect extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void FilterUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FilterUserActionPerformed
+    private void btn_NovoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_NovoUsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_FilterUserActionPerformed
-
-    private void btn_NovoPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_NovoPacienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_NovoPacienteActionPerformed
+        ManageUserEdit telaUserSelect = new ManageUserEdit();
+        this.dispose();
+        telaUserSelect.setVisible(true);
+    }//GEN-LAST:event_btn_NovoUsuarioActionPerformed
 
     private void btnPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPacienteActionPerformed
         // TODO add your handling code here:
@@ -661,7 +656,6 @@ public class ManageUserSelect extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> FilterUser;
     private javax.swing.JTextField SearchTxt;
     private javax.swing.JTable TableUser;
     private javax.swing.JToggleButton btnCadastrar;
@@ -673,7 +667,7 @@ public class ManageUserSelect extends javax.swing.JFrame {
     private javax.swing.JToggleButton btnPaciente;
     private javax.swing.JToggleButton btnRelatorio;
     private javax.swing.JButton btnSearch;
-    private javax.swing.JButton btn_NovoPaciente;
+    private javax.swing.JButton btn_NovoUsuario;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel16;

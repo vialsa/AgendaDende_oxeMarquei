@@ -73,7 +73,6 @@ public class PatientSelect extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         btnSearch = new javax.swing.JButton();
         SearchTxt = new javax.swing.JTextField();
-        FilterPatient = new javax.swing.JComboBox<>();
         btnNewPatient = new javax.swing.JButton();
         label1 = new java.awt.Label();
         btnEdit = new javax.swing.JButton();
@@ -202,21 +201,21 @@ public class PatientSelect extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         jScrollPane1.setViewportView(TablePatient);
 
         btnSearch.setText("Buscar");
-
-        FilterPatient.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Codigo", "Nome", "Sigtap", " " }));
-        FilterPatient.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FilterPatientActionPerformed(evt);
-            }
-        });
 
         btnNewPatient.setBackground(new java.awt.Color(0, 255, 153));
         btnNewPatient.setText("Novo Paciente");
@@ -234,9 +233,7 @@ public class PatientSelect extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(FilterPatient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(SearchTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+                        .addComponent(SearchTxt)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnSearch))
                     .addGroup(jPanel5Layout.createSequentialGroup()
@@ -251,7 +248,6 @@ public class PatientSelect extends javax.swing.JFrame {
                 .addComponent(btnNewPatient)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(FilterPatient, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SearchTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSearch))
                 .addContainerGap(8, Short.MAX_VALUE))
@@ -337,10 +333,6 @@ public class PatientSelect extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void FilterPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FilterPatientActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_FilterPatientActionPerformed
 
     private void btnNewPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewPatientActionPerformed
         NewPatient telaNovoPaciente = new NewPatient();
@@ -579,7 +571,6 @@ public class PatientSelect extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> FilterPatient;
     private javax.swing.JTextField SearchTxt;
     private javax.swing.JTable TablePatient;
     private javax.swing.JToggleButton btnCadastrar;
