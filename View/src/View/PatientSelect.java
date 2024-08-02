@@ -4,17 +4,43 @@
  */
 package View;
 
+import Controle.PacienteControle;
+import Modelo.Entidades.Paciente;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Vitor
  */
 public class PatientSelect extends javax.swing.JFrame {
-
+    private DefaultTableModel modeloLista = new DefaultTableModel();
+    private int idPacienteSelecionado;
     /**
      * Creates new form Login
      */
     public PatientSelect() {
         initComponents();
+        addWindowListener( new java.awt.event.WindowAdapter(){
+            @Override
+                public void windowOpened(java.awt.event.WindowEvent e) {
+                carregar();
+            }  
+        });
+       
+
+        TablePatient.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                int row = TablePatient.getSelectedRow();
+                int idPaciente = (int) TablePatient.getValueAt(row, 0); // A coluna 0 é onde está o idPaciente
+                idPacienteSelecionado = idPaciente;
+            }
+        });
+
+        pack();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -286,18 +312,35 @@ public class PatientSelect extends javax.swing.JFrame {
 
     private void btnScheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnScheduleActionPerformed
         // TODO add your handling code here:
-        NewQuery inicialNewQuery = new NewQuery();
+        String sigTapPatient = (String) TablePatient.getValueAt(TablePatient.getSelectedRow(), 2);
+        NewQuery inicialNewQuery = new NewQuery(idPacienteSelecionado);
         this.dispose();
         inicialNewQuery.setVisible(true);
     }//GEN-LAST:event_btnScheduleActionPerformed
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         // TODO add your handling code here:
-        NewQuery inicialNewQuery = new NewQuery();
-        this.dispose();
-        inicialNewQuery.setVisible(true);
     }//GEN-LAST:event_btnLogoutActionPerformed
 
+    private void carregar() {
+
+        DefaultTableModel modeloLista = new DefaultTableModel();    
+
+        modeloLista.addColumn("Codigo");        
+        modeloLista.addColumn("Nome");
+        modeloLista.addColumn("Sigtap");
+
+        PacienteControle pacientes = new PacienteControle();
+        @SuppressWarnings("unchecked")
+        List<Paciente> listaPacientes = pacientes.buscarPacientes();
+
+        for (Paciente listaPaciente : listaPacientes) {
+            modeloLista.addRow(new Object[]{listaPaciente.getIdPatient(), listaPaciente.getName(), listaPaciente.getSIGTAP()}
+            );
+        }
+        TablePatient.setModel(modeloLista);
+    }
+    
     /**
      * @param args the command line arguments
      */

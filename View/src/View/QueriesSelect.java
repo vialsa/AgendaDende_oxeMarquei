@@ -4,6 +4,17 @@
  */
 package View;
 
+import Controle.QueryController;
+import Modelo.DAO.impl.ClinicaDAOJDBC;
+import Modelo.DAO.impl.PacienteDAOJDBC;
+import Modelo.DAO.impl.SolicitacaoDAOJDBC;
+import Modelo.Entidades.Clinica;
+import Modelo.Entidades.Consulta;
+import Modelo.Entidades.Paciente;
+import Modelo.Entidades.Solicitacao;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Vitor
@@ -15,6 +26,12 @@ public class QueriesSelect extends javax.swing.JFrame {
      */
     public QueriesSelect() {
         initComponents();
+        addWindowListener( new java.awt.event.WindowAdapter(){
+            @Override
+                public void windowOpened(java.awt.event.WindowEvent e) {
+                carregar();
+            }  
+        });
     }
 
     /**
@@ -41,8 +58,6 @@ public class QueriesSelect extends javax.swing.JFrame {
         SearchTxt = new javax.swing.JTextField();
         FilterQueries = new javax.swing.JComboBox<>();
         label1 = new java.awt.Label();
-        btnEdit = new javax.swing.JButton();
-        btnSchedule = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(736, 503));
@@ -126,17 +141,17 @@ public class QueriesSelect extends javax.swing.JFrame {
 
         TableQuery.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Codigo", "Nome", "Sigtap"
+                "Codigo", "Nome", "Data", "Local"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -145,6 +160,7 @@ public class QueriesSelect extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(TableQuery);
 
+        btnSearch.setBackground(new java.awt.Color(0, 204, 0));
         btnSearch.setText("Buscar");
 
         SearchTxt.addActionListener(new java.awt.event.ActionListener() {
@@ -191,30 +207,12 @@ public class QueriesSelect extends javax.swing.JFrame {
         label1.setPreferredSize(new java.awt.Dimension(73, 23));
         label1.setText("Consultas");
 
-        btnEdit.setBackground(new java.awt.Color(255, 255, 51));
-        btnEdit.setText("Editar");
-
-        btnSchedule.setBackground(new java.awt.Color(0, 255, 153));
-        btnSchedule.setText("Agendar");
-        btnSchedule.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnScheduleActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnSchedule)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnEdit)
-                        .addGap(4, 4, 4)))
+                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addComponent(label1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
@@ -226,12 +224,8 @@ public class QueriesSelect extends javax.swing.JFrame {
                 .addGap(2, 2, 2)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSchedule)
-                    .addComponent(btnEdit))
-                .addGap(8, 8, 8))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -287,20 +281,33 @@ public class QueriesSelect extends javax.swing.JFrame {
         inicialPacient.setVisible(true);
     }//GEN-LAST:event_btnPacienteMenuActionPerformed
 
-    private void btnScheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnScheduleActionPerformed
-        // TODO add your handling code here:
-        NewQuery inicialNewQuery = new NewQuery();
-        this.dispose();
-        inicialNewQuery.setVisible(true);
-    }//GEN-LAST:event_btnScheduleActionPerformed
-
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         // TODO add your handling code here:
-        NewQuery inicialNewQuery = new NewQuery();
-        this.dispose();
-        inicialNewQuery.setVisible(true);
     }//GEN-LAST:event_btnLogoutActionPerformed
-
+    private void carregar() {
+        
+        DefaultTableModel modeloLista = new DefaultTableModel();    
+        
+        modeloLista.addColumn("Codigo");        
+        modeloLista.addColumn("Nome");
+        modeloLista.addColumn("Data");
+        modeloLista.addColumn("Local");
+        
+        QueryController consultas = new QueryController();
+        List<Consulta> listaConsultas = consultas.buscarConsultas();
+        SolicitacaoDAOJDBC solicitationDAOJDBC  = new SolicitacaoDAOJDBC();
+        PacienteDAOJDBC patientDAOJDBC = new PacienteDAOJDBC();
+        ClinicaDAOJDBC clinicDAOJDBC = new ClinicaDAOJDBC();
+       
+        for (Consulta listaConsulta : listaConsultas) {
+            Solicitacao solicitation = solicitationDAOJDBC.findById(listaConsulta.getSolicitation().getIdSolicitation());
+            Paciente patient = patientDAOJDBC.findById(solicitation.getPatient().getIdPatient());
+            Clinica clinic = clinicDAOJDBC.findByID(listaConsulta.getClinic().getIdClinic());
+            modeloLista.addRow(new Object[]{listaConsulta.getIdQuery(), patient.getName(), listaConsulta.getDateAndTimeConsultation(), clinic.getAddress()}
+            );
+        }
+        TableQuery.setModel(modeloLista);
+    }
     /**
      * @param args the command line arguments
      */
@@ -468,10 +475,8 @@ public class QueriesSelect extends javax.swing.JFrame {
     private javax.swing.JTextField SearchTxt;
     private javax.swing.JTable TableQuery;
     private javax.swing.JToggleButton btnConsultaMenu;
-    private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnLogout;
     private javax.swing.JToggleButton btnPacienteMenu;
-    private javax.swing.JButton btnSchedule;
     private javax.swing.JButton btnSearch;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

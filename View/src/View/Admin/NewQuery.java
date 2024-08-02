@@ -92,7 +92,6 @@ public class NewQuery extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         ListaHoras = new javax.swing.JList<>();
-        btnDataSearch = new javax.swing.JButton();
         btnSelecionarHora = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         dataConsulta = new javax.swing.JFormattedTextField();
@@ -216,14 +215,6 @@ public class NewQuery extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(ListaHoras);
 
-        btnDataSearch.setBackground(new java.awt.Color(0, 204, 0));
-        btnDataSearch.setText("Buscar");
-        btnDataSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDataSearchActionPerformed(evt);
-            }
-        });
-
         btnSelecionarHora.setText("Selecionar");
         btnSelecionarHora.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -254,12 +245,9 @@ public class NewQuery extends javax.swing.JFrame {
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
-                            .addComponent(jLabel3))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(dataConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                        .addComponent(btnDataSearch)))
+                            .addComponent(jLabel3)
+                            .addComponent(dataConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 105, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -268,10 +256,8 @@ public class NewQuery extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnDataSearch)
-                    .addComponent(dataConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(8, 8, 8)
+                .addComponent(dataConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(9, 9, 9)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -418,17 +404,6 @@ public class NewQuery extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnSelecionarMedicoActionPerformed
-
-    private void btnDataSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDataSearchActionPerformed
-        // TODO add your handling code here:
-        Object data = dataConsulta.getValue();
-        String data1 = (String)data;
-        String[] datafor = data1.split("/");
-        String data3 = datafor[2] + "-" + datafor[1] + "-" + datafor[0];
-        System.out.println(data3);
-        //Proximo passo: conectar ao banco e mostrar a data e hora de acordo com a data escolhida
-        
-    }//GEN-LAST:event_btnDataSearchActionPerformed
 
     private void btnSelecionarHoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarHoraActionPerformed
         horaDaConsulta = ListaHoras.getSelectedValue();
@@ -1112,7 +1087,6 @@ public class NewQuery extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField CRM;
     private javax.swing.JList<String> ListaHoras;
     private javax.swing.JList<String> MedicoList;
-    private javax.swing.JButton btnDataSearch;
     private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnSelecionarHora;
     private javax.swing.JButton btnSelecionarMedico;
