@@ -89,6 +89,7 @@ public class RegisterClinic extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(736, 503));
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(180, 194, 199));
         jPanel1.setMinimumSize(new java.awt.Dimension(736, 503));
@@ -96,11 +97,11 @@ public class RegisterClinic extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(180, 200, 209));
 
         btnCadastrar.setBackground(new java.awt.Color(171, 186, 193));
-        btnCadastrar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnCadastrar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnCadastrar.setText("Cadastrar");
 
         btnPaciente.setBackground(new java.awt.Color(171, 186, 193));
-        btnPaciente.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnPaciente.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnPaciente.setText("Paciente");
         btnPaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,7 +114,8 @@ public class RegisterClinic extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Logo_pequena.png"))); // NOI18N
         jLabel1.setText("\n");
 
-        btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Btn_logout.png"))); // NOI18N
+        btnLogout.setBackground(new java.awt.Color(255, 0, 0));
+        btnLogout.setText("Sair");
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogoutActionPerformed(evt);
@@ -127,21 +129,20 @@ public class RegisterClinic extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
-                .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
+                .addComponent(btnLogout)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         btnConsulta.setBackground(new java.awt.Color(171, 186, 193));
-        btnConsulta.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnConsulta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnConsulta.setText("Consultas");
         btnConsulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,7 +151,7 @@ public class RegisterClinic extends javax.swing.JFrame {
         });
 
         btnRelatorio.setBackground(new java.awt.Color(171, 186, 193));
-        btnRelatorio.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnRelatorio.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnRelatorio.setText("Relatorio");
         btnRelatorio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -159,7 +160,7 @@ public class RegisterClinic extends javax.swing.JFrame {
         });
 
         btnGerenciarUser.setBackground(new java.awt.Color(171, 186, 193));
-        btnGerenciarUser.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnGerenciarUser.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnGerenciarUser.setText("Gerenciar Usuario");
         btnGerenciarUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -211,9 +212,10 @@ public class RegisterClinic extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Lista de Clinicas");
 
+        btnAddClinic.setBackground(new java.awt.Color(0, 204, 255));
         btnAddClinic.setText("Adicionar Clinica");
         btnAddClinic.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -221,8 +223,10 @@ public class RegisterClinic extends javax.swing.JFrame {
             }
         });
 
+        btnEditarClinica.setBackground(new java.awt.Color(255, 255, 51));
         btnEditarClinica.setText("Editar");
 
+        btnDeletarClinica.setBackground(new java.awt.Color(255, 0, 0));
         btnDeletarClinica.setText("Excluir");
 
         ClinicTable.setBackground(new java.awt.Color(204, 204, 204));
@@ -292,10 +296,11 @@ public class RegisterClinic extends javax.swing.JFrame {
         label1.setAlignment(java.awt.Label.CENTER);
         label1.setBackground(new java.awt.Color(0, 102, 102));
         label1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        label1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        label1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        label1.setForeground(new java.awt.Color(0, 255, 153));
         label1.setText("Cadastrar");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Lista de Medicos");
 
         TableDoctor.setBackground(new java.awt.Color(204, 204, 204));
@@ -312,6 +317,7 @@ public class RegisterClinic extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(TableDoctor);
 
+        btnAddDoctor.setBackground(new java.awt.Color(0, 204, 255));
         btnAddDoctor.setText("Adicionar Medico");
         btnAddDoctor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -319,8 +325,10 @@ public class RegisterClinic extends javax.swing.JFrame {
             }
         });
 
+        btnDeletarMedico.setBackground(new java.awt.Color(255, 0, 0));
         btnDeletarMedico.setText("Excluir");
 
+        btnEditarMedico.setBackground(new java.awt.Color(255, 255, 51));
         btnEditarMedico.setText("Editar");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);

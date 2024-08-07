@@ -36,6 +36,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 
 
 /**
@@ -137,7 +138,6 @@ public class NewQuery extends javax.swing.JFrame {
             }
         });
 
-        filtroEspecialidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Editar", "Editar", "Editar", "Editar", " " }));
         filtroEspecialidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 filtroEspecialidadeActionPerformed(evt);
@@ -147,6 +147,7 @@ public class NewQuery extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Especialiades ");
 
+        MedicoList.setToolTipText("");
         jScrollPane1.setViewportView(MedicoList);
 
         btnSelecionarMedico.setBackground(new java.awt.Color(0, 204, 255));
@@ -515,8 +516,12 @@ public class NewQuery extends javax.swing.JFrame {
         for (Medico medico : listaMedicos) {
             if(medico.getStatus().equalsIgnoreCase("ativo")){
                 modeloLista.addElement(medico.getName());
+                
             }
         }
+        
+        //MedicoList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        //MedicoList.setDragEnabled(false);
         MedicoList.setModel(modeloLista);
         
     }

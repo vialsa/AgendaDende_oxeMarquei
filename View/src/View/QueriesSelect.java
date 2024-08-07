@@ -143,7 +143,7 @@ public class QueriesSelect extends javax.swing.JFrame {
 
         TableQuery.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
+                {"151515", "jujuba", "23/02/2015", "casa"},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null}
@@ -305,6 +305,7 @@ public class QueriesSelect extends javax.swing.JFrame {
             modeloLista.addRow(new Object[]{listaConsulta.getIdQuery(), patient.getName(), listaConsulta.getDateAndTimeConsultation(), clinic.getAddress()}
             );
         }
+        //
         TableQuery.setModel(modeloLista);
     }
     /**

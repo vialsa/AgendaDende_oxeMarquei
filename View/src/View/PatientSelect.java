@@ -337,6 +337,7 @@ public class PatientSelect extends javax.swing.JFrame {
             modeloLista.addRow(new Object[]{listaPaciente.getIdPatient(), listaPaciente.getName(), listaPaciente.getSIGTAP()}
             );
         }
+        //TablePatient.getTableHeader().setReorderingAllowed(false);
         TablePatient.setModel(modeloLista);
     }
     

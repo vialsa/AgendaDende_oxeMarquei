@@ -233,13 +233,7 @@
                 <Component class="javax.swing.JComboBox" name="filtroEspecialidade">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="5">
-                        <StringItem index="0" value="Editar"/>
-                        <StringItem index="1" value="Editar"/>
-                        <StringItem index="2" value="Editar"/>
-                        <StringItem index="3" value="Editar"/>
-                        <StringItem index="4" value=" "/>
-                      </StringArray>
+                      <StringArray count="0"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -269,6 +263,7 @@
                         <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
                           <StringArray count="0"/>
                         </Property>
+                        <Property name="toolTipText" type="java.lang.String" value=""/>
                       </Properties>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>

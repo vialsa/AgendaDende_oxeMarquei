@@ -50,6 +50,7 @@ public class ReportSelect extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(736, 503));
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(180, 194, 199));
         jPanel1.setMinimumSize(new java.awt.Dimension(736, 503));
