@@ -57,7 +57,7 @@ public class ReportSelect extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(180, 200, 209));
 
         btnCadastrar.setBackground(new java.awt.Color(171, 186, 193));
-        btnCadastrar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnCadastrar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnCadastrar.setText("Cadastrar");
         btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -66,7 +66,7 @@ public class ReportSelect extends javax.swing.JFrame {
         });
 
         btnpacientemenu.setBackground(new java.awt.Color(171, 186, 193));
-        btnpacientemenu.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnpacientemenu.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnpacientemenu.setText("Paciente");
         btnpacientemenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,7 +79,8 @@ public class ReportSelect extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Logo_pequena.png"))); // NOI18N
         jLabel1.setText("\n");
 
-        btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Btn_logout.png"))); // NOI18N
+        btnLogout.setBackground(new java.awt.Color(255, 0, 0));
+        btnLogout.setText("Sair");
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogoutActionPerformed(evt);
@@ -93,21 +94,20 @@ public class ReportSelect extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
-                .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
+                .addComponent(btnLogout)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         btnconsultamenu1.setBackground(new java.awt.Color(171, 186, 193));
-        btnconsultamenu1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnconsultamenu1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnconsultamenu1.setText("Consultas");
         btnconsultamenu1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,11 +116,11 @@ public class ReportSelect extends javax.swing.JFrame {
         });
 
         btnRelatorio1.setBackground(new java.awt.Color(171, 186, 193));
-        btnRelatorio1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnRelatorio1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnRelatorio1.setText("Relatorio");
 
         btnGerenciarUser.setBackground(new java.awt.Color(171, 186, 193));
-        btnGerenciarUser.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnGerenciarUser.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnGerenciarUser.setText("Gerenciar Usuario");
         btnGerenciarUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -194,7 +194,7 @@ public class ReportSelect extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Periodo");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -214,7 +214,7 @@ public class ReportSelect extends javax.swing.JFrame {
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(9, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -226,7 +226,8 @@ public class ReportSelect extends javax.swing.JFrame {
         label1.setAlignment(java.awt.Label.CENTER);
         label1.setBackground(new java.awt.Color(0, 102, 102));
         label1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        label1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        label1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        label1.setForeground(new java.awt.Color(0, 255, 153));
         label1.setText("Relatorio");
 
         BtnRelatorioPdf.setBackground(new java.awt.Color(0, 204, 0));

@@ -60,13 +60,14 @@ public class QueriesSelect extends javax.swing.JFrame {
         btnPaciente = new javax.swing.JToggleButton();
         jPanel16 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        btnLogout6 = new javax.swing.JButton();
+        btnLogout = new javax.swing.JButton();
         btnConsulta = new javax.swing.JToggleButton();
         btnRelatorio = new javax.swing.JToggleButton();
         btnGerenciarUser = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(736, 503));
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(180, 194, 199));
         jPanel1.setMinimumSize(new java.awt.Dimension(736, 503));
@@ -143,7 +144,8 @@ public class QueriesSelect extends javax.swing.JFrame {
         label1.setAlignment(java.awt.Label.CENTER);
         label1.setBackground(new java.awt.Color(0, 102, 102));
         label1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        label1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        label1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        label1.setForeground(new java.awt.Color(0, 255, 153));
         label1.setText("Consulta");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -168,7 +170,7 @@ public class QueriesSelect extends javax.swing.JFrame {
         jPanel17.setBackground(new java.awt.Color(180, 200, 209));
 
         btnCadastrar.setBackground(new java.awt.Color(171, 186, 193));
-        btnCadastrar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnCadastrar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnCadastrar.setText("Cadastrar");
         btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -177,7 +179,7 @@ public class QueriesSelect extends javax.swing.JFrame {
         });
 
         btnPaciente.setBackground(new java.awt.Color(171, 186, 193));
-        btnPaciente.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnPaciente.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnPaciente.setText("Paciente");
         btnPaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -190,10 +192,11 @@ public class QueriesSelect extends javax.swing.JFrame {
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Logo_pequena.png"))); // NOI18N
         jLabel7.setText("\n");
 
-        btnLogout6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Btn_logout.png"))); // NOI18N
-        btnLogout6.addActionListener(new java.awt.event.ActionListener() {
+        btnLogout.setBackground(new java.awt.Color(255, 0, 0));
+        btnLogout.setText("Sair");
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLogout6ActionPerformed(evt);
+                btnLogoutActionPerformed(evt);
             }
         });
 
@@ -204,25 +207,24 @@ public class QueriesSelect extends javax.swing.JFrame {
             .addGroup(jPanel16Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
-                .addComponent(btnLogout6, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
+                .addComponent(btnLogout)
                 .addContainerGap())
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(jPanel16Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(btnLogout6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
+                .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         btnConsulta.setBackground(new java.awt.Color(171, 186, 193));
-        btnConsulta.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnConsulta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnConsulta.setText("Consultas");
 
         btnRelatorio.setBackground(new java.awt.Color(171, 186, 193));
-        btnRelatorio.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnRelatorio.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnRelatorio.setText("Relatorio");
         btnRelatorio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -231,7 +233,7 @@ public class QueriesSelect extends javax.swing.JFrame {
         });
 
         btnGerenciarUser.setBackground(new java.awt.Color(171, 186, 193));
-        btnGerenciarUser.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnGerenciarUser.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnGerenciarUser.setText("Gerenciar Usuario");
         btnGerenciarUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -336,12 +338,12 @@ public class QueriesSelect extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_SearchTxtActionPerformed
 
-    private void btnLogout6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogout6ActionPerformed
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         // TODO add your handling code here:
         Login telaLogin = new Login();
         this.dispose();
         telaLogin.setVisible(true);
-    }//GEN-LAST:event_btnLogout6ActionPerformed
+    }//GEN-LAST:event_btnLogoutActionPerformed
     private void carregar() {
         
         DefaultTableModel modeloLista = new DefaultTableModel();    
@@ -471,7 +473,7 @@ public class QueriesSelect extends javax.swing.JFrame {
     private javax.swing.JToggleButton btnCadastrar;
     private javax.swing.JToggleButton btnConsulta;
     private javax.swing.JToggleButton btnGerenciarUser;
-    private javax.swing.JButton btnLogout6;
+    private javax.swing.JButton btnLogout;
     private javax.swing.JToggleButton btnPaciente;
     private javax.swing.JToggleButton btnRelatorio;
     private javax.swing.JButton btnSearch;
