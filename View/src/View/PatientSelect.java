@@ -98,6 +98,11 @@ public class PatientSelect extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Logo_pequena.png"))); // NOI18N
         jLabel1.setText("\n");
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -327,6 +332,13 @@ public class PatientSelect extends javax.swing.JFrame {
         this.dispose();
         telaLogin.setVisible(true);
     }//GEN-LAST:event_btnLogoutActionPerformed
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        // TODO add your handling code here:
+        HomeScreen telaHome = new HomeScreen();
+        this.dispose();
+        telaHome.setVisible(true);
+    }//GEN-LAST:event_jLabel1MouseClicked
 
     private void carregar() {
 

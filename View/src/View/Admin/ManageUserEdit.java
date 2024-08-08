@@ -307,9 +307,19 @@ public class ManageUserEdit extends javax.swing.JFrame {
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Logo_pequena.png"))); // NOI18N
         jLabel7.setText("\n");
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
 
         btnLogout1.setBackground(new java.awt.Color(255, 0, 0));
         btnLogout1.setText("Sair");
+        btnLogout1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogout1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
@@ -452,6 +462,20 @@ public class ManageUserEdit extends javax.swing.JFrame {
         this.dispose();
         telaReportUserSelect.setVisible(true);
     }//GEN-LAST:event_btnGerenciarUserActionPerformed
+
+    private void btnLogout1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogout1ActionPerformed
+        // TODO add your handling code here:
+        Login telaLogin = new Login();
+        this.dispose();
+        telaLogin.setVisible(true);
+    }//GEN-LAST:event_btnLogout1ActionPerformed
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        // TODO add your handling code here:
+        HomeScreenAdmin telaHome = new HomeScreenAdmin();
+        this.dispose();
+        telaHome.setVisible(true);
+    }//GEN-LAST:event_jLabel7MouseClicked
 
     /**
      * @param args the command line arguments

@@ -77,6 +77,11 @@ public class HomeScreenAdmin extends javax.swing.JFrame {
 
         btnLogout1.setBackground(new java.awt.Color(255, 0, 0));
         btnLogout1.setText("Sair");
+        btnLogout1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogout1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -223,6 +228,13 @@ public class HomeScreenAdmin extends javax.swing.JFrame {
         this.dispose();
         telaRegisterClinic.setVisible(true);
     }//GEN-LAST:event_btnCadastrarActionPerformed
+
+    private void btnLogout1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogout1ActionPerformed
+        // TODO add your handling code here:
+        Login telaLogin = new Login();
+        this.dispose();
+        telaLogin.setVisible(true);
+    }//GEN-LAST:event_btnLogout1ActionPerformed
 
     /**
      * @param args the command line arguments

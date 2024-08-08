@@ -79,6 +79,11 @@ public class ReportSelect extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Logo_pequena.png"))); // NOI18N
         jLabel1.setText("\n");
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
 
         btnLogout.setBackground(new java.awt.Color(255, 0, 0));
         btnLogout.setText("Sair");
@@ -353,6 +358,13 @@ public class ReportSelect extends javax.swing.JFrame {
         this.dispose();
         telaLogin.setVisible(true);
     }//GEN-LAST:event_btnLogoutActionPerformed
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        // TODO add your handling code here:
+        HomeScreenAdmin telaHome = new HomeScreenAdmin();
+        this.dispose();
+        telaHome.setVisible(true);
+    }//GEN-LAST:event_jLabel1MouseClicked
 
     /**
      * @param args the command line arguments

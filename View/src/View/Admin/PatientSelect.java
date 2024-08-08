@@ -110,6 +110,11 @@ public class PatientSelect extends javax.swing.JFrame {
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Logo_pequena.png"))); // NOI18N
         jLabel7.setText("\n");
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
 
         btnLogout.setBackground(new java.awt.Color(255, 0, 0));
         btnLogout.setText("Sair");
@@ -409,6 +414,13 @@ public class PatientSelect extends javax.swing.JFrame {
         this.dispose();
         telaLogin.setVisible(true);
     }//GEN-LAST:event_btnLogoutActionPerformed
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        // TODO add your handling code here:
+        HomeScreenAdmin telaHome = new HomeScreenAdmin();
+        this.dispose();
+        telaHome.setVisible(true);
+    }//GEN-LAST:event_jLabel7MouseClicked
     
     private void carregar() {
 
