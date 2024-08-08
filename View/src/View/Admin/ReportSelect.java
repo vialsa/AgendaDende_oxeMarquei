@@ -159,6 +159,11 @@ public class ReportSelect extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(180, 194, 199));
 
+        TableRelatorio = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false;
+            }
+        };
         TableRelatorio.setBackground(new java.awt.Color(242, 242, 242));
         TableRelatorio.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -179,6 +184,8 @@ public class ReportSelect extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        TableRelatorio.setFocusable(false);
+        TableRelatorio.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(TableRelatorio);
 
         btnSeach.setBackground(new java.awt.Color(0, 204, 0));

@@ -73,6 +73,11 @@ public class QueriesSelect extends javax.swing.JFrame {
         jPanel1.setMinimumSize(new java.awt.Dimension(736, 503));
         jPanel1.setPreferredSize(new java.awt.Dimension(764, 525));
 
+        TableQuery = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false;
+            }
+        };
         TableQuery.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -99,6 +104,8 @@ public class QueriesSelect extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        TableQuery.setFocusable(false);
+        TableQuery.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(TableQuery);
 
         btnSearch.setBackground(new java.awt.Color(0, 204, 0));

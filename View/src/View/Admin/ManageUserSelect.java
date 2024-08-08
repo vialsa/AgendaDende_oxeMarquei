@@ -75,6 +75,11 @@ public class ManageUserSelect extends javax.swing.JFrame {
         jPanel1.setMinimumSize(new java.awt.Dimension(736, 503));
         jPanel1.setPreferredSize(new java.awt.Dimension(764, 525));
 
+        TableUser = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false;
+            }
+        };
         TableUser.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -101,6 +106,8 @@ public class ManageUserSelect extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        TableUser.setFocusable(false);
+        TableUser.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(TableUser);
 
         btnSearch.setBackground(new java.awt.Color(0, 204, 0));

@@ -193,6 +193,11 @@ public class PatientSelect extends javax.swing.JFrame {
                 .addContainerGap(10, Short.MAX_VALUE))
         );
 
+        TablePatient = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false;
+            }
+        };
         TablePatient.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -219,6 +224,8 @@ public class PatientSelect extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        TablePatient.setFocusable(false);
+        TablePatient.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(TablePatient);
 
         btnSearch.setBackground(new java.awt.Color(0, 204, 0));

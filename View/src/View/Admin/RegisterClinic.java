@@ -229,6 +229,11 @@ public class RegisterClinic extends javax.swing.JFrame {
         btnDeletarClinica.setBackground(new java.awt.Color(255, 0, 0));
         btnDeletarClinica.setText("Excluir");
 
+        ClinicTable = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false;
+            }
+        };
         ClinicTable.setBackground(new java.awt.Color(204, 204, 204));
         ClinicTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -242,6 +247,8 @@ public class RegisterClinic extends javax.swing.JFrame {
             }
         ));
         ClinicTable.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        ClinicTable.setFocusable(false);
+        ClinicTable.getTableHeader().setReorderingAllowed(false);
         ClinicTable.addContainerListener(new java.awt.event.ContainerAdapter() {
             public void componentAdded(java.awt.event.ContainerEvent evt) {
                 ClinicTableComponentAdded(evt);
@@ -303,6 +310,11 @@ public class RegisterClinic extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Lista de Medicos");
 
+        TableDoctor = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false;
+            }
+        };
         TableDoctor.setBackground(new java.awt.Color(204, 204, 204));
         TableDoctor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -315,6 +327,8 @@ public class RegisterClinic extends javax.swing.JFrame {
                 "Nome", "Clinica ", "Especialidade"
             }
         ));
+        TableDoctor.setFocusable(false);
+        TableDoctor.getTableHeader().setReorderingAllowed(false);
         jScrollPane3.setViewportView(TableDoctor);
 
         btnAddDoctor.setBackground(new java.awt.Color(0, 204, 255));
