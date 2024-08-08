@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package View;
+import Fabrica.FabricaDeConexao;
+import java.sql.Connection;
 
 /**
  *
@@ -65,7 +67,7 @@ public class HomeScreen extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(171, 186, 193));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Logo_pequena.png"))); // NOI18N
-        jLabel1.setText("\n");
+        jLabel1.setText(" ");
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel1MouseClicked(evt);
@@ -176,9 +178,6 @@ public class HomeScreen extends javax.swing.JFrame {
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         // TODO add your handling code here:
-        Login telaLogin = new Login();
-        this.dispose();
-        telaLogin.setVisible(true);
     }//GEN-LAST:event_jLabel1MouseClicked
 
     /**
