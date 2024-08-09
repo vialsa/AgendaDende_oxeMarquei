@@ -6,6 +6,7 @@ package View.Admin;
 
 import Controle.PublicAgentController;
 import Controle.QueryController;
+import Modelo.DAO.impl.AgentePublicoDAOJDBC;
 import Modelo.DAO.impl.ClinicaDAOJDBC;
 import Modelo.DAO.impl.PacienteDAOJDBC;
 import Modelo.DAO.impl.SolicitacaoDAOJDBC;
@@ -24,11 +25,13 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ManageUserSelect extends javax.swing.JFrame {
 
+    private static int idAgentePublico = 0; 
     /**
      * Creates new form Login
      */
     public ManageUserSelect() {
         initComponents();
+        int idAgentePublico1 = this.idAgentePublico;
         addWindowListener( new java.awt.event.WindowAdapter(){
             @Override
             public void windowOpened(java.awt.event.WindowEvent e) {
@@ -108,6 +111,15 @@ public class ManageUserSelect extends javax.swing.JFrame {
         });
         TableUser.setFocusable(false);
         TableUser.getTableHeader().setReorderingAllowed(false);
+        TableUser.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                TableUserAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
         jScrollPane1.setViewportView(TableUser);
 
         btnSearch.setBackground(new java.awt.Color(0, 204, 0));
@@ -158,6 +170,11 @@ public class ManageUserSelect extends javax.swing.JFrame {
 
         btnEdit.setBackground(new java.awt.Color(255, 255, 51));
         btnEdit.setText("Editar");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
 
         btnDelet.setBackground(new java.awt.Color(255, 0, 0));
         btnDelet.setText("Excluir");
@@ -330,9 +347,13 @@ public class ManageUserSelect extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    public int getIdAgentePublico() {
+        return this.idAgentePublico;
+    }
+    
     private void btn_NovoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_NovoUsuarioActionPerformed
         // TODO add your handling code here:
-        ManageUserEdit telaUserSelect = new ManageUserEdit();
+        AddUser telaUserSelect = new AddUser();
         this.dispose();
         telaUserSelect.setVisible(true);
     }//GEN-LAST:event_btn_NovoUsuarioActionPerformed
@@ -378,12 +399,25 @@ public class ManageUserSelect extends javax.swing.JFrame {
         this.dispose();
         telaHome.setVisible(true);
     }//GEN-LAST:event_jLabel7MouseClicked
+
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        // TODO add your handling code here
+        Object idUser = TableUser.getValueAt(TableUser.getSelectedRow(), 1);
+        this.idAgentePublico = (int) idUser;
+        ManageUserEdit telaManagerUserEdit = new ManageUserEdit();
+        this.dispose();
+        telaManagerUserEdit.setVisible(true);
+    }//GEN-LAST:event_btnEditActionPerformed
+
+    private void TableUserAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_TableUserAncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TableUserAncestorAdded
     private void carregar() {
         
-        DefaultTableModel modeloLista = new DefaultTableModel();    
+        DefaultTableModel modeloTabela = new DefaultTableModel();    
         
-        modeloLista.addColumn("Nome");        
-        modeloLista.addColumn("Codigo");
+        modeloTabela.addColumn("Nome");        
+        modeloTabela.addColumn("Codigo");
 
         
         PublicAgentController usuarios = new PublicAgentController();
@@ -391,11 +425,11 @@ public class ManageUserSelect extends javax.swing.JFrame {
         List<AgentePublico> listaUsuarios = usuarios.buscarUsuarios();
        
         for (AgentePublico listaUsuario : listaUsuarios) {
-            modeloLista.addRow(
+            modeloTabela.addRow(
                 new Object[]{listaUsuario.getName(), listaUsuario.getIdPublicAgent()}
             );
         }
-        TableUser.setModel(modeloLista);
+        TableUser.setModel(modeloTabela);
     }
     /**
     /**
