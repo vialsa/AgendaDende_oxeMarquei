@@ -48,8 +48,7 @@ public class AgentePublicoDAOJDBC implements AgentePublicoDAO {
         }
     }
  
-    @Override
-    public void update(Integer idPublicAgent,String email,String user,String password ) {
+    public void updateAgente(Integer idPublicAgent,String email,String user,String password ) {
         PreparedStatement pstm =  null;
 
         try {
@@ -207,5 +206,10 @@ public class AgentePublicoDAOJDBC implements AgentePublicoDAO {
             FabricaDeConexao.closeStatement(pstm);
             FabricaDeConexao.closeConnection(conn);
         }
+    }
+
+    @Override
+    public void update(String phoneNumber1, String address, String email, Integer idPublicAgent) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

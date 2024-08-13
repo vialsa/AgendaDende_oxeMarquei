@@ -31,12 +31,11 @@ public class PublicAgentController {
         }
     }
     
-    public void atualizarAgente(int id) {
+    public void atualizarAgente(Integer idPublicAgent,String email,String user,String password) {
      
         try {
             AgentePublicoDAOJDBC agentePublicoDAOJDBC = new AgentePublicoDAOJDBC();
-            AgentePublico agente = agentePublicoDAOJDBC.findById(id);
-            agentePublicoDAOJDBC.update(agente.getIdPublicAgent(),agente.getEmail(),agente.getUser(),agente.getPassword());
+            agentePublicoDAOJDBC.updateAgente(idPublicAgent, email, user, password);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

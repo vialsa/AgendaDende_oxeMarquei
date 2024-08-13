@@ -7,6 +7,7 @@ package View.Admin;
 import Controle.PublicAgentController;
 import Modelo.Entidades.AgentePublico;
 import View.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -336,7 +337,15 @@ public class ManageUserEdit extends javax.swing.JFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // TODO add your handling code here:
-        Nome.getText();
+        PublicAgentController agente = new PublicAgentController();
+        ManageUserSelect tela = new ManageUserSelect();
+        int idAgente = tela.getIdAgentePublico();
+        agente.atualizarAgente(idAgente, Email.getText(), LoginUser.getText(), SenhaUser.getText());
+        JOptionPane.showMessageDialog(null, "Usuário Atualizado com Sucesso");
+        ManageUserSelect telaManageUserSelect = new ManageUserSelect();
+        this.dispose();
+        telaManageUserSelect.setVisible(true);
+        
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     public void carregar() {
