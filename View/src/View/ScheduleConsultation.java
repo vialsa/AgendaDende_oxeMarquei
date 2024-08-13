@@ -139,6 +139,12 @@ public class ScheduleConsultation extends javax.swing.JFrame {
                 .addGap(14, 14, 14))
         );
 
+        ClinicList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Lista ", "Lisa", "Lisa" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        ClinicList.setToolTipText("");
         jScrollPane1.setViewportView(ClinicList);
 
         btnSave.setBackground(new java.awt.Color(0, 255, 153));

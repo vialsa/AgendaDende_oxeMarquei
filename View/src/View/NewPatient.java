@@ -9,8 +9,11 @@ import java.time.LocalDate;
 import java.util.Date;
 
 import Controle.PacienteControle;
+import Fabrica.FabricaDeConexao;
 import Modelo.Entidades.Paciente;
 import View.Admin.HomeScreenAdmin;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.time.format.DateTimeParseException;
 import javax.swing.JOptionPane;
 
@@ -542,6 +545,7 @@ public class NewPatient extends javax.swing.JFrame {
         Login telaLogin = new Login();
         this.dispose();
         telaLogin.setVisible(true);
+
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
