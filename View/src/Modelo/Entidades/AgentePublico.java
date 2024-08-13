@@ -56,6 +56,17 @@ public class AgentePublico extends Pessoa {
         this.typeUser = typeUser;
     }
 
+    public AgentePublico(Integer idPublicAgent, String name, String CPF, String RG, String phoneNumber1, String phoneNumber2, LocalDate dateOfBirth, String address, String email, String typeuser, String userr, String password) {
+        super(name, CPF, RG, phoneNumber1, phoneNumber2, dateOfBirth, address, email);
+        
+        this.idPublicAgent = idPublicAgent;
+        this.typeUser = typeuser;
+        this.email = email;
+        this.password = password;
+        this.user = userr;
+    }
+    
+
     public Integer getIdPublicAgent() {
         return idPublicAgent;
     }
@@ -65,7 +76,7 @@ public class AgentePublico extends Pessoa {
     }
 
     public String getEmail() {
-        return email;
+        return this.email;
     }
 
     public void setEmail(String email) {
@@ -113,6 +124,8 @@ public class AgentePublico extends Pessoa {
                 "Numero de Telefone 1: " + this.getPhoneNumber1() + "\n" +
                 "Numero de Telefone 2: " + this.getPhoneNumber2() + "\n" +
                 "Endereco: " + this.getAddress() + "\n" +
-                "E-mail: " + this.getEmail() + "\n";
+                "E-mail: " + this.getEmail() + "\n" +
+                "Login: "  + this.getUser() + "\n" +
+                "Senha "  + this.getPassword()+ "\n";
     }
 }

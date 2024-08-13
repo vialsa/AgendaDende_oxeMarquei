@@ -55,7 +55,6 @@ public class ManageUserEdit extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         EnderecoBairroUser = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         Email = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -67,7 +66,6 @@ public class ManageUserEdit extends javax.swing.JFrame {
         tel1 = new javax.swing.JFormattedTextField();
         tel2 = new javax.swing.JFormattedTextField();
         cep = new javax.swing.JFormattedTextField();
-        sigtap = new javax.swing.JFormattedTextField();
         btn_cancelar = new javax.swing.JButton();
 
         jFormattedTextField1.setText("jFormattedTextField1");
@@ -119,9 +117,6 @@ public class ManageUserEdit extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel11.setText("CEP:");
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel12.setText("Sigtap:");
-
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel13.setText("Email:");
 
@@ -157,12 +152,6 @@ public class ManageUserEdit extends javax.swing.JFrame {
 
         try {
             cep.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-
-        try {
-            sigtap.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.##.##.###-#")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -211,8 +200,7 @@ public class ManageUserEdit extends javax.swing.JFrame {
                                 .addComponent(tel2))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
                                     .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -229,8 +217,7 @@ public class ManageUserEdit extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLabel11)
                                         .addGap(18, 18, 18)
-                                        .addComponent(cep, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(sigtap)))
+                                        .addComponent(cep, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -277,11 +264,7 @@ public class ManageUserEdit extends javax.swing.JFrame {
                     .addComponent(EnderecoBairroUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11)
                     .addComponent(cep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(sigtap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(59, 59, 59)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -295,7 +278,7 @@ public class ManageUserEdit extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar)
                     .addComponent(btn_cancelar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
@@ -317,7 +300,7 @@ public class ManageUserEdit extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -354,9 +337,27 @@ public class ManageUserEdit extends javax.swing.JFrame {
         System.out.println(agentePublico);
         Nome.setText(agentePublico.getName());
         cpf.setText(agentePublico.getCPF());
-        dataNasc.setText(agentePublico.getDateOfBirth().toString());
+        
+        String dataNascimento = "" + agentePublico.getDateOfBirth();
+        String[] dataFormatada = dataNascimento.split("-");
+        dataNasc.setText(dataFormatada[2] + dataFormatada[1] + dataFormatada[0]);
+        
         tel1.setText(agentePublico.getPhoneNumber1());
         tel2.setText(agentePublico.getPhoneNumber2());
+        
+        String endereco = agentePublico.getAddress();
+        String[] enderecoFormatado = endereco.split(",");
+        
+        EnderecoRuaUser.setText(enderecoFormatado[0]);
+        EnderecoNumUser.setText(enderecoFormatado[1]);
+        EnderecoBairroUser.setText(enderecoFormatado[2]);
+        cep.setText(enderecoFormatado[3]);
+        
+        //esta retornando null
+        Email.setText(agentePublico.getEmail());
+        LoginUser.setText(agentePublico.getUser());
+        SenhaUser.setText(agentePublico.getPassword());
+        
         
     }
     /**
@@ -666,7 +667,6 @@ public class ManageUserEdit extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
@@ -680,7 +680,6 @@ public class ManageUserEdit extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel4;
     private java.awt.Label label1;
-    private javax.swing.JFormattedTextField sigtap;
     private javax.swing.JFormattedTextField tel1;
     private javax.swing.JFormattedTextField tel2;
     // End of variables declaration//GEN-END:variables

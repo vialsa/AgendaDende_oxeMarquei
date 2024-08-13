@@ -94,7 +94,9 @@ public class AgentePublicoDAOJDBC implements AgentePublicoDAO {
                         rs.getDate("dateOfBirth").toLocalDate(),
                         rs.getString("address"),
                         rs.getString("email"),
-                        rs.getString("typeUser")
+                        rs.getString("typeuser"),
+                        rs.getString("userr"),
+                        rs.getString("password")
                 );
             }
             return null;
