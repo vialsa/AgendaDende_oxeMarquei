@@ -31,4 +31,15 @@ public class PublicAgentController {
         }
     }
     
+    public void atualizarAgente(int id) {
+     
+        try {
+            AgentePublicoDAOJDBC agentePublicoDAOJDBC = new AgentePublicoDAOJDBC();
+            AgentePublico agente = agentePublicoDAOJDBC.findById(id);
+            agentePublicoDAOJDBC.update(agente.getIdPublicAgent(),agente.getEmail(),agente.getUser(),agente.getPassword());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
 }

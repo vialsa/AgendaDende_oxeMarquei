@@ -89,6 +89,11 @@ public class ManageUserEdit extends javax.swing.JFrame {
 
         btnSalvar.setBackground(new java.awt.Color(0, 255, 153));
         btnSalvar.setText("Salvar");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Nome:");
@@ -329,6 +334,11 @@ public class ManageUserEdit extends javax.swing.JFrame {
         telaManageUserSelect.setVisible(true);
     }//GEN-LAST:event_btn_cancelarActionPerformed
 
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        // TODO add your handling code here:
+        Nome.getText();
+    }//GEN-LAST:event_btnSalvarActionPerformed
+
     public void carregar() {
         ManageUserSelect tela = new ManageUserSelect();
         int idAgente = tela.getIdAgentePublico();
@@ -353,7 +363,7 @@ public class ManageUserEdit extends javax.swing.JFrame {
         EnderecoBairroUser.setText(enderecoFormatado[2]);
         cep.setText(enderecoFormatado[3]);
         
-        //esta retornando null
+       
         Email.setText(agentePublico.getEmail());
         LoginUser.setText(agentePublico.getUser());
         SenhaUser.setText(agentePublico.getPassword());
