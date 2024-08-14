@@ -132,12 +132,14 @@ public class ManageUserEdit extends javax.swing.JFrame {
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel14.setText("Senha:");
 
+        cpf.setEditable(false);
         try {
             cpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
 
+        dataNasc.setEditable(false);
         try {
             dataNasc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
@@ -342,9 +344,8 @@ public class ManageUserEdit extends javax.swing.JFrame {
         int idAgente = tela.getIdAgentePublico();
         agente.atualizarAgente(idAgente, Email.getText(), LoginUser.getText(), SenhaUser.getText());
         JOptionPane.showMessageDialog(null, "Usuário Atualizado com Sucesso");
-        ManageUserSelect telaManageUserSelect = new ManageUserSelect();
         this.dispose();
-        telaManageUserSelect.setVisible(true);
+        tela.setVisible(true);
         
     }//GEN-LAST:event_btnSalvarActionPerformed
 

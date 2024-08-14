@@ -5,6 +5,7 @@
 package Controle;
 
 import Modelo.DAO.impl.MedicoDAOJDBC;
+import Modelo.Entidades.Clinica;
 import Modelo.Entidades.Medico;
 import java.util.List;
 
@@ -52,6 +53,16 @@ public class MedicoControle {
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return null;
+        }
+    }
+    
+    public void atualizarMedico (Integer idMedico, String nome, int clinica, String tel1, String tel2, String email){
+        try {
+            MedicoDAOJDBC medico = new MedicoDAOJDBC();
+            medico.update(idMedico, nome, clinica, tel1, tel2, email);
+            
+        } catch (Exception e) {
+            e.getStackTrace();
         }
     }
 }

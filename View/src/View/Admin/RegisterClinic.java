@@ -19,12 +19,15 @@ import javax.swing.table.DefaultTableModel;
  * @author Vitor
  */
 public class RegisterClinic extends javax.swing.JFrame {
+    
+    private static int idMedico;
 
     /**
      * Creates new form Login
      */
     public RegisterClinic() {
         initComponents();
+        int idMedico = this.idMedico;
         addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowOpened(java.awt.event.WindowEvent e) {
@@ -323,13 +326,13 @@ public class RegisterClinic extends javax.swing.JFrame {
         TableDoctor.setBackground(new java.awt.Color(204, 204, 204));
         TableDoctor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Nome", "Clinica ", "Especialidade"
+                "ID", "Nome", "Clinica ", "Especialidade"
             }
         ));
         TableDoctor.setFocusable(false);
@@ -349,6 +352,11 @@ public class RegisterClinic extends javax.swing.JFrame {
 
         btnEditarMedico.setBackground(new java.awt.Color(255, 255, 51));
         btnEditarMedico.setText("Editar");
+        btnEditarMedico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarMedicoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -441,7 +449,9 @@ public class RegisterClinic extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+        public int getIdMedico() {
+        return this.idMedico;
+    }
     private void SearchTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_SearchTxtActionPerformed
@@ -510,6 +520,15 @@ public class RegisterClinic extends javax.swing.JFrame {
         telaHome.setVisible(true);
     }//GEN-LAST:event_jLabel1MouseClicked
 
+    private void btnEditarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarMedicoActionPerformed
+        // TODO add your handling code here:
+        Object idMedicos = TableDoctor.getValueAt(TableDoctor.getSelectedRow(),0);
+        this.idMedico = (int) idMedicos;
+        EditDoctor telaEditDoctor = new EditDoctor();
+        this.dispose();
+        telaEditDoctor.setVisible(true);
+    }//GEN-LAST:event_btnEditarMedicoActionPerformed
+
     private void carregarClinicas() {
 
         DefaultTableModel modeloLista = new DefaultTableModel();
@@ -534,7 +553,7 @@ public class RegisterClinic extends javax.swing.JFrame {
 
     public void carregarMedicos() {
         DefaultTableModel modeloLista = new DefaultTableModel();
-        
+        modeloLista.addColumn("ID");
         modeloLista.addColumn("Nome");
         modeloLista.addColumn("Clinica");
         modeloLista.addColumn("Especialidade");
@@ -550,7 +569,7 @@ public class RegisterClinic extends javax.swing.JFrame {
             if (listaDoutor.getStatus().equalsIgnoreCase("Ativo")) {
                 for (Clinica clinic : listaClinicas) {
                     if (clinic.getIdClinic() == listaDoutor.getClinic().getIdClinic()) {
-                        modeloLista.addRow(new Object[]{listaDoutor.getName(), clinic.getNameOfClinic(), listaDoutor.getSpeciality()});
+                        modeloLista.addRow(new Object[]{listaDoutor.getIdDoctor(), listaDoutor.getName(), clinic.getNameOfClinic(), listaDoutor.getSpeciality()});
                     }
                 }
             }

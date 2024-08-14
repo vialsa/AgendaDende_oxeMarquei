@@ -45,20 +45,21 @@ public class MedicoDAOJDBC implements MedicoDAO {
         }
     }
 
-    @Override
-    public void update(String phoneNumber1, String phoneNumber2, String email, String status, Integer idDoctor) {
+    public void update(Integer idMedico, String nome, int clinica, String tel1, String tel2, String email) {
         PreparedStatement pstm =  null;
 
         try {
             conn = FabricaDeConexao.getConnection();
             pstm = conn.prepareStatement(
-                    "UPDATE DOCTOR SET phoneNumber1 = ?, phoneNumber2 = ?, email = ? WHERE idDoctor = ?"
+                    "UPDATE DOCTOR SET name = ?, idclinic = ?, phonenumber1 = ?, phonenumber2 = ?, email = ? WHERE iddoctor = ?"
             );
 
-            pstm.setString(1, phoneNumber1);
-            pstm.setString(2, phoneNumber2);
-            pstm.setString(3, email);
-            pstm.setInt(4, idDoctor);
+            pstm.setString(1, nome);
+            pstm.setInt(2, clinica);
+            pstm.setString(3, tel1);
+            pstm.setString(4, tel2);
+            pstm.setString(5, email);
+            pstm.setInt(6, idMedico);
             pstm.executeUpdate();
 
         } catch (SQLException e){
@@ -291,5 +292,10 @@ public class MedicoDAOJDBC implements MedicoDAO {
             FabricaDeConexao.closeResultSet(rs);
         }
         return null;
+    }
+
+    @Override
+    public void update(String phoneNumber1, String phoneNumber2, String email, String status, Integer idDoctor) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
