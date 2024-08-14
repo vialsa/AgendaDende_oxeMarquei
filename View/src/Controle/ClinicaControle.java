@@ -9,20 +9,22 @@ import Modelo.Entidades.Clinica;
 import java.util.List;
 import javax.swing.DefaultListModel;
 import Modelo.DAO.ClinicaDAO;
+import java.util.ArrayList;
 
 /**
  *
  * @author Discente
  */
 public class ClinicaControle {
+
     public List<Clinica> buscarClinicas() {
         ClinicaDAOJDBC clinicDAOJDBC = new ClinicaDAOJDBC();
         List<Clinica> clinicas = clinicDAOJDBC.findAll();
-        
+
         return clinicas;
     }
-    
-    public Clinica buscarClinica(int idClinica){
+
+    public Clinica buscarClinica(int idClinica) {
         try {
             ClinicaDAOJDBC clinicaDAOJDBC = new ClinicaDAOJDBC();
             Clinica clinica = clinicaDAOJDBC.findByID(idClinica);
@@ -33,7 +35,7 @@ public class ClinicaControle {
             return null;
         }
     }
-        
+
     public boolean adicionarClinica(Clinica clinica) {
         try {
             ClinicaDAOJDBC clinicDAOJDBC = new ClinicaDAOJDBC();
@@ -44,6 +46,31 @@ public class ClinicaControle {
             return false;
         }
     }
+
+    public List<Clinica> bucarClinicas(String nomePacient) {
+        List<Clinica> retorno = new ArrayList<>();
+        try {
+            ClinicaDAOJDBC clinicaDAO = new ClinicaDAOJDBC();
+            List<Clinica> listClinica = clinicaDAO.findAll();
+            
+            for (Clinica clinica : listClinica) {
+                if (nomePacient.toLowerCase().equalsIgnoreCase(clinica.getNameOfClinic())) {
+                    retorno.add(clinica);
+                }
+                
+                String[] nomeQuebrado = clinica.getNameOfClinic().split(" ");
+                for (String string : nomeQuebrado) {
+                    if (nomePacient.toLowerCase().equalsIgnoreCase(string.toLowerCase())) {
+                        retorno.add(clinica);
+                    }
+                }
+            }
+        } catch (Exception e) {
+            
+        }
+        
+        return retorno;
+
     
     public void atualizarClinica(String nameOfClinic, String address, String phoneNumber, String email, Integer idClinic){
     
@@ -53,5 +80,6 @@ public class ClinicaControle {
         } catch (Exception e) {
             
         }
+
     }
 }
