@@ -64,7 +64,7 @@ public class PatientSelect extends javax.swing.JFrame {
         TablePatient = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
         btnSearch = new javax.swing.JButton();
-        SearchTxt = new javax.swing.JTextField();
+        BuscarPaciente = new javax.swing.JTextField();
         btnNewPatient = new javax.swing.JButton();
         label1 = new java.awt.Label();
         btnEdit = new javax.swing.JButton();
@@ -184,10 +184,24 @@ public class PatientSelect extends javax.swing.JFrame {
         });
         TablePatient.setFocusable(false);
         TablePatient.getTableHeader().setReorderingAllowed(false);
+        TablePatient.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                TablePatientAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
         jScrollPane1.setViewportView(TablePatient);
 
         btnSearch.setBackground(new java.awt.Color(0, 204, 0));
         btnSearch.setText("Buscar");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
 
         btnNewPatient.setBackground(new java.awt.Color(0, 255, 153));
         btnNewPatient.setText("Novo Paciente");
@@ -205,7 +219,7 @@ public class PatientSelect extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(SearchTxt)
+                        .addComponent(BuscarPaciente)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnSearch))
                     .addGroup(jPanel5Layout.createSequentialGroup()
@@ -220,7 +234,7 @@ public class PatientSelect extends javax.swing.JFrame {
                 .addComponent(btnNewPatient)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(SearchTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BuscarPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSearch))
                 .addContainerGap(8, Short.MAX_VALUE))
         );
@@ -340,6 +354,30 @@ public class PatientSelect extends javax.swing.JFrame {
         telaHome.setVisible(true);
     }//GEN-LAST:event_jLabel1MouseClicked
 
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        String busca = BuscarPaciente.getText();
+        PacienteControle pacienteControle = new PacienteControle();
+        List<Paciente> list = pacienteControle.findByName(busca, null, null);
+        System.out.println(list);
+        DefaultTableModel modeloLista = new DefaultTableModel();    
+
+        modeloLista.addColumn("Codigo");        
+        modeloLista.addColumn("Nome");
+        modeloLista.addColumn("Sigtap");        
+
+        for (Paciente paciente : list) {
+            modeloLista.addRow(new Object[]{paciente.getIdPatient(), paciente.getName(), paciente.getSIGTAP()}
+            );
+        }
+        
+        TablePatient.getTableHeader().setReorderingAllowed(false);
+        TablePatient.setModel(modeloLista);
+    }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void TablePatientAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_TablePatientAncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TablePatientAncestorAdded
+
     private void carregar() {
 
         DefaultTableModel modeloLista = new DefaultTableModel();    
@@ -427,7 +465,7 @@ public class PatientSelect extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField SearchTxt;
+    private javax.swing.JTextField BuscarPaciente;
     private javax.swing.JTable TablePatient;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnLogout;

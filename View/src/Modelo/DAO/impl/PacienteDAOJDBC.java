@@ -106,7 +106,7 @@ public class PacienteDAOJDBC implements PacienteDAO {
         }
         return null;
     }
-
+    
     @Override
     public List<Paciente> findAll() {
         PreparedStatement pstm = null;
