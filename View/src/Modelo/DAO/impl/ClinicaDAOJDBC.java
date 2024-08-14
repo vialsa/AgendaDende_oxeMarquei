@@ -40,14 +40,13 @@ public class ClinicaDAOJDBC implements ClinicaDAO {
         }
     }
 
-    @Override
     public void update(String nameOfClinic, String address, String phoneNumber, String email, Integer idClinic) {
         PreparedStatement pstm = null;
 
         try {
             conn = FabricaDeConexao.getConnection();
             pstm = conn.prepareStatement(
-              "UPDATE CLINIC SET nameOfClinic = ?, address, = ?, phoneNumber = ?, email = ? WHERE idClinic = ?"
+              "UPDATE CLINIC SET nameOfClinic = ?, address = ?, phoneNumber = ?, email = ? WHERE idClinic = ?"
             );
             pstm.setString(1, nameOfClinic);
             pstm.setString(2, address);
