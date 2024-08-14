@@ -160,9 +160,9 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="SearchTxt" max="32767" attributes="0"/>
+                                  <Component id="buscarUser" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="btnSearch" min="-2" max="-2" attributes="0"/>
+                                  <Component id="botaoBuscar" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="btn_NovoUsuario" min="-2" max="-2" attributes="0"/>
@@ -180,8 +180,8 @@
                           <Component id="btn_NovoUsuario" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="btnSearch" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="SearchTxt" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                              <Component id="botaoBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="buscarUser" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -189,15 +189,18 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JButton" name="btnSearch">
+                <Component class="javax.swing.JButton" name="botaoBuscar">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="cc" red="0" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Buscar"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoBuscarActionPerformed"/>
+                  </Events>
                 </Component>
-                <Component class="javax.swing.JTextField" name="SearchTxt">
+                <Component class="javax.swing.JTextField" name="buscarUser">
                 </Component>
                 <Component class="javax.swing.JButton" name="btn_NovoUsuario">
                   <Properties>

@@ -96,6 +96,8 @@ public class ManageUserEdit extends javax.swing.JFrame {
             }
         });
 
+        Nome.setEditable(false);
+
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Nome:");
 
@@ -114,11 +116,17 @@ public class ManageUserEdit extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setText("Rua:");
 
+        EnderecoRuaUser.setEditable(false);
+
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel10.setText("Nº:");
 
+        EnderecoNumUser.setEditable(false);
+
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel9.setText("Bairro:");
+
+        EnderecoBairroUser.setEditable(false);
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel11.setText("CEP:");
@@ -146,18 +154,21 @@ public class ManageUserEdit extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
+        tel1.setEditable(false);
         try {
             tel1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
 
+        tel2.setEditable(false);
         try {
             tel2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
 
+        cep.setEditable(false);
         try {
             cep.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
         } catch (java.text.ParseException ex) {

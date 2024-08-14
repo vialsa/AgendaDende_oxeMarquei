@@ -43,21 +43,22 @@ public class PacienteDAOJDBC implements PacienteDAO {
         }
     }
 
-    @Override
-    public void update(String phoneNumber1, String phoneNumber2, String address, String email, Integer idPatient) {
+    
+    public void update(String nome, String phoneNumber1, String phoneNumber2, String address, String email, Integer idPatient) {
         PreparedStatement pstm =  null;
 
         try {
             conn = FabricaDeConexao.getConnection();
             pstm = conn.prepareStatement(
-                    "UPDATE PATIENT SET phoneNumber1 = ?, phoneNumber2 = ?, address = ?, email = ? WHERE idPatient = ?"
+                    "UPDATE PATIENT SET phoneNumber1 = ?, phoneNumber2 = ?, address = ?, email = ?, name = ? WHERE idPatient = ?"
             );
 
             pstm.setString(1, phoneNumber1);
             pstm.setString(2, phoneNumber2);
             pstm.setString(3, address);
             pstm.setString(4, email);
-            pstm.setInt(5, idPatient);
+            pstm.setString(5, nome);
+            pstm.setInt(6, idPatient);
             pstm.executeUpdate();
             System.out.println("FUNCIONOUUUU");
         } catch (SQLException e){
@@ -142,5 +143,10 @@ public class PacienteDAOJDBC implements PacienteDAO {
             FabricaDeConexao.closeResultSet(rs);
         }
         return null;
+    }
+
+    @Override
+    public void update(String phoneNumber1, String phoneNumber2, String address, String email, Integer idPatient) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

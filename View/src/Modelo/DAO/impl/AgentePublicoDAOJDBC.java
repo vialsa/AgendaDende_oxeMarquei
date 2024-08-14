@@ -48,7 +48,7 @@ public class AgentePublicoDAOJDBC implements AgentePublicoDAO {
         }
     }
  
-    public void updateAgente(Integer idPublicAgent,String email,String user,String password ) {
+    public void updateAgente(Integer idPublicAgent, String email, String user, String password) {
         PreparedStatement pstm =  null;
 
         try {

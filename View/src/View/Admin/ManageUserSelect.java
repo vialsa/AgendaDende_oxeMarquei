@@ -54,8 +54,8 @@ public class ManageUserSelect extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         TableUser = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
-        btnSearch = new javax.swing.JButton();
-        SearchTxt = new javax.swing.JTextField();
+        botaoBuscar = new javax.swing.JButton();
+        buscarUser = new javax.swing.JTextField();
         btn_NovoUsuario = new javax.swing.JButton();
         label1 = new java.awt.Label();
         btnEdit = new javax.swing.JButton();
@@ -122,8 +122,13 @@ public class ManageUserSelect extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(TableUser);
 
-        btnSearch.setBackground(new java.awt.Color(0, 204, 0));
-        btnSearch.setText("Buscar");
+        botaoBuscar.setBackground(new java.awt.Color(0, 204, 0));
+        botaoBuscar.setText("Buscar");
+        botaoBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoBuscarActionPerformed(evt);
+            }
+        });
 
         btn_NovoUsuario.setBackground(new java.awt.Color(0, 255, 153));
         btn_NovoUsuario.setText("Novo Usuario");
@@ -141,9 +146,9 @@ public class ManageUserSelect extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(SearchTxt)
+                        .addComponent(buscarUser)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSearch))
+                        .addComponent(botaoBuscar))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(btn_NovoUsuario)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -156,8 +161,8 @@ public class ManageUserSelect extends javax.swing.JFrame {
                 .addComponent(btn_NovoUsuario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSearch)
-                    .addComponent(SearchTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botaoBuscar)
+                    .addComponent(buscarUser, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -412,6 +417,13 @@ public class ManageUserSelect extends javax.swing.JFrame {
     private void TableUserAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_TableUserAncestorAdded
         // TODO add your handling code here:
     }//GEN-LAST:event_TableUserAncestorAdded
+
+    private void botaoBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoBuscarActionPerformed
+        String buscaUser = buscarUser.getText();
+        PublicAgentController publicAgenteControlle = new PublicAgentController();
+        //Falta implementar!!!
+        //spublicAgenteControlle.
+    }//GEN-LAST:event_botaoBuscarActionPerformed
     private void carregar() {
         
         DefaultTableModel modeloTabela = new DefaultTableModel();    
@@ -723,8 +735,8 @@ public class ManageUserSelect extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField SearchTxt;
     private javax.swing.JTable TableUser;
+    private javax.swing.JButton botaoBuscar;
     private javax.swing.JToggleButton btnCadastrar;
     private javax.swing.JToggleButton btnConsulta;
     private javax.swing.JButton btnDelet;
@@ -733,8 +745,8 @@ public class ManageUserSelect extends javax.swing.JFrame {
     private javax.swing.JButton btnLogout;
     private javax.swing.JToggleButton btnPaciente;
     private javax.swing.JToggleButton btnRelatorio;
-    private javax.swing.JButton btnSearch;
     private javax.swing.JButton btn_NovoUsuario;
+    private javax.swing.JTextField buscarUser;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel16;

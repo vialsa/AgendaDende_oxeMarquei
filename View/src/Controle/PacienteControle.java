@@ -30,6 +30,14 @@ public class PacienteControle {
         }
     }
     
+    public void atualizarPaciente (String nome, String phoneNumber1, String phoneNumber2, String address, String email, Integer idPatient) {
+        try {
+            PacienteDAOJDBC pacienteDAO = new PacienteDAOJDBC();
+            pacienteDAO.update(nome, phoneNumber1, phoneNumber2, address, email, idPatient);
+        } catch (Exception e) {
+        }
+    }
+    
     public List buscarPacientes(){
         PacienteDAOJDBC pacienteDAO = new PacienteDAOJDBC();
         List listPatient = pacienteDAO.findAll();
