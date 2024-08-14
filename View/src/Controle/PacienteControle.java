@@ -11,6 +11,7 @@ import java.time.LocalDate;
 import Modelo.DAO.impl.PacienteDAOJDBC;
 import Modelo.Entidades.Clinica;
 import Modelo.Entidades.Paciente;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -36,6 +37,32 @@ public class PacienteControle {
             pacienteDAO.update(nome, phoneNumber1, phoneNumber2, address, email, idPatient);
         } catch (Exception e) {
         }
+    }
+    
+    public List<Paciente> findByName(String nome, Integer codigo, String sigtap) {
+        try {
+            PacienteDAOJDBC pacienteDAO = new PacienteDAOJDBC();
+            List<Paciente> listPaciente = pacienteDAO.findAll();
+            List<Paciente> retorno = new ArrayList<>();
+            
+            for (Paciente paciente : listPaciente) {
+                String[] nomeQuebrado = paciente.getName().split(" ");
+                
+                if (paciente.getName().toLowerCase().equalsIgnoreCase(nome.toLowerCase())) {
+                    retorno.add(paciente);
+                }
+                
+                for (String string : nomeQuebrado) {
+                    if (string.toLowerCase().equalsIgnoreCase(nome.toLowerCase())) {
+                        retorno.add(paciente);
+                    }
+                }
+            }
+            
+            return retorno;
+        } catch (Exception e) {
+        }
+        return null;
     }
     
     public List buscarPacientes(){

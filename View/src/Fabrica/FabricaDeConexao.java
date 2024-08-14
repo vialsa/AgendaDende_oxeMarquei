@@ -9,8 +9,8 @@ public class FabricaDeConexao {
         Connection connection = null;
         try {
             //Classe importada para usar o banco
-            connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/agenda_dendev2"
-            , "postgres", "1705");
+            connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/teste"
+            , "postgres", "1234");
             System.out.println("Conexao com o banco feita com sucesso");
         } catch (SQLException e) {
             throw new RuntimeException(e);
