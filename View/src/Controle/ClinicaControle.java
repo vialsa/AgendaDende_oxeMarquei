@@ -45,4 +45,13 @@ public class ClinicaControle {
         }
     }
     
+    public void atualizarClinica(String nameOfClinic, String address, String phoneNumber, String email, Integer idClinic){
+    
+        try {
+            ClinicaDAOJDBC clinicaDAOJDBC = new ClinicaDAOJDBC();
+            clinicaDAOJDBC.update(nameOfClinic, address, phoneNumber, email, idClinic);
+        } catch (Exception e) {
+            
+        }
+    }
 }

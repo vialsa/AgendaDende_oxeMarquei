@@ -21,6 +21,7 @@ import javax.swing.table.DefaultTableModel;
 public class RegisterClinic extends javax.swing.JFrame {
     
     private static int idMedico;
+    private static int idClinica;
 
     /**
      * Creates new form Login
@@ -233,6 +234,11 @@ public class RegisterClinic extends javax.swing.JFrame {
 
         btnEditarClinica.setBackground(new java.awt.Color(255, 255, 51));
         btnEditarClinica.setText("Editar");
+        btnEditarClinica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarClinicaActionPerformed(evt);
+            }
+        });
 
         btnDeletarClinica.setBackground(new java.awt.Color(255, 0, 0));
         btnDeletarClinica.setText("Excluir");
@@ -245,13 +251,13 @@ public class RegisterClinic extends javax.swing.JFrame {
         ClinicTable.setBackground(new java.awt.Color(204, 204, 204));
         ClinicTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Nome", "Telefone", "Endereço", "Status"
+                "ID", "Nome", "Telefone", "Endereço", "Status"
             }
         ));
         ClinicTable.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -449,9 +455,14 @@ public class RegisterClinic extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-        public int getIdMedico() {
+    public int getIdMedico() {
         return this.idMedico;
     }
+    
+    public int getIdClinica() {
+        return this.idClinica;
+    }
+        
     private void SearchTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_SearchTxtActionPerformed
@@ -529,10 +540,20 @@ public class RegisterClinic extends javax.swing.JFrame {
         telaEditDoctor.setVisible(true);
     }//GEN-LAST:event_btnEditarMedicoActionPerformed
 
+    private void btnEditarClinicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarClinicaActionPerformed
+        // TODO add your handling code here:
+        Object idClinicas = ClinicTable.getValueAt(ClinicTable.getSelectedRow(),0);
+        this.idClinica = (int) idClinicas;
+        EditClinic telaEditClinic = new EditClinic();
+        this.dispose();
+        telaEditClinic.setVisible(true);
+    }//GEN-LAST:event_btnEditarClinicaActionPerformed
+
     private void carregarClinicas() {
 
         DefaultTableModel modeloLista = new DefaultTableModel();
-
+        
+        modeloLista.addColumn("ID");
         modeloLista.addColumn("Nome");
         modeloLista.addColumn("Telefone");
         modeloLista.addColumn("Endereço");
@@ -542,7 +563,7 @@ public class RegisterClinic extends javax.swing.JFrame {
         List<Clinica> listaClinicas = clinicas.buscarClinicas();
 
         for (Clinica listaClinica : listaClinicas) {
-            modeloLista.addRow(new Object[]{listaClinica.getNameOfClinic(), listaClinica.getPhoneNumber(),
+            modeloLista.addRow(new Object[]{listaClinica.getIdClinic(), listaClinica.getNameOfClinic(), listaClinica.getPhoneNumber(),
                 listaClinica.getAddress(), listaClinica.getStatus()}
             );
         }
@@ -561,7 +582,6 @@ public class RegisterClinic extends javax.swing.JFrame {
         MedicoControle doutores = new MedicoControle();
         List<Medico> listaDoutores = doutores.buscarMedicos();
         
-        System.out.println(listaDoutores);
         ClinicaControle clinicas = new ClinicaControle();
         List<Clinica> listaClinicas = clinicas.buscarClinicas();
         
