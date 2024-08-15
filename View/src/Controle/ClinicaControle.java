@@ -70,7 +70,7 @@ public class ClinicaControle {
         }
         
         return retorno;
-
+    }
     
     public void atualizarClinica(String nameOfClinic, String address, String phoneNumber, String email, Integer idClinic){
     

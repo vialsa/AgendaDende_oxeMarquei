@@ -415,14 +415,28 @@ public class ManageUserSelect extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void TableUserAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_TableUserAncestorAdded
-        // TODO add your handling code here:
+                
     }//GEN-LAST:event_TableUserAncestorAdded
 
     private void botaoBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoBuscarActionPerformed
-        String buscaUser = buscarUser.getText();
-        PublicAgentController publicAgenteControlle = new PublicAgentController();
-        //Falta implementar!!!
-        //spublicAgenteControlle.
+        String buscar = buscarUser.getText();
+        
+        DefaultTableModel modeloTabela = new DefaultTableModel();    
+        
+        modeloTabela.addColumn("Nome");        
+        modeloTabela.addColumn("Codigo");
+
+        
+        PublicAgentController usuarios = new PublicAgentController();
+        @SuppressWarnings("unchecked")
+        List<AgentePublico> listaUsuarios = usuarios.buscarAgente(buscar);
+       
+        for (AgentePublico listaUsuario : listaUsuarios) {
+            modeloTabela.addRow(
+                new Object[]{listaUsuario.getName(), listaUsuario.getIdPublicAgent()}
+            );
+        }
+        TableUser.setModel(modeloTabela);
     }//GEN-LAST:event_botaoBuscarActionPerformed
     private void carregar() {
         

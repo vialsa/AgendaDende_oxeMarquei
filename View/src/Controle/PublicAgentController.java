@@ -6,6 +6,7 @@ package Controle;
 
 import Modelo.DAO.impl.AgentePublicoDAOJDBC;
 import Modelo.Entidades.AgentePublico;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,6 +30,30 @@ public class PublicAgentController {
             System.out.println(e.getMessage());
             return null;
         }
+    }
+    
+    public List<AgentePublico> buscarAgente(String nomeAgente) {
+        List<AgentePublico> retorno = new ArrayList<>();
+        try {
+            AgentePublicoDAOJDBC agentePublicoDAOJDBC = new AgentePublicoDAOJDBC();
+            List<AgentePublico> listAgente = agentePublicoDAOJDBC.findAll();
+            
+            for (AgentePublico agentePublico : listAgente) {
+                
+                if (nomeAgente.toLowerCase().equalsIgnoreCase(agentePublico.getName().toLowerCase())) {
+                    retorno.add(agentePublico);
+                }
+                
+                String[] nomeQuebrado = agentePublico.getName().split(" ");
+                for (String string : nomeQuebrado) {
+                    if (nomeAgente.toLowerCase().equalsIgnoreCase(string.toLowerCase())) {
+                        retorno.add(agentePublico);
+                    }
+                }
+            }
+        } catch (Exception e) {
+        }
+        return retorno;
     }
     
     public void atualizarAgente(Integer idPublicAgent,String email,String user,String password) {
