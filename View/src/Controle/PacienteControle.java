@@ -65,6 +65,29 @@ public class PacienteControle {
         return null;
     }
     
+    public List<Paciente> buscarPaciente(String nomePaciente) {
+        List<Paciente> retorno = new ArrayList<>();
+        try {
+            PacienteDAOJDBC pacienteDAOJDBC = new PacienteDAOJDBC();
+            List<Paciente> listPaciente = pacienteDAOJDBC.findAll();
+            
+            for (Paciente paciente : listPaciente) {
+                if (nomePaciente.toLowerCase().equalsIgnoreCase(paciente.getName().toLowerCase())) {
+                    retorno.add(paciente);
+                }
+                
+                String[] nomeQuebrado = paciente.getName().split(" ");
+                for (String string : nomeQuebrado) {
+                    if (nomePaciente.toLowerCase().equalsIgnoreCase(string.toLowerCase())) {
+                        retorno.add(paciente);
+                    }
+                }
+            }
+        } catch (Exception e) {
+        }
+        return retorno;
+    }
+    
     public List buscarPacientes(){
         PacienteDAOJDBC pacienteDAO = new PacienteDAOJDBC();
         List listPatient = pacienteDAO.findAll();

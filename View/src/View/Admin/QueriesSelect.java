@@ -52,7 +52,7 @@ public class QueriesSelect extends javax.swing.JFrame {
         TableQuery = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
         btnSearch = new javax.swing.JButton();
-        SearchTxt = new javax.swing.JTextField();
+        buscarConsulta = new javax.swing.JTextField();
         label1 = new java.awt.Label();
         jPanel17 = new javax.swing.JPanel();
         btnCadastrar = new javax.swing.JToggleButton();
@@ -109,10 +109,15 @@ public class QueriesSelect extends javax.swing.JFrame {
 
         btnSearch.setBackground(new java.awt.Color(0, 204, 0));
         btnSearch.setText("Buscar");
-
-        SearchTxt.addActionListener(new java.awt.event.ActionListener() {
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SearchTxtActionPerformed(evt);
+                btnSearchActionPerformed(evt);
+            }
+        });
+
+        buscarConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarConsultaActionPerformed(evt);
             }
         });
 
@@ -122,7 +127,7 @@ public class QueriesSelect extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(SearchTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buscarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSearch)
                 .addContainerGap())
@@ -132,7 +137,7 @@ public class QueriesSelect extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap(26, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(SearchTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buscarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSearch))
                 .addGap(23, 23, 23))
         );
@@ -331,9 +336,9 @@ public class QueriesSelect extends javax.swing.JFrame {
         telaRegisterClinic.setVisible(true);
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
-    private void SearchTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchTxtActionPerformed
+    private void buscarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarConsultaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_SearchTxtActionPerformed
+    }//GEN-LAST:event_buscarConsultaActionPerformed
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         // TODO add your handling code here:
@@ -348,6 +353,33 @@ public class QueriesSelect extends javax.swing.JFrame {
         this.dispose();
         telaHome.setVisible(true);
     }//GEN-LAST:event_jLabel7MouseClicked
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        String busca = buscarConsulta.getText();
+        
+        DefaultTableModel modeloLista = new DefaultTableModel();    
+        
+        modeloLista.addColumn("Codigo");        
+        modeloLista.addColumn("Nome");
+        modeloLista.addColumn("Data");
+        modeloLista.addColumn("Local");
+        
+        QueryController consultas = new QueryController();
+        List<Consulta> listaConsultas = consultas.buscarConsultar(busca);
+        SolicitacaoDAOJDBC solicitationDAOJDBC  = new SolicitacaoDAOJDBC();
+        PacienteDAOJDBC patientDAOJDBC = new PacienteDAOJDBC();
+        ClinicaDAOJDBC clinicDAOJDBC = new ClinicaDAOJDBC();
+       
+        for (Consulta listaConsulta : listaConsultas) {
+            Solicitacao solicitation = solicitationDAOJDBC.findById(listaConsulta.getSolicitation().getIdSolicitation());
+            Paciente patient = patientDAOJDBC.findById(solicitation.getPatient().getIdPatient());
+            Clinica clinic = clinicDAOJDBC.findByID(listaConsulta.getClinic().getIdClinic());
+            modeloLista.addRow(new Object[]{listaConsulta.getIdQuery(), patient.getName(), listaConsulta.getDateAndTimeConsultation(), clinic.getAddress()}
+            );
+        }
+        TableQuery.setModel(modeloLista);
+        
+    }//GEN-LAST:event_btnSearchActionPerformed
     private void carregar() {
         
         DefaultTableModel modeloLista = new DefaultTableModel();    
@@ -471,7 +503,6 @@ public class QueriesSelect extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField SearchTxt;
     private javax.swing.JTable TableQuery;
     private javax.swing.JToggleButton btnCadastrar;
     private javax.swing.JToggleButton btnConsulta;
@@ -480,6 +511,7 @@ public class QueriesSelect extends javax.swing.JFrame {
     private javax.swing.JToggleButton btnPaciente;
     private javax.swing.JToggleButton btnRelatorio;
     private javax.swing.JButton btnSearch;
+    private javax.swing.JTextField buscarConsulta;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel16;

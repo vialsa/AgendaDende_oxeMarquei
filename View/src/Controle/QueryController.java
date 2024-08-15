@@ -45,13 +45,11 @@ public class QueryController {
             List<Consulta> listConsulta = consultaDAOJDBC.findAll();
             SolicitacaoDAOJDBC solicitationDAOJDBC = new SolicitacaoDAOJDBC();
             PacienteDAOJDBC patientDAOJDBC = new PacienteDAOJDBC();
-            ClinicaDAOJDBC clinicDAOJDBC = new ClinicaDAOJDBC();
 
             if (nomePaciente != null) {
                 for (Consulta consulta : listConsulta) {
                     Solicitacao solicitacao = solicitationDAOJDBC.findById(consulta.getSolicitation().getIdSolicitation());
                     Paciente paciente = patientDAOJDBC.findById(solicitacao.getPatient().getIdPatient());
-                    Clinica clinica = clinicDAOJDBC.findByID(consulta.getClinic().getIdClinic());
 
                     if (nomePaciente.toLowerCase().equalsIgnoreCase(paciente.getName().toLowerCase())) {
                         retorno.add(consulta);
@@ -69,7 +67,7 @@ public class QueryController {
                 return retorno;
             } else {
                 return listConsulta;
-            }  
+            }
         } catch (Exception e) {
         }
         return retorno;
