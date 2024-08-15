@@ -1,0 +1,81 @@
+CREATE TABLE PATIENT (
+    idPatient 			SERIAL PRIMARY KEY NOT NULL,
+    name 				VARCHAR(50) NOT NULL,
+    CPF 				VARCHAR(25) NOT NULL UNIQUE,
+    RG 					VARCHAR(25) NOT NULL UNIQUE,
+    phoneNumber1 		VARCHAR(25) NOT NULL,
+    phoneNumber2 		VARCHAR(25),
+    dateOfBirth 		DATE NOT NULL,
+    createdAt 			TIMESTAMP NOT NULL,
+    address 			VARCHAR(100) NOT NULL,
+    email 				VARCHAR(50) NOT NULL UNIQUE,
+    SIGTAP 				VARCHAR(25) NOT NULL UNIQUE
+);
+
+CREATE TABLE SOLICITATION (
+    idSolicitation 			SERIAL PRIMARY KEY NOT NULL,
+    CRM 					VARCHAR(25) NOT NULL,
+    request 				VARCHAR(150) NOT NULL,
+    nameofRequestDoctor 	VARCHAR(50) NOT NULL,
+    idPatient 				INTEGER NOT NULL,
+
+	FOREIGN KEY(idPatient) REFERENCES PATIENT(idPatient)
+);
+
+CREATE TABLE PUBLIC_AGENT (
+    idPublicAgent 		SERIAL PRIMARY KEY NOT NULL,
+    name 				VARCHAR(50) NOT NULL,
+    CPF 				VARCHAR(25) NOT NULL UNIQUE,
+    RG 					VARCHAR(25) NOT NULL UNIQUE,
+    phoneNumber1 		VARCHAR(25) NOT NULL,
+    phoneNumber2 		VARCHAR(25),
+    dateOfBirth 		DATE NOT NULL,
+    createdAt 			TIMESTAMP NOT NULL,
+    address 			VARCHAR(100) NOT NULL,
+    email 				VARCHAR(50) NOT NULL UNIQUE,
+    userr 				VARCHAR(30) NOT NULL UNIQUE,
+    password 			VARCHAR(25) NOT NULL,
+    typeUser 			VARCHAR(6) NOT NULL CHECK (typeUser IN ('normal', 'admin')),
+	status				VARCHAR(8) NOT NULL CHECK (status IN ('ativo', 'inativo'))
+);
+CREATE TABLE CLINIC(
+	idClinic			SERIAL PRIMARY KEY NOT NULL,
+	nameOfClinic		VARCHAR(75) NOT NULL,
+	address				VARCHAR(250) NOT NULL,
+	phoneNumber			VARCHAR(25) NOT NULL,
+	email				VARCHAR(50) NOT NULL UNIQUE,
+	status				VARCHAR(8) NOT NULL CHECK (status IN ('ativo', 'inativo')),
+	CNPJ				VARCHAR(25) NOT NULL,
+	additionalInformation		TEXT
+);
+CREATE TABLE DOCTOR(
+   idDoctor 			        SERIAL PRIMARY KEY NOT NULL,
+    name 				VARCHAR(50) NOT NULL,
+    CPF 				VARCHAR(25) NOT NULL UNIQUE,
+    RG 					VARCHAR(25) NOT NULL UNIQUE,
+    phoneNumber1 		        VARCHAR(25) NOT NULL,
+    phoneNumber2 		        VARCHAR(25),
+    dateOfBirth 		        DATE NOT NULL,
+    createdAt 			        TIMESTAMP NOT NULL,
+    email 				VARCHAR(50) NOT NULL UNIQUE,
+    CRM					VARCHAR(25) NOT NULL UNIQUE,
+    specialty				VARCHAR(100) NOT NULL,
+    status				VARCHAR(8) NOT NULL CHECK (status IN ('ativo', 'inativo')),
+    idClinic				INTEGER,
+
+    FOREIGN KEY(idClinic) REFERENCES CLINIC(idClinic) 
+);
+
+CREATE TABLE QUERY (
+    idQuery 					SERIAL PRIMARY KEY NOT NULL,
+    dateAndTimeConsultation 	                	TIMESTAMP NOT NULL,
+    idPublicAgent 				INTEGER NOT NULL,
+    idSolicitation 				INTEGER NOT NULL,
+    idDoctor					INTEGER NOT NULL,
+    idClinic					INTEGER NOT NULL,
+
+    FOREIGN KEY(idPublicAgent) REFERENCES PUBLIC_AGENT(idPublicAgent),
+    FOREIGN KEY(idSolicitation) REFERENCES SOLICITATION(idSolicitation),
+    FOREIGN KEY(idDoctor) REFERENCES DOCTOR(idDoctor),
+    FOREIGN KEY(idClinic) REFERENCES CLINIC(idClinic)
+);
