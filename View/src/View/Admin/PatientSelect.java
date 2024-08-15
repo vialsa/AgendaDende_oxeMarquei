@@ -71,8 +71,8 @@ public class PatientSelect extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         TablePatient = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
-        btnSearch = new javax.swing.JButton();
-        SearchTxt = new javax.swing.JTextField();
+        botaoBuscar = new javax.swing.JButton();
+        buscarPaciente = new javax.swing.JTextField();
         btnNewPatient = new javax.swing.JButton();
         label1 = new java.awt.Label();
         btnEdit = new javax.swing.JButton();
@@ -233,11 +233,11 @@ public class PatientSelect extends javax.swing.JFrame {
         TablePatient.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(TablePatient);
 
-        btnSearch.setBackground(new java.awt.Color(0, 204, 0));
-        btnSearch.setText("Buscar");
-        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+        botaoBuscar.setBackground(new java.awt.Color(0, 204, 0));
+        botaoBuscar.setText("Buscar");
+        botaoBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSearchActionPerformed(evt);
+                botaoBuscarActionPerformed(evt);
             }
         });
 
@@ -257,9 +257,9 @@ public class PatientSelect extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(SearchTxt)
+                        .addComponent(buscarPaciente)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnSearch))
+                        .addComponent(botaoBuscar))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(btnNewPatient)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -272,8 +272,8 @@ public class PatientSelect extends javax.swing.JFrame {
                 .addComponent(btnNewPatient)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(SearchTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSearch))
+                    .addComponent(buscarPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botaoBuscar))
                 .addContainerGap(8, Short.MAX_VALUE))
         );
 
@@ -430,9 +430,26 @@ public class PatientSelect extends javax.swing.JFrame {
         telaHome.setVisible(true);
     }//GEN-LAST:event_jLabel7MouseClicked
 
-    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSearchActionPerformed
+    private void botaoBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoBuscarActionPerformed
+        String buscar = buscarPaciente.getText();
+        
+        DefaultTableModel modeloLista = new DefaultTableModel();    
+
+        modeloLista.addColumn("Codigo");        
+        modeloLista.addColumn("Nome");
+        modeloLista.addColumn("Sigtap");
+
+        PacienteControle pacientes = new PacienteControle();
+        @SuppressWarnings("unchecked")
+        List<Paciente> listaPacientes = pacientes.buscarPaciente(buscar);
+
+        for (Paciente listaPaciente : listaPacientes) {
+            modeloLista.addRow(new Object[]{listaPaciente.getIdPatient(), listaPaciente.getName(), listaPaciente.getSIGTAP()}
+            );
+        }
+        TablePatient.setModel(modeloLista);
+        
+    }//GEN-LAST:event_botaoBuscarActionPerformed
     
     private void carregar() {
 
@@ -617,8 +634,8 @@ public class PatientSelect extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField SearchTxt;
     private javax.swing.JTable TablePatient;
+    private javax.swing.JButton botaoBuscar;
     private javax.swing.JToggleButton btnCadastrar;
     private javax.swing.JToggleButton btnConsulta;
     private javax.swing.JButton btnEdit;
@@ -628,7 +645,7 @@ public class PatientSelect extends javax.swing.JFrame {
     private javax.swing.JToggleButton btnPaciente;
     private javax.swing.JToggleButton btnRelatorio;
     private javax.swing.JButton btnSchedule;
-    private javax.swing.JButton btnSearch;
+    private javax.swing.JTextField buscarPaciente;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel16;
