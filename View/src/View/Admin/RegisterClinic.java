@@ -464,17 +464,17 @@ public class RegisterClinic extends javax.swing.JFrame {
         return this.idMedico;
     }
 
-    private void BuscarClinicasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarClinicasActionPerformed
+    private void BuscarClinicasActionPerformed(java.awt.event.ActionEvent evt) {                                               
 
-    
+    }
     public int getIdClinica() {
         return this.idClinica;
     }
         
-    private void SearchTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchTxtActionPerformed
+    private void SearchTxtActionPerformed(java.awt.event.ActionEvent evt) {                                          
 
         // TODO add your handling code here:
-    }//GEN-LAST:event_BuscarClinicasActionPerformed
+    }                                              
 
     private void botaoBucarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoBucarActionPerformed
         String busca = BuscarClinicas.getText();
